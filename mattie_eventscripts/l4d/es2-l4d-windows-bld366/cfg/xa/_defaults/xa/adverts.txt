@@ -1,0 +1,4 @@
+{BLUE}EventScripts 2.0
+{RED}http://www.eventscripts.com
+{GREEN}Current map is {CURRENTMAP}
+{BLUE}eXtensible Admin

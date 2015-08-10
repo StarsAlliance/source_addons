@@ -1,0 +1,32 @@
+//
+// quakesoundlist.txt
+//
+// Place all your quake style sounds in this file.
+//
+// This file can uses aliases to define 
+// the sound name, they should not be altered !!!
+// 
+// The second part on each line is the location
+// and name of the file itself. You can change
+// this to be wherever you want.
+//
+//
+//
+
+
+"firstblood"	quake/firstblood.mp3
+"humiliation"	quake/humiliation.mp3
+"multikill"	quake/multikill.mp3
+"monsterkill"	quake/monsterkill.mp3
+"ultrakill"	quake/ultrakill.mp3
+"godlike"	quake/godlike.mp3
+"headshot"	quake/headshot.mp3
+"dominating"	quake/dominating.mp3
+"holyshit"	quake/holyshit.mp3
+"killingspree"	quake/killingspree.mp3
+"ludicrouskill"	quake/ludicrouskill.mp3
+"prepare"	quake/prepare.mp3
+"rampage"	quake/rampage.mp3
+"unstoppable"	quake/unstoppable.mp3
+"wickedsick"	quake/wickedsick.mp3
+"teamkiller"	quake/teamkiller.mp3

@@ -1,0 +1,97 @@
+// ******************************
+// Mattie's Slingshot v0.62
+//      for Counter-Strike: Source
+//
+// * Description:
+//      Default pistols will slingshot you around the map. 
+//
+//
+// * Install instructions:
+//       1. Install Mattie's EventScripts plugins:
+//            http://mattie.info/cs
+//
+//       2. Copy all of this script into a new textfile:
+//           cstrike/addons/eventscripts/slingshot/es_slingshot.txt
+//
+//       3. Be sure you have the "corelib" script provided with ES:
+//           cstrike/addons/eventscripts/corelib/es_corelib.txt
+//
+//       4. Add the following line somewhere in autoexec.cfg:
+//           es_load slingshot
+//
+// ******************************
+
+// EventScripts v1.0.0 example
+// This script causes the attacker to be pulled forcefully towards the bullet impact spot.
+//   Like grappling hooks, only more so.
+
+block load
+{
+	es_setinfo mattie_slingshot "v0.1"
+	es_makepublic mattie_slingshot
+	es_msg #multi #lightgreen[Slingshot] #defaultMattie Slingshot has been enabled.
+
+	// we need noisy, so let's add a reference count
+	es_load corelib
+	es_xdoblock corelib/noisy_on
+
+	// initialize these
+	es_xsetinfo fA 0
+	es_xsetinfo fB 0
+	es_xsetinfo FC 0
+
+	// if they didn't have corelib, just turn it on
+	//if (server_var(eventscripts_noisy) < 1) then es_xsetinfo eventscripts_noisy 1
+}
+
+block unload
+{
+	es_xsetinfo mattie_slingshot 0
+	// subtract reference count on noisy
+	es_load corelib
+	es_xdoblock corelib/noisy_off
+}
+
+// announce and give unlimited pistol ammo
+event round_start
+{
+	es_xmsg #multi #lightgreen[Slingshot] #defaultYour default pistol will slingshot you around the map.
+	es_xdelayed 2 es_xdoblock slingshot/ammo
+	// refresh ammo in case someone reloads
+	es_xdelayed 30 es_xdoblock slingshot/ammo
+}
+
+// this fires a lot so we need to be quick 
+event bullet_impact
+{
+	if (event_var(es_userweapon) = weapon_usp) do
+	{
+		es_xdoblock slingshot/pull
+	}
+	es_xelse do
+	{
+		if (event_var(es_userweapon) = weapon_glock) then es_xdoblock slingshot/pull
+	}
+}
+
+// give all glocks and usps 200 bullets
+block ammo
+{
+  es_xcreateentitylist ss_all_glocks weapon_glock
+  es_xforeachkey ss_index in ss_all_glocks "es_setindexprop server_var(ss_index) CBaseCombatWeapon.LocalWeaponData.m_iClip1 200"
+  es_xkeygroupdelete ss_all_glocks
+
+  es_xcreateentitylist ss_all_usps weapon_usp
+  es_xforeachkey ss_index in ss_all_usps "es_setindexprop server_var(ss_index) CBaseCombatWeapon.LocalWeaponData.m_iClip1 200"
+  es_xkeygroupdelete ss_all_usps
+}
+
+// pull the player towards the spot his shot hit
+block pull
+{
+	es_getplayerprop fA event_var(userid) "CBaseEntity.m_vecOrigin"
+	es_createvectorstring fB event_var(x) event_var(y) event_var(z)
+	es_createvectorfrompoints FC server_var(fA) server_var(fB)
+	es_setplayerprop event_var(userid) "CCSPlayer.baseclass.localdata.m_vecBaseVelocity" server_var(FC)
+	es_playsound event_var(userid) common\bass.wav 0.3
+}

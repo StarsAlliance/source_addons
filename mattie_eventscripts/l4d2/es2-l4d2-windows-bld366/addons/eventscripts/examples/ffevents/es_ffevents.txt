@@ -1,0 +1,60 @@
+// EventScripts: Event Firing Example v0.1
+//  FriendlyFire Evens.
+
+// The following script and corresponding es_ffevents.res file is 
+//   an example of how to create your own events in your scripts.
+//
+// These events can be consumed just like any other events provided
+//   by Source.
+
+
+block load
+{
+	es_loadevents declare addons/eventscripts/examples/ffevents/es_ffevents.res
+}
+
+event es_map_start
+{
+	es_loadevents addons/eventscripts/examples/ffevents/es_ffevents.res
+}
+
+event player_hurt
+{
+	if (event_var(es_userteam) == event_var(es_attackerteam)) do
+	{
+		if (event_var(userid) != event_var(attacker)) do
+		{
+			// create the teammate_hurt event so other scripts know.
+			es_xevent initialize teammate_hurt
+			es_event setint teammate_hurt userid event_var(userid)
+			es_event setint teammate_hurt attacker event_var(attacker)
+			es_xevent fire teammate_hurt
+		}
+	}
+}
+
+event player_death
+{
+	if (event_var(es_userteam) == event_var(es_attackerteam)) do
+	{
+		if (event_var(userid) != event_var(attacker)) do
+		{
+			// create the teammate_kill event so other scripts know.
+			es_xevent initialize teammate_kill
+			es_event setint teammate_kill userid event_var(userid)
+			es_event setint teammate_kill attacker event_var(attacker)
+			es_xevent fire teammate_kill
+		}
+	}
+}
+
+// example ways to consume the event, just like a normal event
+event teammate_hurt
+{
+	es_log User event_var(es_attackername) attacked a teammate, event_var(es_username)
+}
+
+event teammate_hurt
+{
+	es_log User event_var(es_attackername) killed a teammate, event_var(es_username)
+}

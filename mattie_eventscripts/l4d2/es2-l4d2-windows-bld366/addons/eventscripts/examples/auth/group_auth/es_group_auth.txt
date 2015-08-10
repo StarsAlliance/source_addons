@@ -1,0 +1,422 @@
+// This is an example authorization system that uses a list of users
+//    which are assigned groups.
+
+// Some example usage for server-side cfg files:
+// es gauth group create "Admins" server_var(AUTHSERVICE_ADMIN)
+// gauth group delete "Admins"
+
+// es gauth power create "ban_user" server_var(AUTHSERVICE_ADMIN)
+// gauth power give "ban_user" "Admins"
+// gauth power revoke "ban_user" "Admins"
+// gauth power delete "ban_user"
+
+// gauth user create "Mattie" "STEAM1"
+// gauth user join "Mattie" "GroupName"
+// gauth user leave "Mattie" "Groupame"
+// gauth user delete "Mattie"
+
+block load
+{
+  interface instance group_auth is "An example authorization system that does capability checking by groups and uses SQLite."
+  interface instance group_auth provides registerCapability
+  interface instance group_auth provides isUseridAuthorized
+  interface instance group_auth provides getOfflineIdentifier
+  interface instance group_auth provides isIdAuthorized
+  interface instance group_auth implements AuthorizationService version 1
+  interface instance group_auth invokes examples/auth/group_auth/command_block
+  services register auth group_auth
+  
+  es_regcmd gauth examples/auth/group_auth/command_extra "Create groups, players, etc, via the group_auth script addon."
+  es_xset groupauth_temp 0
+  
+  es_xset groupauth_arg1 0
+  es_xset groupauth_arg2 0
+  es_xset groupauth_arg3 0
+  es_xset groupauth_arg4 0
+  es_xset groupauth_arg5 0
+  es_xset groupauth_sql 0
+  es_sql open group_auth |examples/auth/group_auth
+
+
+  // assume if there are tables that we don't need to initialize it.
+  es_sql queryvalue group_auth groupauth_temp "SELECT COUNT(name) as num FROM sqlite_master WHERE type='table';"
+  ifx false(groupauth_temp) do
+  {
+    es_doblock examples/auth/group_auth/init_db
+  }
+
+	testsuite create authentication "Authentication Test Suite"
+  testcase qcreate authentication gauthtest "Tests gauth"
+  testcase addtest gauthtest gauthtest1 examples/auth/group_auth/test "Tests gauth"
+
+  
+}
+
+block init_db
+{
+  // Used to create the defaults if you delete DB.
+  es_sql query group_auth "CREATE TABLE [Caps] ([CId] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[CName] VARCHAR(30)  UNIQUE NOT NULL,[CDefaultLevel] INTEGER  NULL,[Reviewed] BOOLEAN DEFAULT '''0''' NOT NULL);"
+  es_sql query group_auth "CREATE TABLE [GroupCaps] ([GId] INTEGER  NOT NULL,[CId] INTEGER  NOT NULL,PRIMARY KEY(Cid, Gid));"
+  es_sql query group_auth "CREATE TABLE [Groups] ([GId] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[GroupName] VARCHAR(30)  UNIQUE NULL,[GDefaultLevel] INTEGER DEFAULT '''''''256''''''' NULL);"
+  es_sql query group_auth "CREATE TABLE [Players] ([Uid] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[Name] VARCHAR(100)  UNIQUE NOT NULL,[SteamId] VARCHAR(30)  NULL,[Comments] TEXT  NULL);"
+  es_sql query group_auth "CREATE TABLE [PlayersGroups] ([UId] INTEGER  NOT NULL,[GId] INTEGER  NOT NULL,PRIMARY KEY(Uid, Gid));"
+  es_sql query group_auth "CREATE INDEX [IDX_PLAYERS_STEAMID] ON [Players]([SteamId]  DESC,[Name]  DESC);"
+  es_sql query group_auth "CREATE VIEW [vwCapsGroups] AS SELECT Caps.*, Groups.* FROM Caps, GroupCaps, Groups WHERE Groups.GId=GroupCaps.GId AND GroupCaps.CId=Caps.CId;"
+  es_sql query group_auth "CREATE VIEW [vwCombined] AS SELECT Caps.*, Players.*, Groups.* FROM Caps, GroupCaps, Groups, Players, PlayersGroups WHERE Players.Uid=PlayersGroups.Uid AND PlayersGroups.GId=Groups.GId AND Groups.GId=GroupCaps.GId AND GroupCaps.CId=Caps.CId;"
+  es_sql query group_auth "CREATE VIEW [vwPlayersGroups] AS SELECT Players.*, Groups.* FROM Groups, Players, PlayersGroups WHERE Players.Uid=PlayersGroups.Uid AND PlayersGroups.GId=Groups.GId;"
+  gauth user create "UNKNOWN" "STEAM_ID_PENDING"
+  es gauth group create "UnidentifiedPlayers" server_var(AUTHSERVICE_UNRESTRICTED)
+  gauth user join "UNKNOWN" "UnidentifiedPlayers"
+  es gauth group create "IdentifiedPlayers" server_var(AUTHSERVICE_IDENTIFIED)
+}
+
+block unload
+{
+  es_sql close group_auth |examples/auth/group_auth
+}
+
+// Our commands
+block command_extra
+{
+  es_getargv groupauth_arg1 1
+  es_getargv groupauth_arg2 2
+  es_xformatv groupauth_temp "examples/auth/group_auth/%1_%2" groupauth_arg1 groupauth_arg2
+  es_doblock server_var(groupauth_temp)
+}
+
+// es gauth group create "Admins" server_var(AUTHSERVICE_ADMIN)
+block group_create
+{
+  es_getargv groupauth_arg3 3
+  es_getargv groupauth_arg4 4
+  es_xset groupauth_sql "INSERT INTO Groups ('GroupName', 'GDefaultLevel') VALUES ('%1', %2);"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3 groupauth_arg4
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+// gauth group delete "Admins"
+block group_delete
+{
+  es_getargv groupauth_arg3 3
+  es_xset groupauth_sql "DELETE FROM GroupCaps WHERE GId in (SELECT GId FROM Groups WHERE Groups.GroupName='%1');DELETE FROM PlayersGroups WHERE GId in (SELECT GId FROM Groups WHERE Groups.GroupName='%1');DELETE FROM Groups WHERE GroupName='%1';"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+// es gauth power create "ban_user" server_var(AUTHSERVICE_ADMIN)
+block power_create
+{
+  es_getargv groupauth_arg3 3
+  es_getargv groupauth_arg4 4
+  es :auth registerCapability server_var(groupauth_arg3) server_var(groupauth_arg4)
+}
+
+// gauth power give "ban_user" "Admins"
+block power_give
+{
+  es_getargv groupauth_arg3 3
+  es_getargv groupauth_arg4 4
+  es_xset groupauth_sql "INSERT INTO GroupCaps (GId, CId) VALUES ((Select GId FROM Groups WHERE GroupName='%2'), (Select CId FROM Caps WHERE CName='%1'));"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3 groupauth_arg4
+  es_sql query group_auth server_var(groupauth_sql)
+
+  es_xset groupauth_sql "UPDATE Caps SET Reviewed=1 WHERE Cid =(Select CId FROM Caps WHERE CName='%1');"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3
+  es_sql query group_auth server_var(groupauth_sql)
+
+}
+
+// gauth power revoke "ban_user" "Admins"
+block power_revoke
+{
+  es_getargv groupauth_arg3 3
+  es_getargv groupauth_arg4 4
+  es_xset groupauth_sql "DELETE FROM GroupCaps WHERE GId=(Select GId FROM Groups WHERE GroupName='%2') AND CId=(Select CId FROM Caps WHERE CName='%1');"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3 groupauth_arg4
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+// gauth power delete "ban_user"
+block power_delete
+{
+  es_getargv groupauth_arg3 3
+  es_xset groupauth_sql "DELETE FROM GroupCaps WHERE CId in (SELECT CId FROM Caps WHERE CName='%1');DELETE FROM Caps WHERE CName='%1';"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+// gauth user create <username> <uniqueid>
+// gauth user create "Mattie" "STEAM1"
+block user_create
+{
+  es_getargv groupauth_arg3 3
+  es_getargv groupauth_arg4 4
+  es_xset groupauth_sql "INSERT INTO Players (Name, SteamId) VALUES ('%1', '%2');"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3 groupauth_arg4
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+// gauth user join "Mattie" "Admins"
+block user_join
+{
+  es_getargv groupauth_arg3 3
+  es_getargv groupauth_arg4 4
+  es_xset groupauth_sql "INSERT INTO PlayersGroups (UId, GId) VALUES ((Select Uid FROM Players WHERE Name='%1'), (Select GId FROM Groups WHERE GroupName='%2'));"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3 groupauth_arg4
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+// gauth user leave "Mattie" "Admins"
+block user_leave
+{
+  es_getargv groupauth_arg3 3
+  es_getargv groupauth_arg4 4
+  es_xset groupauth_sql "DELETE FROM PlayersGroups WHERE GId=(Select GId FROM Groups WHERE GroupName='%2') AND UId=(Select Uid FROM Players WHERE Name='%1');"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3 groupauth_arg4
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+// gauth user delete "Mattie"
+block user_delete
+{
+  es_getargv groupauth_arg3 3
+  es_xset groupauth_sql "DELETE FROM PlayersGroups WHERE UId in (SELECT Uid FROM Players WHERE Name='%1');DELETE FROM Players WHERE Name='%1';"
+  es_formatqv groupauth_sql server_var(groupauth_sql) groupauth_arg3
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+// AuthenticationService stuff
+
+block command_block
+{
+  es_xformatv groupauth_temp "examples/auth/group_auth/%1" auth_commandname
+  es_doblock server_var(groupauth_temp)
+}
+
+block registerCapability
+{
+  es_xset groupauth_sql "INSERT INTO Caps (CName, CDefaultLevel) VALUES ('%1', %2);"
+  es_formatqv groupauth_sql server_var(groupauth_sql) auth_capability auth_recommendedlevel
+  es_sql query group_auth server_var(groupauth_sql)
+}
+
+
+block isUseridAuthorized
+{
+  // default to forbidden
+  es_set groupid_tempid 0
+  es :auth getOfflineIdentifier groupid_tempid server_var(auth_userid)
+  es :auth isIdAuthorized server_var(auth_responsevarname) server_var(groupid_tempid) server_var(auth_capability)
+}
+
+block getOfflineIdentifier
+{
+  // get their STEAMID
+  es_getplayersteamid server_var(auth_outputvarname) server_var(auth_userid)
+}
+
+// states:
+// STEAMID  USER_IN_DB  CAP_REVIEWED  CAP_KNOWN  = OUTCOME
+//    x          x           x           x
+// if steamid_pending
+//    if REVIEWED_GROUP_QUERY
+//    if UNREVIEWED_GROUP_QUERY
+// else if STEAM_ID_SOMETHING
+//    if not in db
+//         REVIEWED_GROUP_QUERY_FOR_IDENTIFIED
+//         UNREVIEWED_GROUP_QUERY_FOR_IDENTIFIED
+//    if in db
+//         REVIEWED_GROUP_QUERY_FOR_USER
+//         UNREVIEWED_GROUP_QUERY_FOR_USER
+
+block check_id
+{
+//    if REVIEWED_GROUP_QUERY
+    es_xset groupauth_sql "SELECT COUNT(vwCombined.UId) as cp FROM vwCombined WHERE (Reviewed AND CName='%2' AND SteamId='%1');"
+    es_formatqv groupauth_sql server_var(groupauth_sql) auth_identifier auth_capability
+    es_sql queryvalue group_auth groupauth_temp server_var(groupauth_sql)
+    ifx true(groupauth_temp) do
+    {
+      es_set server_var(auth_responsevarname) 1
+    }
+    else do
+    {
+//    if UNREVIEWED_GROUP_QUERY
+      es_xset groupauth_sql "SELECT COUNT(vwPlayersGroups.GId) as pg FROM vwPlayersGroups WHERE SteamId='%1' AND GId in (SELECT GId from Caps, Groups where Not Reviewed AND CName='%2' AND GDefaultLevel<=CDefaultLevel);"
+      es_formatqv groupauth_sql server_var(groupauth_sql) auth_identifier auth_capability
+      es_sql queryvalue group_auth groupauth_temp server_var(groupauth_sql)
+      ifx true(groupauth_temp) do
+      {
+        es_set server_var(auth_responsevarname) 1
+      }
+    }
+}
+
+block check_nogroup
+{
+//    if REVIEWED_NOGROUP_QUERY
+    es_xset groupauth_sql "SELECT COUNT(vwCapsGroups.GId) as gc FROM vwCapsGroups WHERE (Reviewed AND CName='%1' AND GroupName='IdentifiedPlayers');"
+    es_formatqv groupauth_sql server_var(groupauth_sql) auth_capability
+    es_sql queryvalue group_auth groupauth_temp server_var(groupauth_sql)
+    ifx true(groupauth_temp) do
+    {
+      es_set server_var(auth_responsevarname) 1
+    }
+    else do
+    {
+//    if UNREVIEWED_NOGROUP_QUERY
+      es_xset groupauth_sql "SELECT COUNT(GId) as cg from Caps, Groups where Not Reviewed AND CName='%1' AND GroupName='IdentifiedPlayers' AND GDefaultLevel<=CDefaultLevel;"
+      es_formatqv groupauth_sql server_var(groupauth_sql) auth_capability
+      es_sql queryvalue group_auth groupauth_temp server_var(groupauth_sql)
+      ifx true(groupauth_temp) do
+      {
+        es_set server_var(auth_responsevarname) 1
+      }
+    }
+}
+
+block check_exists
+{
+    es_xset groupauth_sql "SELECT COUNT(UId) as cp FROM Players WHERE SteamId='%1';"
+    es_formatqv groupauth_sql server_var(groupauth_sql) auth_identifier
+    es_sql queryvalue group_auth groupauth_temp server_var(groupauth_sql)
+}
+
+block isIdAuthorized
+{
+  es_set server_var(auth_responsevarname) 0
+
+// if steamid_pending
+  ifx false(auth_identifier) do
+  {
+    es_xset auth_identifier "STEAM_ID_PENDING"
+  }
+  if (server_var(auth_identifier) equalto "STEAM_ID_PENDING") do
+  {
+    es_doblock examples/auth/group_auth/check_id
+  }
+  else do
+  {
+      // else if STEAM_ID_SOMETHING
+      //    if in db
+      es_doblock examples/auth/group_auth/check_exists
+      ifx true(groupauth_temp) do
+      {
+      //         REVIEWED_GROUP_QUERY_FOR_USER
+      //         UNREVIEWED_GROUP_QUERY_FOR_USER
+        es_doblock examples/auth/group_auth/check_id
+      }
+      else do
+      {
+      //         REVIEWED_GROUP_QUERY_FOR_IDENTIFIED
+      //         UNREVIEWED_GROUP_QUERY_FOR_IDENTIFIED
+        es_doblock examples/auth/group_auth/check_nogroup
+      }
+  }
+  es ifx true (server_var(auth_responsevarname)) do
+  {
+
+      es_log group_auth: server_var(auth_identifier) was permitted server_var(auth_capability).
+  }
+  else do
+  {
+      es_log group_auth: server_var(auth_identifier) was forbidden server_var(auth_capability).
+  }
+}
+es_load examples/auth/group_auth
+es_doblock examples/auth/group_auth/test
+es_doblock examples/auth/group_auth/test_clean
+es_sql queryvalue group_auth blah "SELECT COUNT(vwCombined.UId) as cp FROM vwCombined WHERE (Reviewed=1 AND CName='ban_user' AND SteamId='STEAM1');
+es_sql queryvalue group_auth blah "SELECT COUNT(vwPlayersGroups.GId) as pg FROM vwPlayersGroups WHERE SteamId='STEAM1' AND GId in (SELECT GId from Caps, Groups where Reviewed=0 AND CName="ban_user" AND GDefaultLevel<=CDefaultLevel);"
+
+block test
+{
+
+  es gauth group create "Admins" server_var(AUTHSERVICE_ADMIN)
+  es gauth power create "ban_user" server_var(AUTHSERVICE_ADMIN)
+  gauth power give "ban_user" "Admins"
+  gauth user create "Mattie" "STEAM1"
+
+
+  testlib begin test1 "basic auth test - not in group, unauthorized"
+  es_xset myvar 0
+  :auth isIdAuthorized myvar "STEAM1" "ban_user"
+  testlib fail_unless myvar equalto 0
+  testlib end
+
+  testlib begin test2 "basic auth test2 - in group, authorized"
+  es_xset myvar 0
+  gauth user join "Mattie" "Admins"
+  :auth isIdAuthorized myvar "STEAM1" "ban_user"
+  testlib fail_unless myvar equalto 1
+  testlib end
+
+  testlib begin test3 "basic auth test3 - unidentified, no way"
+  es_xset myvar 0
+  :auth isIdAuthorized myvar "STEAM_ID_PENDING" "ban_user"
+  testlib fail_unless myvar equalto 0
+  testlib end
+
+  testlib begin test4 "basic auth test4 - revoked power, unauthorized"
+  es_xset myvar 0
+  gauth power revoke "ban_user" "Admins"
+  :auth isIdAuthorized myvar "STEAM1" "ban_user"
+  testlib fail_unless myvar equalto 0
+  testlib end
+
+  testlib begin test5 "basic auth test5 - returned power, authorized"
+  es_xset myvar 0
+  gauth power give "ban_user" "Admins"
+  :auth isIdAuthorized myvar "STEAM1" "ban_user"
+  testlib fail_unless myvar equalto 1
+  testlib end
+
+  testlib begin test6 "basic auth test6 - 0 user, unauthorized"
+  es_xset myvar 0
+  :auth isIdAuthorized myvar 0 "ban_user"
+  testlib fail_unless myvar equalto 0
+  testlib end
+
+  testlib begin test7 "basic auth test7 - unidentified, unregistricted, authorized"
+  es_xset myvar 0
+  es gauth power create "spawn_self" server_var(AUTHSERVICE_UNRESTRICTED)
+  :auth isIdAuthorized myvar 0 "spawn_self"
+  testlib fail_unless myvar equalto 1
+  testlib end
+
+  testlib begin test8 "basic auth test8 - identified, unregistricted, authorized"
+  es_xset myvar 0
+  //es gauth power create "spawn_self" server_var(AUTHSERVICE_IDENTIFIED)
+  :auth isIdAuthorized myvar "STEAMID_0.0.1" "spawn_self"
+  testlib fail_unless myvar equalto 1
+  testlib end
+
+  testlib begin test9 "basic auth test9 - unidentified, identified, unauthorized"
+  es_xset myvar 0
+  es gauth power create "play_sound" server_var(AUTHSERVICE_IDENTIFIED)
+  :auth isIdAuthorized myvar "0" "play_sound"
+  testlib fail_unless myvar equalto 0
+  testlib end
+
+  testlib begin test10 "basic auth test10 - identified, identified, authorized"
+  es_xset myvar 0
+  es gauth power create "play_sound" server_var(AUTHSERVICE_IDENTIFIED)
+  :auth isIdAuthorized myvar "STEAMID_0.0.1" "play_sound"
+  testlib fail_unless myvar equalto 1
+  testlib end
+
+gauth power delete "play_sound"
+gauth power delete "spawn_self"
+gauth group delete "Admins"
+gauth power delete "ban_user"
+gauth user delete "Mattie"
+}
+
+gauth power revoke "ban_user" "Admins"
+
+block test_clean
+{
+gauth group delete "Admins"
+gauth power delete "ban_user"
+gauth user delete "Mattie"
+}

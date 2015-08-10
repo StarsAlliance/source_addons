@@ -1,0 +1,14 @@
+
+
+event player_activate
+{
+	es_msg Querying... event_var(es_username)
+	es_queryclientvar event_var(userid) cl_cmdrate	
+	es_queryclientvar event_var(userid) rate
+	es_queryclientvar event_var(userid) cl_c4progressbar	
+}
+
+event es_player_variable
+{
+	es_msg event_var(es_username) : event_var(status) - event_var(variable) = event_var(value)
+}
