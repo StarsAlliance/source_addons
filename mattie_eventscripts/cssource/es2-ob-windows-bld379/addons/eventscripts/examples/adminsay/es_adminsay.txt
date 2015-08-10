@@ -1,0 +1,100 @@
+block load
+{
+  clientcmd create say ! "examples/adminsay/msg" "admin_say" #admin
+  clientcmd create say # "examples/adminsay/popup" "admin_say" #admin
+  clientcmd create say !! "examples/adminsay/adminmsg" "admin_say" #admin
+  clientcmd create say ## "examples/adminsay/adminpopup" "admin_say" #admin
+
+  es_set asext 0
+  es_set assteam 0
+}
+
+event player_activate
+{
+  es_set myvar 0
+  es :auth isUseridAuthorized myvar event_var(userid) "admin_say"
+  ifx true(myvar) do
+  {
+    es_set adminactivate "[AdminSay] Welcome, admin.\n \nYou can use AdminSay commands:\n    ! text      (broadcast)\n    # text     (broadcast popup)\n    !! text     (admins only)\n    ## text   (admins only popup)\n \n-> 1 to dismiss this popup."
+    es_delayed 6 es_xmenu 0 event_var(userid) server_var(adminactivate)
+  }
+}
+
+block msg
+{
+  es_getcmduserid asext
+  es_set astext 0
+  es_getargs astext
+  if (server_var(astext) notequalto 0) do
+  {
+    es_getplayername asext server_var(asext)
+    es_msg #multi #green[Admin]#lightgreen server_var(asext) #green says:#default server_var(astext)
+    foreach player asspopups #all "es_playsound server_var(asspopups) ui/buttonclick.wav 1"
+  }
+}
+
+block popup
+{
+  es_getcmduserid asext
+  es_set astext 0
+  es_set asmenutext 0
+  es_getargs astext
+  if (server_var(astext) notequalto 0) do
+  {
+    es_getplayername asext server_var(asext)
+    es_format asmenutext "\b\t\b\t\b\t\b\t\b\t\b\t\b\t\b\n \n[ADMIN MESSAGE TO ALL]\n \n \n%1 says: %2\n \n\b\t\b\t\b\t\b\t\b\t\b\t\b\t\b\n \n-> 1 to Dismiss" server_var(asext) server_var(astext)
+    foreach player asspopups #all "es_menu 0 server_var(asspopups) server_var(asmenutext);es_playsound server_var(asspopups) ui/buttonclick.wav 1"
+    es_msg #multi #green[Admin]#lightgreen server_var(asext) #green says:#default server_var(astext)
+    es_xcexec_all playgamesound ui/buttonclick.wav
+  }
+}
+
+block adminmsg
+{
+  es_getcmduserid asext
+  es_set astext 0
+  es_getargs astext
+  if (server_var(astext) notequalto 0) do
+  {
+    es_getplayername asext server_var(asext)
+    keygroupremove adminsay_pl
+    es_xcreateplayerlist adminsay_pl
+    es_foreachkey astarget in adminsay_pl "es_xdoblock examples/adminsay/adminmsg_send"
+  }
+}
+
+block adminmsg_send
+{
+  es :auth isUseridAuthorized assteam server_var(astarget) "admin_say"
+  if (server_var(assteam) > 0) do
+  {
+    es_tell server_var(astarget) #multi #green[Admins Only]#lightgreen server_var(asext) #green says:#default server_var(astext)
+    es_playsound server_var(astarget) ui/buttonclick.wav 1
+  }
+}
+
+block adminpopup
+{
+  es_set astext 0
+  es_set asmenutext 0
+  es_getargs astext
+  if (server_var(astext) notequalto 0) do
+  {
+    es_getplayername asext server_var(asext)
+    keygroupremove adminsay_pl
+    es_xcreateplayerlist adminsay_pl
+    es_format asmenutext "\b\t\b\t\b\t\b\t\b\t\b\t\b\t\b\n \n[ADMIN MESSAGE TO ADMINS ONLY]\n \n \n%1 says: %2\n \n\b\t\b\t\b\t\b\t\b\t\b\t\b\t\b\n \n-> 1 to Dismiss" server_var(asext) server_var(astext)
+    es_foreachkey astarget in adminsay_pl "es_xdoblock examples/adminsay/adminpopup_send"
+  }
+}
+
+block adminpopup_send
+{
+  es :auth isUseridAuthorized assteam server_var(astarget) "admin_say"
+  if (server_var(assteam) > 0) do
+  {
+    es_menu 0 server_var(astarget) server_var(asmenutext)
+    es_tell server_var(astarget) #multi #green[Admins Only]#lightgreen server_var(asext) #green says:#default server_var(astext)
+    es_playsound server_var(astarget) ui/buttonclick.wav 1
+  }
+}

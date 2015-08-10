@@ -1,0 +1,15 @@
+block load
+{
+  es :auth registerCapability "can_spawn" server_var(AUTHSERVICE_IDENTIFIED)
+}
+
+// Authorized to spawn?
+event player_spawn
+{
+  es_set myvar 0
+  es :auth isUseridAuthorized myvar event_var(userid) "can_spawn"
+  ifx false(myvar) do
+  {
+    es_sexec event_var(userid) kill
+  }
+}

@@ -1,0 +1,2 @@
+// Add steamids on a new line below to give them a reserved slot
+// eg: STEAM_0:1:000000

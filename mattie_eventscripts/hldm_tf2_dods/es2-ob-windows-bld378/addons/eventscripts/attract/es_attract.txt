@@ -1,0 +1,64 @@
+// ******************************
+// Mattie's Attract v0.1
+//      (EventScripts v1.0.0 example)
+//
+// * Description:
+//      The attacker is drawn forcefully towards the victim. 
+//
+//
+// * Install instructions:
+//       1. Install Mattie's EventScripts plugins:
+//            http://mattie.info/cs
+//
+//       2. Copy all of this script into a new textfile:
+//           /addons/eventscripts/attract/es_attract.txt
+//
+//       3. Add the following line somewhere in autoexec.cfg:
+//           es_load attract
+//
+// ******************************
+
+
+// This block is called whenever the addon is loaded via es_load
+block load
+{
+        // create a variable (default to on)
+	es_setinfo mattie_attract 1
+        // make it public so we can see it via HLSW
+	es_makepublic mattie_attract
+	// Announce it.
+	es_msg #green [Attract] Attract has been enabled.
+}
+
+// This event is called whenever a new round begins.
+event round_start
+{
+	if (server_var(mattie_attract) = 1) do
+	{
+		es_msg #green [Attract] Whenever you shoot someone, you will be pulled to them.
+	}
+}
+
+// This event is called whenever a player gets hurt
+event player_hurt
+{
+	if (server_var(mattie_attract) = 1) do
+	{
+                // Only trigger if they're on opposing teams
+		if (event_var(es_userteam) != event_var(es_attackerteam)) do
+		{
+			es_xsetinfo fA 0
+			es_xsetinfo fB 0
+			es_xsetinfo FC 0
+			// get the location of the attacker
+			es_getplayerprop fA event_var(attacker) "CBaseEntity.m_vecOrigin"
+			// get the location of the victim
+			es_getplayerprop fB event_var(userid) "CBaseEntity.m_vecOrigin"
+			// create a vector from attacker to victim
+			es_createvectorfrompoints FC server_var(fA) server_var(fB)
+			// pull the attacker towards the victim
+			es_setplayerprop event_var(attacker) "CCSPlayer.baseclass.localdata.m_vecBaseVelocity" server_var(FC)
+			es_tell event_var(attacker) #green [Attract] You have been pulled towards event_var(es_username) for shooting them.
+		}
+	}
+}

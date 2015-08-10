@@ -1,0 +1,58 @@
+// es_no_auth.txt
+// This is an example authorization system that refuses all requests.
+
+block load
+{
+  interface instance no_auth is "An example authorization system that refuses all requests."
+  interface instance no_auth provides registerCapability
+  interface instance no_auth provides isUseridAuthorized
+  interface instance no_auth provides getOfflineIdentifier
+  interface instance no_auth provides isIdAuthorized
+  interface instance no_auth implements AuthorizationService version 1
+  interface instance no_auth invokes examples/auth/no_auth/command_block
+  services register auth no_auth
+  es_xset noauth_response 0
+  es_xset noauthtemp 0
+}
+
+block command_block
+{
+  es_xformatv noauthtemp "examples/auth/no_auth/%1" auth_commandname
+  es_doblock server_var(noauthtemp)
+}
+
+block registerCapability
+{
+  // in no_auth, this doesn't do anything.
+  es_dbgmsg 0 [NoAuth] Capability ignored, nothing is authorized. server_var(auth_capability)
+}
+
+
+block isUseridAuthorized
+{
+  // no one is authorized.
+  es_copy server_var(auth_responsevarname) noauth_response
+}
+
+block getOfflineIdentifier
+{
+  // get a uniqueid for them
+  es uniqueid server_var(auth_outputvarname) server_var(auth_userid)
+}
+
+block isIdAuthorized
+{
+  // none shall pass
+  es_copy server_var(auth_responsevarname) noauth_response
+}
+
+// Authorized to spawn?
+//event player_spawn
+//{
+//  es_set myvar 0
+//  es :auth isUseridAuthorized myvar event_var(userid) "can_spawn"
+//  ifx false(myvar) do
+//  {
+//    es_sexec event_var(userid) kill
+//  }
+//}

@@ -1,0 +1,184 @@
+// ServerMail v0.651 - EventScripts example by Mattie
+//  Allows users to say !report <msg> to send a message to an admin.
+//  The admin can say !checkmsgs to read unread messages
+//  Configurable option to take a snapshot of all players whenever a message
+//    is reported by a user.
+//
+//   Example of using es_sql commands, popup, keymenu, clientcmd
+
+
+block load
+{
+  es_load popup
+  es_load keymenu
+
+  // create the default table for ServerMail data
+  es_sql open servermail |examples/servermail
+  es_sql query servermail "CREATE TABLE IF NOT EXISTS servermail (user varchar(40),steamid varchar(15),msg TEXT, time TIMESTAMP, unread BOOLEAN,playerlist varchar(28));"
+  
+  clientcmd create say !report "examples/servermail/savemsg" "report_msg" #known
+  clientcmd create say !checkmsgs "examples/servermail/checkmsgs" "check_msg" #admin  
+  es_regcmd checkmsgs examples/servermail/checkmsgs_cmd "Internal command for checkmsgs"
+
+  // Do you want a playerlist provided with every message?
+  //   This can take up a lot of disk space if you let it run for decades.  
+  es_set servermail_playerlist 1
+}
+
+event es_map_start
+{
+  es_sql close servermail
+  es_sql open servermail |examples/servermail
+}
+
+block savemsg
+{
+  // get the text
+  es_set servermsg 0
+  es_set servermsg_query 0
+  es_getargs servermsg
+  es_string servermsg replace ' ^
+  ifx true(servermail_playerlist) do
+  {
+  // optionally save an es_createplayerlist
+    es_set smail_pl_group 0
+    gettime smail_pl_group "%m-%d-%Y-%H-%M-%S"
+    //es_keygroupcreate server_var(smail_pl_group)
+    es_createplayerlist server_var(smail_pl_group)
+    es_keygroupsave server_var(smail_pl_group) |examples/servermail
+    es_keygroupdelete server_var(smail_pl_group)
+  }
+  es_set sm_userid 0
+  es_set sm_name 0
+  es_set sm_steam 0
+  es_getcmduserid sm_userid
+  es_getplayersteamid sm_steam server_var(sm_userid)
+  es_getplayername sm_name server_var(sm_userid)
+  es_string sm_name replace ' ^
+  // build the query
+  es_xformatqv servermsg_query "INSERT INTO servermail VALUES ('%1','%2','%3',DATETIME('NOW'),1,'%4');" sm_name sm_steam servermsg smail_pl_group
+  // do the query
+  es_sql query servermail server_var(servermsg_query)
+  // notify them the message was sent.
+  es_tell server_var(sm_userid) #green Your message has been sent to the admins.
+}
+
+block checkmsgs
+{
+  es_set sm_userid 0
+  es_getcmduserid sm_userid
+  es checkmsgs server_var(sm_userid)
+}
+
+block checkmsgs_cmd
+{
+  es_set sm_exists 0
+  keymenu exists sm_exists sm_msgs
+  ifx true(sm_exists) do
+  {
+    keymenu delete sm_msgs
+  }
+  keygroupremove sm_unreadmsgs
+  es_set sm_userid 0
+  es_getargv sm_userid 1
+  es_sql query servermail sm_unreadmsgs "SELECT rowid, * FROM servermail WHERE unread=1;"
+  es_exists sm_exists key sm_unreadmsgs 1
+  ifx true(sm_exists) do
+  {
+    keymenu create sm_msgs sm_selection examples/servermail/readmsg sm_unreadmsgs #keyvalue user #key ServerMail Unread Messages
+    es keymenu send sm_msgs server_var(sm_userid)
+  }
+  else do
+  {
+    es_tell server_var(sm_userid) #green No unread messages.
+  }
+}
+
+block readmsg
+{
+  es_set sm_ruser server_var(_popup_userid)
+  // they selected a message
+  es_set sm_query 0
+  // mark it as read
+  es_keygetvalue sm_query sm_unreadmsgs server_var(sm_selection) rowid
+  es_xformatqv sm_query "UPDATE servermail SET unread=0 WHERE rowid=%1" sm_query
+  es_sql query servermail server_var(sm_query)
+  // You do not need popup delete here, because on create it is automaticaly deleted
+  //popup delete ServerMailMsg
+  popup create ServerMailMsg
+  popup addline ServerMailMsg "ServerMail Message"
+  popup addline ServerMailMsg "------------------"
+  es_keygetvalue sm_query sm_unreadmsgs server_var(sm_selection) time
+  es_xformatv sm_query "[Sent on %1]" sm_query
+  es popup addline ServerMailMsg server_var(sm_query)
+  es_keygetvalue sm_query sm_unreadmsgs server_var(sm_selection) user
+  es_xformatv sm_query "[From %1]" sm_query
+  es popup addline ServerMailMsg server_var(sm_query)
+  es_keygetvalue sm_query sm_unreadmsgs server_var(sm_selection) steamid
+  es_xformatv sm_query "[%1]" sm_query
+  es popup addline ServerMailMsg server_var(sm_query)
+  popup addline ServerMailMsg "------------------"
+  es_keygetvalue sm_query sm_unreadmsgs server_var(sm_selection) msg
+  es popup addline ServerMailMsg server_var(sm_query)
+  popup addline ServerMailMsg "------------------"
+  popup addline ServerMailMsg "->8. View playerlist from report"
+  popup addline ServerMailMsg "->9. Back to unread messages"
+  popup addline ServerMailMsg "->0. Quit ServerMail"
+  popup select ServerMailMsg 8 examples/servermail/playerlist
+  popup select ServerMailMsg 9 examples/servermail/unread
+  es playervar set server_var(_popup_userid) current_msg server_var(sm_selection)
+  es popup send ServerMailMsg server_var(sm_ruser)
+}
+
+block playerlist
+{
+  es_set sm_luser server_var(_popup_userid)
+  es_set sm_query 0
+  es playervar get sm_query server_var(sm_luser) current_msg
+  es_keygetvalue sm_query sm_unreadmsgs server_var(sm_selection) playerlist
+  es keygroupremove server_var(sm_query)
+  //es_keygroupcreate server_var(sm_query)
+  es_keygroupload server_var(sm_query) |examples/servermail
+  es playervar set server_var(sm_luser) current_playergroup server_var(sm_query)
+  es_xset sm_exists 0
+  keymenu exists sm_exists ServerMailPlayerList
+  ifx true(sm_exists) do
+  {
+    keymenu delete ServerMailPlayerList
+  }
+  // Creates a menu with player names, and passes the userid when selected
+  esnq keymenu create ServerMailPlayerList sm_selection2 examples/servermail/playerdata server_var(sm_query) #keyvalue name #key Players at time of message
+  es keymenu send ServerMailPlayerList server_var(sm_luser)
+}
+
+block playerdata
+{
+  es_set sm_duser server_var(_popup_userid)
+  es_set sm_query 0
+  es playervar get sm_query server_var(sm_duser) current_playergroup
+  // You do not need popup delete here, because on create it is automaticaly deleted
+  //popup delete ServerMailPlayerData
+  popup create ServerMailPlayerData
+  es_foreachval sm_valuename in server_var(sm_query) server_var(sm_selection2) "es_xdoblock examples/servermail/buildplayerdatapopup"
+  popup addline ServerMailPlayerData "------------------"
+  popup addline ServerMailPlayerData "->8. Back to playerlist"
+  popup addline ServerMailPlayerData "->9. Back to unread messages"
+  popup addline ServerMailPlayerData "->0. Quit ServerMail"
+  popup select ServerMailPlayerData 8 examples/servermail/playerlist
+  popup select ServerMailPlayerData 9 examples/servermail/unread
+  es popup send ServerMailPlayerData server_var(sm_duser)
+}
+
+block buildplayerdatapopup
+{
+  es_set sm_v 0
+  es_keygetvalue sm_v server_var(sm_query) server_var(sm_selection2) server_var(sm_valuename)
+  es_xformatv sm_v "%1: %2" sm_valuename sm_v
+  es popup addline ServerMailPlayerData server_var(sm_v)
+}
+
+block unread
+{
+  es checkmsgs server_var(_popup_userid)
+}
+

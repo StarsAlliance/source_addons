@@ -1,0 +1,436 @@
+mani_adjust_time|0|Adjust time shown in minutes
+mani_admin_burn_time|20|This defines how long the burn time should be for in seconds when triggered by admin
+mani_admin_plugin_version|1.2BetaR SMM|This is the version of the plugin
+mani_admin_temp_ban_time_limit|360|Time in minutes that an admin with only Ban access can ban for, admins with Permanent Ban access can ban for as long as they wish (default is 6 hours maz)
+mani_adminban_anonymous|0|This defines whether ban admin messages are anonymous to non admins (1 = anonymous)
+mani_adminbeacon_anonymous|0|This defines whether beacon admin messages are anonymous to non admins (1 = anonymous)
+mani_adminblind_anonymous|0|This defines whether blind admin messages are anonymous to non admins (1 = anonymous)
+mani_adminburn_anonymous|0|This defines whether burn admin messages are anonymous to non admins (1 = anonymous)
+mani_admincash_anonymous|0|This defines whether cash admin messages are anonymous to non admins (1 = anonymous)
+mani_admincolor_anonymous|0|This defines whether color admin messages are anonymous to non admins (1 = anonymous)
+mani_admindropc4_anonymous|0|This defines whether drop c4 admin messages are anonymous to non admins (1 = anonymous)
+mani_admindrug_anonymous|0|This defines whether drug admin messages are anonymous to non admins (1 = anonymous)
+mani_adminfirebomb_anonymous|0|This defines whether fire bomb admin messages are anonymous to non admins (1 = anonymous)
+mani_adminfreeze_anonymous|0|This defines whether freeze admin messages are anonymous to non admins (1 = anonymous)
+mani_adminfreezebomb_anonymous|0|This defines whether freeze bomb admin messages are anonymous to non admins (1 = anonymous)
+mani_admingive_anonymous|0|This defines whether give item admin messages are anonymous to non admins (1 = anonymous)
+mani_admingravity_anonymous|0|This defines whether gravity admin messages are anonymous to non admins (1 = anonymous)
+mani_adminhealth_anonymous|0|This defines whether sethealth admin messages are anonymous to non admins (1 = anonymous)
+mani_adminkick_anonymous|0|This defines whether kick admin messages are anonymous to non admins (1 = anonymous)
+mani_adminmap_anonymous|0|This defines whether ma_nextmap admin messages are anonymous to non admins (1 = anonymous)
+mani_adminmute_anonymous|0|This defines whether mute admin messages are anonymous to non admins (1 = anonymous)
+mani_adminnoclip_anonymous|0|This defines whether noclip admin messages are anonymous to non admins (1 = anonymous)
+mani_adminsay_anonymous|0|This defines whether admin messages are anonymous to non admins (1 = anonymous)
+mani_adminsay_bottom_area|1|This defines whether adminsay is shown in the bottom area of the screen (1 = on)
+mani_adminsay_chat_area|1|This defines whether adminsay is shown in the chat area of the screen (1 = on)
+mani_adminsay_top_left|1|This defines whether adminsay is shown in the top left corner of the screen (1 = on)
+mani_adminsetskin_anonymous|0|This defines whether setskin admin messages are anonymous to non admins (1 = anonymous)
+mani_adminslap_anonymous|0|This defines whether slap admin messages are anonymous to non admins (1 = anonymous)
+mani_adminslay_anonymous|0|This defines whether slay admin messages are anonymous to non admins (1 = anonymous)
+mani_adminswap_anonymous|0|This defines whether ma_swapteam admin messages are anonymous to non admins (1 = anonymous)
+mani_adminteleport_anonymous|0|This defines whether teleport admin messages are anonymous to non admins (1 = anonymous)
+mani_admintimebomb_anonymous|0|This defines whether time bomb admin messages are anonymous to non admins (1 = anonymous)
+mani_adminvote_anonymous|0|This defines whether admins who start votes names are shown to the public
+mani_advert_col_blue|255|This defines the blue component of the adverts (0 - 255)
+mani_advert_col_green|0|This defines the green component of the adverts (0 - 255)
+mani_advert_col_red|0|This defines the red component of the adverts (0 - 255)
+mani_advert_dead_only|0|Setup if you only want to show to only dead players or all players (0 = all, 1 = dead)
+mani_adverts|1|This defines whether the adverts are on or off
+mani_adverts_bottom_area|1|This defines whether advert are shown in the bottom area of the screen where hints are shown (1 = on)
+mani_adverts_chat_area|1|This defines whether advert are shown in the chat area of the screen (1 = on)
+mani_adverts_top_left|1|This defines whether advert are shown in the top left corner of the screen (1 = on)
+mani_afk_kicker|0|0 = disabled, 1 = enabled
+mani_afk_kicker_alive_rounds|0|0 = disabled, > 0 = number of rounds before kick/move
+mani_afk_kicker_alive_timer|0|0 = disabled, > 0 = number of seconds before kick/move
+mani_afk_kicker_immunity_to_spec_only|0|0 = immune players are unaffected by AFK kicker, 1 = immune players are moved to spectator but not kicked
+mani_afk_kicker_mode|0|0 = kick to spectator first, 1 = kick straight off the server
+mani_afk_kicker_spectator_rounds|0|0 = disabled, > 0 = number of rounds before kick
+mani_afk_kicker_spectator_timer|0|0 = disabled, > 0 = number of seconds before kick
+mani_all_see_ma_rates|0|0 = Only admins can access ma_rates, 1 = Anyone can use ma_rates
+mani_allow_chat_to_admin|1|1 = allows users to chat to admin
+mani_anti_rejoin|0|0 = disabled, 1 = slay players who use the 'retry' trick
+mani_autobalance_mode|1|0 = Players balanced regardless if dead or alive, 1 = dead players swapped first followed by alive players, 2 = only dead players can be swapped
+mani_autobalance_teams|0|If set to 1 autobalancing is performed at the end of each round
+mani_automap|0|0 = disabled, 1 = enabled
+mani_automap_include_bots|0|0 = disabled, 1 = include bots as part of player count
+mani_automap_map_list||Setup your maps that will used seperated by a colon, e.g. de_dust:de_aztec:cs_office
+mani_automap_player_threshold|0|Player limit before an automap change will not take place
+mani_automap_set_nextmap|0|0 = Disabled, 1 = Once map changed set next map to be same as the changed map
+mani_automap_timer|240|Time in seconds before map will be changed once player threshold reached
+mani_blind_ghosters|0|0 = ghost players on same IP not blinded when dead or spectating, 1 = Ghost players are blinded
+mani_chat_flood_message|STOP SPAMMING THE SERVER !!|Message to be displayed if the player spams the server
+mani_chat_flood_time|0|Amount of time before spam chat kicks in
+mani_cs_stacking_num_levels|1|Set number of players that can build a stack
+mani_css_betting|0|0 = disable css betting, 1 = enable css betting
+mani_css_betting_announce_one_v_one|0|0 = disable, 1 = enable
+mani_css_betting_dead_only|0|0 = players can bet when alive or dead, 1 = players can only bet when dead
+mani_css_betting_pay_losing_bets|0|0 = disable, > 1 = If one player is up against X or more players, they receive the losing bets placed if they win
+mani_css_bounty|0|0 = disable css bounty, 1 = enable css bounty
+mani_css_bounty_ct_alpha|255|Alpha component for CT with bounty
+mani_css_bounty_ct_blue|255|Blue component for CT with bounty
+mani_css_bounty_ct_green|255|Green component for CT with bounty
+mani_css_bounty_ct_red|255|Red component for CT with bounty
+mani_css_bounty_kill_cash|250|Amount of cash given for each kill after a bounty has started
+mani_css_bounty_kill_streak|5|Kill streak required before bounty is started
+mani_css_bounty_start_cash|1000|Start bounty cash amount
+mani_css_bounty_survive_round_cash|500|Amount of cash given if you survive the round after a bounty has started
+mani_css_bounty_t_alpha|255|Alpha component for T with bounty
+mani_css_bounty_t_blue|255|Blue component for T with bounty
+mani_css_bounty_t_green|255|Green component for T with bounty
+mani_css_bounty_t_red|255|Red component for T with bounty
+mani_css_objectives|0|0 = css objective punishments disabled, 1 = css objective punishments enabled
+mani_dead_alltalk|0|0 = Dont let dead players from each team talk, 1 = Let dead players from each team talk
+mani_exec_default_file1|mani_server.cfg|Run a default .cfg file on level change after server.cfg
+mani_exec_default_file2|./mani_admin_plugin/defaults.cfg|Run a default .cfg file on level change after server.cfg
+mani_exec_default_file3||Run a default .cfg file on level change after server.cfg
+mani_exec_default_file4||Run a default .cfg file on level change after server.cfg
+mani_exec_default_file5||Run a default .cfg file on level change after server.cfg
+mani_external_stats_css_include_bots|0|0 = no bots kills are logged, 1 = bot kills are logged
+mani_external_stats_log|0|1 = enable external stats logging, 0 = disable
+mani_external_stats_log_allow_war_logs|0|1 = enable external stats logging whilst in war mode, 0 = disable stats in war mode
+mani_ff_player_only|0|This defines whether the whole server sees the message or not (0 = whole server)
+mani_filter_words_mode|0|0 = off, 1 = show warning to player and block chat
+mani_filter_words_warning|SWEARING IS NOT ALLOWED ON THIS SERVER !!!|Phrase to say to player if warning mode is enabled
+mani_high_ping_kick|0|This defines whether the high ping kicker is enabled or not
+mani_high_ping_kick_message|Your ping is too high|This defines the message given to the player in their console on disconnect
+mani_high_ping_kick_ping_limit|400|This defines the ping limit before a player is kicked
+mani_high_ping_kick_samples_required|60|This defines the amount of samples required before the player is kicked
+mani_hostage_follow_warning|0|1 = player will be warned in console if a hostage stops following on CSS, 0 = disable warning
+mani_log_directory|mani_logs|This defines the directory to store admin logs in
+mani_log_mode|0|0 = to main valve log file, 1 = per map in mani_log_directory, 2 = log to one big file in mani_log_directory, 3 = per steam id in mani_log_directory
+mani_map_adverts|0|0 = disabled, 1 = enabled
+mani_map_adverts_in_war|0|Allow adverts in war mode, 0 = disabled, 1 = enabled
+mani_mapcycle_mode|0|0 = standard map cycle is followed, 1 = custom cycle is selected, 2 = random map cycle, 3 = Maps are not skipped after voting
+mani_menu_force_text_input_via_esc|0|0 = Use the chat line for text input, 1 = Use the Escape dialog box for text input
+mani_military_time|1|Set to 1 if you want the plugin to show military time, 0 for normal 12 hour clock
+mani_mute_con_command_spam|0|0 = show con command use, 1 = mute con command use from server
+mani_nextmap|Unknown|Nextmap information
+mani_nextmap_player_only|0|This defines whether the whole server sees the message or not (0 = whole server)
+mani_old_style_menu_behaviour|0|0 = New Style menu behaviour where menu options remain open, 1 = Menus close after selecting an option
+mani_path|mani_admin_plugin|This is the path after /cstrike/cfg/ that the mani admin plugin config files are stored
+mani_player_name_change_ban_time|0|0 = permanent ban otherwise specifies the number of minutes
+mani_player_name_change_punishment|0|0 = kick, 1 = ban by ID, 2 = ban by IP, 3 = ban by ID and IP
+mani_player_name_change_reset|0|0 = reset name change count per round, 1 = reset name change count per map
+mani_player_name_change_threshold|15|0 = off otherwise set to the number of name changes allowed before action is taken
+mani_player_settings_damage|0|0 = player settings default to off, 1 = player settings default to mode 1, 2 = player settings to mode 2, etc up to mode 3 
+mani_player_settings_death_beam|0|0 = player settings default to off, 1 = player settings default to on
+mani_player_settings_destructive|0|0 = player settings default to off, 1 = player settings default to on
+mani_player_settings_quake|0|0 = player settings default to off, 1 = player settings default to on
+mani_player_settings_sounds|1|0 = player settings default to off, 1 = player settings default to on
+mani_player_settings_vote_progress|1|0 = player settings default to off, 1 = player settings default to on
+mani_quake_auto_download|0|0 = Don't auto download files to client, 1 = automatically download files to client
+mani_quake_dominating_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_dominating_trigger_count|0|Kills streak required to trigger sound
+mani_quake_dominating_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_firstblood_mode|1|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_firstblood_reset_per_round|1|CSS Only, 1 = reset per round, 0 = per map
+mani_quake_firstblood_visual_mode|1|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_god_like_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_god_like_trigger_count|0|Kills streak required to trigger sound
+mani_quake_god_like_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_headshot_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_headshot_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_holy_shit_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_holy_shit_trigger_count|0|Kills streak required to trigger sound
+mani_quake_holy_shit_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_humiliation_mode|1|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_humiliation_visual_mode|1|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_humiliation_weapon|knife|Weapon that triggers the humiliation sound
+mani_quake_humiliation_weapon2||Second weapon that triggers the humiliation sound
+mani_quake_kill_streak_mode|0|Reset kill streaks per round 1 = per round/death, 0 = per death
+mani_quake_killing_spree_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_killing_spree_trigger_count|0|Kills streak required to trigger sound
+mani_quake_killing_spree_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_ludicrous_kill_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_ludicrous_kill_trigger_count|0|Kills streak required to trigger sound
+mani_quake_ludicrous_kill_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_monster_kill_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_monster_kill_trigger_count|0|Kills streak required to trigger sound
+mani_quake_monster_kill_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_multi_kill_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_multi_kill_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_prepare_to_fight_mode|0|0 = off, 1 = on
+mani_quake_prepare_to_fight_visual_mode|0|0 = off, 1 = on
+mani_quake_rampage_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_rampage_trigger_count|0|Kills streak required to trigger sound
+mani_quake_rampage_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_sounds|0|Turn on quake sounds like headshot, monster kill etc 1 = on, 0 = off
+mani_quake_team_killer_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_team_killer_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_ultra_kill_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_ultra_kill_trigger_count|0|Kills streak required to trigger sound
+mani_quake_ultra_kill_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_unstoppable_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_unstoppable_trigger_count|0|Kills streak required to trigger sound
+mani_quake_unstoppable_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_quake_wicked_sick_mode|0|0 = off, 1 = all players hear it, 2 = players involved hear it, 3 = attacker hears it, 4 = victim hears it
+mani_quake_wicked_sick_trigger_count|0|Kills streak required to trigger sound
+mani_quake_wicked_sick_visual_mode|0|0 = off, 1 = all players see it, 2 = players involved see it, 3 = attacker sees it, 4 = victim sees it
+mani_reserve_slots|0|This defines whether reserve slots are on or off (1 = on)
+mani_reserve_slots_allow_slot_fill|0|This defines whether reserver slots can be used up when joining or whether the reserver slots must remain free causing player kicks instead
+mani_reserve_slots_include_admin|1|This defines whether the admins setup are part of the reserve slot list (1 = yes they are)
+mani_reserve_slots_kick_message||This defines the message displayed in the client console when kicked for taking up a reserve slot
+mani_reserve_slots_kick_method|0|This defines how a player is kicked, 0 = by ping, 1 = by connection time
+mani_reserve_slots_number_of_slots|0|This defines how many reserve slots you have
+mani_reserve_slots_redirect||This defines another server to redirect the player to
+mani_reserve_slots_redirect_message||This defines the message displayed in the client console when redirected for taking up a reserve slot
+mani_reverse_admin_flags|0|Set to 1 if you want admin flags to be reversed in meaning (default = 0)
+mani_reverse_immunity_flags|0|Set to 1 if you want immunity flags to be reversed in meaning (default = 0)
+mani_save_scores|0|0 = disabled, 1 = scores are saved when players disconnect and reconnect
+mani_save_scores_css_cash|0|1 = Save players cash, 0 = Do not save players cash
+mani_save_scores_tracking_time|5|Time in minutes before player is removed from tracking list, set to 0 for no limit
+mani_say_command_prefix|@|Prefix to use for chat commands, default = @
+mani_sb_observe_mode|0|0 = sb_status is not executed when ma_observe is started, 1 = sb_status is run automatically when choosing a player to observe
+mani_show_death_beams|0|0 = Disable show beams, 1 = Enable show beams
+mani_show_events|0|Shows events in server console, enabled or disabled (1 = enabled)
+mani_show_victim_stats|0|Shows victim stats for each player when they die if set to 1
+mani_show_victim_stats_inflicted_only|0|If set to 1 only shows players you hurt or killed
+mani_skins_admin|0|0 = disallow admin skins, 1 = allow admin skins
+mani_skins_auto_download|0|0 = Don't auto download files to client, 1 = automatically download files to client
+mani_skins_force_choose_on_join|0|0 = let user type settings to change model, 1 = ask user to choose on team change, 2 = show settings menu on team change
+mani_skins_force_public|0|0 = players can choose their skin, 1 = forces player to first custom skin
+mani_skins_public|0|0 = disallow public skins, 1 = allow public skins
+mani_skins_random_bot_skins|0|0 = bots use default skin, 1 = bots choose random public skin
+mani_skins_reserved|0|0 = disallow reserved skins, 1 = allow reserved skins
+mani_skins_setskin_misc_only|0|0 = the setskin command is for all models, 1 = setskin command is only for misc models
+mani_sort_menus|1|0 = do not sort menus, 1 = sort most menus into alphabetical order
+mani_sounds_auto_download|0|0 = Don't auto download files to client, 1 = automatically download files to client
+mani_sounds_filter_if_dead|0|1 = If a player is dead then only other dead players will hear it
+mani_sounds_per_round|0|Number of sounds a regulary player can play in the course of a round
+mani_spawnpoints_mode|0|Extra spawnpoints mode, 0 = Disabled, 1 = Enabled (Uses spawnpoints.txt)
+mani_spray_tag|0|Tracking of player sprays, 0 = Disabled, 1 = Enabled
+mani_spray_tag_ban_message|You have been banned for 60 minutes through using an offensive spray|This phrase is said to player when using Spray Tag tracking ban option
+mani_spray_tag_ban_time|60|Time in minutes that a player will be banned for
+mani_spray_tag_block_message|Sprays are blocked on this server !!|Message shown to player when they try to do a spray and it is blocked
+mani_spray_tag_block_mode|0|0 = Allow all sprays to be shown, 1 = Block all sprays from being shown
+mani_spray_tag_kick_message|You have been kicked for using an offensive spray|This phrase is said to player when using Spray Tag tracking kick option
+mani_spray_tag_perm_ban_message|You have been permanently banned for using an offensive spray|This phrase is said to player when using Spray Tag tracking permanent ban option
+mani_spray_tag_slap_damage|0|Slap damage given to play for spray slap warn (0-100)
+mani_spray_tag_spray_distance_limit|500|Radius limit from current position in which sprays will be detected
+mani_spray_tag_spray_duration|120|Time in seconds allowed for each spray before track is lost
+mani_spray_tag_spray_highlight|1|Highlights the spray that the system thinks you are referring to
+mani_spray_tag_warning_message|Please stop using your spray|This phrase is said to player when using Spray Tag tracking warning option
+mani_stats|1|This defines whether stats are turned on (1 = on)
+mani_stats_alternative_rank_message||This defines the message to be displayed to the user when rank is typed if stats are turned off
+mani_stats_by_steam_id|1|This defines whether the steam id is used or name is used to organise the stats (1 = steam id)
+mani_stats_calculate|3|This defines how the stats are caclulated, 0 = by player kills, 1 = by player kill death ratio, 2 = by kills - deaths, 3 = by points
+mani_stats_calculate_frequency|0|This defines how often the stats should be recalculated in minutes (default is 0)
+mani_stats_css_bomb_defused_bonus|10|Bomb Defused bonus points
+mani_stats_css_bomb_planted_bonus|10|Bomb Planted bonus points
+mani_stats_css_ct_all_hostages_rescued_team_bonus|10|All hostages rescued bonus
+mani_stats_css_ct_bomb_defused_team_bonus|5|Bomb defused team bonus
+mani_stats_css_ct_eliminated_team_bonus|2|All CTs killed all T team bonus
+mani_stats_css_ct_hostage_killed_team_bonus|1|CT Team bonus for a hostage being killed
+mani_stats_css_ct_hostage_rescued_team_bonus|1|Per hostage rescue CT team bonus
+mani_stats_css_ct_vip_escaped_team_bonus|10|VIP escaped team bonus (requires LDuke VIP Plugin)
+mani_stats_css_hostage_killed_bonus|-15|Hostage killed bonus points
+mani_stats_css_hostage_rescued_bonus|5|Hostage rescued bonus points
+mani_stats_css_t_bomb_planted_team_bonus|2|Bomb planted team bonus
+mani_stats_css_t_eliminated_team_bonus|2|All Ts killed all CT team bonus
+mani_stats_css_t_target_bombed_team_bonus|5|Bomb exploded team bonus
+mani_stats_css_t_vip_assassinated_team_bonus|6|VIP assasinated team bonus (requires LDuke VIP Plugin)
+mani_stats_css_vip_escape_bonus|4|VIP escape bonus (requires LDuke VIP Plugin)
+mani_stats_css_vip_killed_bonus|10|VIP killed bonus (requires LDuke VIP Plugin)
+mani_stats_css_weapon_ak47|1|Weapon weight (1.0 default)
+mani_stats_css_weapon_aug|1|Weapon weight (1.0 default)
+mani_stats_css_weapon_awp|1|Weapon weight (1.0 default)
+mani_stats_css_weapon_deagle|1.2|Weapon weight (1.2 default)
+mani_stats_css_weapon_elite|1.4|Weapon weight (1.4 default)
+mani_stats_css_weapon_famas|1|Weapon weight (1.0 default)
+mani_stats_css_weapon_fiveseven|1.5|Weapon weight (1.5 default)
+mani_stats_css_weapon_flashbang|5|Weapon weight (5.0 default)
+mani_stats_css_weapon_g3sg1|0.8|Weapon weight (0.8 default)
+mani_stats_css_weapon_galil|1.1|Weapon weight (1.1 default)
+mani_stats_css_weapon_glock|1.4|Weapon weight (1.4 default)
+mani_stats_css_weapon_hegrenade|1.8|Weapon weight (1.8 default)
+mani_stats_css_weapon_knife|2|Weapon weight (2.0 default)
+mani_stats_css_weapon_m249|1.2|Weapon weight (1.2 default)
+mani_stats_css_weapon_m3|1.2|Weapon weight (1.2 default)
+mani_stats_css_weapon_m4a1|1|Weapon weight (1.0 default)
+mani_stats_css_weapon_mac10|1.5|Weapon weight (1.5 default)
+mani_stats_css_weapon_mp5navy|1.2|Weapon weight (1.2 default)
+mani_stats_css_weapon_p228|1.5|Weapon weight (1.5 default)
+mani_stats_css_weapon_p90|1.2|Weapon weight (1.2 default)
+mani_stats_css_weapon_scout|1.1|Weapon weight (1.1 default)
+mani_stats_css_weapon_sg550|0.8|Weapon weight (0.8 default)
+mani_stats_css_weapon_sg552|1|Weapon weight (1.0 default)
+mani_stats_css_weapon_smokegrenade|5|Weapon weight (5.0 default)
+mani_stats_css_weapon_tmp|1.5|Weapon weight (1.5 default)
+mani_stats_css_weapon_ump45|1.2|Weapon weight (1.2 default)
+mani_stats_css_weapon_usp|1.4|Weapon weight (1.4 default)
+mani_stats_css_weapon_xm1014|1.1|Weapon weight (1.1 default)
+mani_stats_decay_period|7|This defines the number of days that the decay period will last before points flat line at 500 points, default is 7 days
+mani_stats_decay_restore_points_on_connect|1|0 = Full points not restored on player reconnect if points decayed, 1 = Full points restored on reconnect if points decayed
+mani_stats_decay_start|2|This defines the number of days before points decay starts, default is 2 days
+mani_stats_dods_block_capture|4|Bomb Defused bonus points
+mani_stats_dods_capture_point|4|Bomb Planted bonus points
+mani_stats_dods_round_win_bonus|4|Points given to all players on winning team
+mani_stats_dods_weapon_30cal|1.25|Weapon weight (1.25 default)
+mani_stats_dods_weapon_amerknife|3|Weapon weight (3.0 default)
+mani_stats_dods_weapon_bar|1.2|Weapon weight (1.2 default)
+mani_stats_dods_weapon_bazooka|2.25|Weapon weight (2.25 default)
+mani_stats_dods_weapon_c96|1.5|Weapon weight (1.5 default)
+mani_stats_dods_weapon_colt|1.6|Weapon weight (1.6 default)
+mani_stats_dods_weapon_frag_ger|1|Weapon weight (1.0 default)
+mani_stats_dods_weapon_frag_us|1|Weapon weight (1.0 default)
+mani_stats_dods_weapon_garand|1.3|Weapon weight (1.3 default)
+mani_stats_dods_weapon_k98|1.3|Weapon weight (1.3 default)
+mani_stats_dods_weapon_k98_scoped|1.5|Weapon weight (1.5 default)
+mani_stats_dods_weapon_m1carbine|1.2|Weapon weight (1.2 default)
+mani_stats_dods_weapon_mg42|1.2|Weapon weight (1.2 default)
+mani_stats_dods_weapon_mp40|1.25|Weapon weight (1.25 default)
+mani_stats_dods_weapon_mp44|1.35|Weapon weight (1.35 default)
+mani_stats_dods_weapon_p38|1.5|Weapon weight (1.5 default)
+mani_stats_dods_weapon_pschreck|2.25|Weapon weight (2.25 default)
+mani_stats_dods_weapon_punch|3|Weapon weight (3.0 default)
+mani_stats_dods_weapon_riflegren_ger|1.3|Weapon weight (1.3 default)
+mani_stats_dods_weapon_riflegren_us|1.3|Weapon weight (1.3 default)
+mani_stats_dods_weapon_smoke_ger|5|Weapon weight (5.0 default)
+mani_stats_dods_weapon_smoke_us|5|Weapon weight (5.0 default)
+mani_stats_dods_weapon_spade|3|Weapon weight (3.0 default)
+mani_stats_dods_weapon_spring|1.5|Weapon weight (1.5 default)
+mani_stats_dods_weapon_thompson|1.25|Weapon weight (1.25 default)
+mani_stats_drop_player_days|365|This defines how many days should pass before a player is dropped from the stats for not playing
+mani_stats_ignore_ranks_after_x_days|21|After this many days, ranked players are ignored from the rank output (they are not deleted)
+mani_stats_include_bot_kills|0|0 = Bot kills are not counted, 1 = Bot kills are counted
+mani_stats_kills_before_points_removed|0|Number of kills + deaths a new player needs before their own kills start affecting other players points
+mani_stats_kills_required|20|This defines how many kills are required before a player is shown in the command rank and top 
+mani_stats_mode|1|This defines when the stats are re-caclulated, 0 = at map load, 1 = per new round
+mani_stats_most_destructive|0|0 = Disable most destructive display, 1 = Enable most destructive display
+mani_stats_most_destructive_mode|0|0 = By Kills then Damage, 1 = By Damage alone
+mani_stats_players_needed|2|Players need per active team before stats can be calculated, if not team based then number of active players on server
+mani_stats_points_add_only|0|If set to 0 you lose points for being killed, if set to 1 you do not
+mani_stats_points_death_multiplier|1|Multiplier used against the points removed from a player if killed
+mani_stats_points_multiplier|5|Multiplier used in a kill calculation
+mani_stats_show_rank_to_all|1|This defines whether the command 'rank' is shown to all or not (1 = all players)
+mani_stats_top_display_time|10|This defines the time that the 'top' information displays for 5 - 30 seconds
+mani_stats_write_frequency_to_disk|0|This defines how often the stats should be recalculated AND written to disk in minutes (default is 0)
+mani_stats_write_text_file|1|This defines whether the ranks are written to text file (1 = yes)
+mani_steam_id_pending_show_admin|0|0 = disabled, 1 = show admins when a player was kicked
+mani_steam_id_pending_timeout|0|0 = disabled, > 0 = number of seconds before player is kicked for having STEAM_ID_PENDING steam id
+mani_swap_team_score|1|0 = Do not swap a teams score when swapping whole team, 1 = Swap the team score when swapping a team
+mani_team_join_force_auto|0|0 = disabled, 1 = players are forced to select auto when joining
+mani_team_join_keep_same_team|1|Players re-joining on the same map will be assigned to the same team
+mani_thetime_player_only|0|This defines whether the whole server sees the message or not (0 = whole server)
+mani_thetime_timezone||The text set here is appended to the time when displayed
+mani_tickrate||Server tickrate information
+mani_time_between_adverts|120|This defines the time between adverts
+mani_timeleft_player_only|0|This defines whether the whole server sees the message or not (0 = whole server)
+mani_tk_add_violation_without_forgive|0|This defines whether the attackers violation count increases regardless of the victim forgiving
+mani_tk_allow_beacon_option|1|This defines whether the tk beacon option can be used or not
+mani_tk_allow_blind_option|1|This defines whether the tk blind option can be used or not
+mani_tk_allow_bots_to_add_violations|1|This defines whether bots can add to players tk violations
+mani_tk_allow_bots_to_punish|1|This defines whether bots can punish or not
+mani_tk_allow_burn_option|1|This defines whether the tk burn option can be used or not
+mani_tk_allow_cash_option|1|This defines whether the tk cash option can be used or not
+mani_tk_allow_drugged_option|1|This defines whether the tk drugged option can be used or not
+mani_tk_allow_fire_bomb_option|1|This defines whether the tk fire bomb option can be used or not
+mani_tk_allow_forgive_option|1|This defines whether the tk forgive option can be used or not
+mani_tk_allow_freeze_bomb_option|1|This defines whether the tk freeze bomb option can be used or not
+mani_tk_allow_freeze_option|1|This defines whether the tk freeze option can be used or not
+mani_tk_allow_slap_option|1|This defines whether the tk slap option can be used or not
+mani_tk_allow_slay_option|1|This defines whether the tk slay option can be used or not
+mani_tk_allow_time_bomb_option|1|This defines whether the tk time bomb option can be used or not
+mani_tk_ban_time|5|This defines how int a player will be banned for if they exceed tk violation limit
+mani_tk_beacon_radius|384|This defines the end radius of the visual beep
+mani_tk_blind_amount|253|This defines how much blindness for tk blind punishment 255 = completely blind 0 = not blind
+mani_tk_burn_time|100|This defines how long the burn time should be for in seconds for the tk punishment
+mani_tk_cash_percent|30|This defines what percentage of a players cash you can take (1 - 100)
+mani_tk_fire_bomb_beep_radius|256|This defines the end radius of the visual beep, 0 = radius equal bomb blast radius
+mani_tk_fire_bomb_blast_mode|2|0 = player only, 1 = players on same team, 2 = all players
+mani_tk_fire_bomb_blast_radius|1000|This defines the bomb blast radius
+mani_tk_fire_bomb_burn_time|100|Time in seconds that players will burn for
+mani_tk_fire_bomb_seconds|10|This defines the time before the bomb goes off
+mani_tk_fire_bomb_show_beams|1|0 = no beams, 1 = beams on
+mani_tk_forgive|1|This defines whether the tk forgive menu is on or off
+mani_tk_freeze_bomb_beep_radius|256|This defines the end radius of the visual beep, 0 = radius equal bomb blast radius
+mani_tk_freeze_bomb_blast_mode|2|0 = player only, 1 = players on same team, 2 = all players
+mani_tk_freeze_bomb_blast_radius|1000|This defines the bomb blast radius
+mani_tk_freeze_bomb_seconds|10|This defines the time before the bomb goes off
+mani_tk_freeze_bomb_show_beams|1|0 = no beams, 1 = beams on
+mani_tk_offences_for_ban|5|This defines tk violations required before a ban is enforced for a player
+mani_tk_protection|1|This defines whether the tk protection is enabled
+mani_tk_show_opposite_team_wound|1|This defines whether team wounds on the opposite team show in the say area
+mani_tk_slap_on_team_wound|0|This defines whether a player should be slapped when team wounded
+mani_tk_slap_on_team_wound_damage|0|This defines how much damage should be inflicted when slapped for a team wound
+mani_tk_slap_to_damage|10|This defines how much a player can be slapped to (1 - 80)
+mani_tk_spawn_time|5|This defines how int after the freeze time that spawn protection is enabled
+mani_tk_team_wound_reflect|1|This defines whether reflective team wounding is turned on or off
+mani_tk_team_wound_reflect_ratio|1|This defines the start reflective damage ratio to be applied to the attacker
+mani_tk_team_wound_reflect_ratio_increase|0.2|This defines the amount to add on to each players current reflection ratio per each team wound
+mani_tk_team_wound_reflect_threshold|5|This defines how many team wounds are allowed before reflection damage is used
+mani_tk_time_bomb_beep_radius|256|This defines the end radius of the visual beep, 0 = radius equal bomb blast radius
+mani_tk_time_bomb_blast_mode|2|0 = player only, 1 = players on same team, 2 = all players
+mani_tk_time_bomb_blast_radius|1000|This defines the bomb blast radius
+mani_tk_time_bomb_seconds|10|This defines the time before the bomb goes off
+mani_tk_time_bomb_show_beams|1|0 = no beams, 1 = beams on
+mani_unlimited_grenades|0|0 = normal CSS mode, 1 = Grenades replenished after throw (CSS Only)
+mani_use_amx_style_menu|1|If set to 1 use amx style menus, if 0 uses Escape style menus
+mani_use_ma_in_say_command|0|If 0 then you don't need to prepend ma_ to say commands, if 1 then you do (Beetle compatabilty) 
+mani_vote_allow_end_of_map_vote|0|Defines whether a random map vote will be displayed towards the end of the map
+mani_vote_allow_extend|1|Defines the whether the a map can be extended
+mani_vote_allow_rock_the_vote|0|0 = off, 1 = users can type rock the vote
+mani_vote_allow_user_vote_ban|0|0 = off, 1 = users can type voteban to vote to ban a player
+mani_vote_allow_user_vote_ban_ghost|1|0 = off, 1 = users sharing an ip address can type voteban to vote to ban a player
+mani_vote_allow_user_vote_kick|0|0 = off, 1 = users can type votekick to vote to kick a player
+mani_vote_allow_user_vote_kick_ghost|1|0 = off, 1 = users sharing an ip address can kick players
+mani_vote_allow_user_vote_map|0|0 = off, 1 = users can type votemap to vote for a map
+mani_vote_allow_user_vote_map_extend|0|0 = off, 1 = users can extend on a vote map
+mani_vote_allowed_voting_time|45|Defines amount of time in seconds a vote will be allowed for
+mani_vote_dont_show_if_alive|0|0 = alive players will see vote menu, 1 = alive players will need to type vote to access the menu
+mani_vote_dont_show_last_maps|3|Defines the last number of maps played to not show in random votemap lists
+mani_vote_end_of_map_percent_required|60|Defines the vote percentage required to set map
+mani_vote_end_of_map_swap_team|0|Defines if teams are swapped on an extend vote win for end of map vote
+mani_vote_extend_percent_required|60|Defines the vote percentage required to set an extend map vote
+mani_vote_extend_rounds|10|Defines the number of rounds to extend mp_winlimit by
+mani_vote_extend_time|20|Defines the time in minutes a extend vote will add to the timeleft counter
+mani_vote_map_percent_required|60|Defines the vote percentage required to set map vote
+mani_vote_mapcycle_mode_for_admin_map_vote|0|0 = mapcycle.txt, 1 = votemapslist.txt, 2 = maplist.txt
+mani_vote_mapcycle_mode_for_random_map_vote|0|0 = mapcycle.txt, 1 = votemapslist.txt, 2 = maplist.txt
+mani_vote_max_extends|2|Defines how many times a map can be extended via random vote, 0 = infinite
+mani_vote_max_maps_for_end_of_map_vote|6|Defines how many maps can be in the end of map vote
+mani_vote_question_percent_required|60|Defines the vote percentage required to set question vote
+mani_vote_random_map_percent_required|60|Defines the vote percentage required to set random map vote
+mani_vote_rcon_percent_required|60|Defines the vote percentage required to set rcon vote
+mani_vote_rock_the_vote_number_of_maps|6|total number of maps shown (including nominations)
+mani_vote_rock_the_vote_number_of_nominations|2|0 = players cannot nominate a map before rock the vote, > 0 is the number of maps added to the vote
+mani_vote_rock_the_vote_percent_required|60|Defines the vote percentage required to complete a rock the vote type vote
+mani_vote_rock_the_vote_threshold_minimum|3|This defines the minimum amount of votes required from players to start rock the vote
+mani_vote_rock_the_vote_threshold_percent|50|Percentage of human players required to start rock the vote
+mani_vote_rounds_before_end_of_map_vote|3|Defines how rounds before mp_winlimit is hit that a random map vote is started
+mani_vote_show_vote_mode|3|0 = quiet mode, 1 = show players as they vote but not their choice, 2 = Show voted choice but not player, 3 = show player name and their choice
+mani_vote_time_before_end_of_map_vote|3|Defines how many minutes before the end of the map that a random map vote is started
+mani_vote_time_before_rock_the_vote|0|Time in minutes before rock the vote is allowed
+mani_vote_user_vote_ban_minimum_votes|4|This defines the minimum amount of votes required from players to ban a player
+mani_vote_user_vote_ban_mode|0|0 = only when no admin on server, 1 = all the time
+mani_vote_user_vote_ban_percentage|60|This defines the required percentage of players votes that are needed to ban a player
+mani_vote_user_vote_ban_time|30|0 = permanent ban, > 0 in minutes
+mani_vote_user_vote_ban_time_before_vote|60|This defines the amount of time before voting is allowed after a map change
+mani_vote_user_vote_ban_type|0|0 = ban by ID, 1 = ban by IP, 2 = ban by ID and IP
+mani_vote_user_vote_kick_minimum_votes|4|This defines the minimum amount of votes required from players to kick a player
+mani_vote_user_vote_kick_mode|0|0 = only when no admin on server, 1 = all the time
+mani_vote_user_vote_kick_percentage|60|This defines the required percentage of players votes that are needed to kick a player
+mani_vote_user_vote_kick_time_before_vote|60|This defines the amount of time before voting is allowed after a map change
+mani_vote_user_vote_map_minimum_votes|4|This defines the minimum amount of votes required from players to change map
+mani_vote_user_vote_map_percentage|60|This defines the required percentage of players votes that are needed to change a map
+mani_vote_user_vote_map_time_before_vote|60|This defines the amount of time before voting is allowed after a map change
+mani_voting|1|This defines whether the voting system is on or off
+mani_war_mode|0|This defines whether war mode is enabled or disabled (1 = enabled)
+mani_war_mode_force_overview_zero|0|This defines whether overview_mode is forced to 0 for dead players each game frame (1 = force overview mode to 0)
+mani_warmup_in_progress|0|Used by LDuke VIP mod to detect when warmup mode in operation
+mani_warmup_infinite_ammo|0|Infinite ammo, 0 = disabled, 1 = enabled
+mani_warmup_timer|0|Time in seconds at the start of a map before performing mp_restartgame (0 = off)
+mani_warmup_timer_disable_ff|0|0 = Do not disable friendly fire during warmup, 1 = If friendly fire was turned on, the plugin will disable it during the warmup round
+mani_warmup_timer_ignore_tk|0|0 = tk punishment still allowed, 1 = no tk punishments
+mani_warmup_timer_knives_only|0|1 = enable knives only mode, 0 = all weapons allowed
+mani_warmup_timer_knives_only_ignore_fyi_aim_maps|0|0 = knive mode still allowed on fy/aim maps, 1 = no knive mode for fy_/aim_ maps
+mani_warmup_timer_knives_respawn|0|1 = enable respawn in knife mode, 0 = no respawn
+mani_warmup_timer_show_countdown|1|1 = enable center say countdown, 0 = disable
+mani_warmup_timer_spawn_item_1|item_assaultsuit|Item to spawn with in warmup mode
+mani_warmup_timer_spawn_item_2||Item to spawn with in warmup mode
+mani_warmup_timer_spawn_item_3||Item to spawn with in warmup mode
+mani_warmup_timer_spawn_item_4||Item to spawn with in warmup mode
+mani_warmup_timer_spawn_item_5||Item to spawn with in warmup mode
+mani_warmup_timer_unlimited_grenades|0|1 = enable unlimited he grenades, 0 = disable unlimited he's
+mani_weapon_restrict_prevent_pickup|0|0 = restricted weapons can be picked up, 1 = restricted weapons cannot be picked up
+mani_weapon_restrict_refund_on_spawn|0|0 = Money not refunded if weapon removed at spawn, 1 = money refunded if weapon removed at spawn
