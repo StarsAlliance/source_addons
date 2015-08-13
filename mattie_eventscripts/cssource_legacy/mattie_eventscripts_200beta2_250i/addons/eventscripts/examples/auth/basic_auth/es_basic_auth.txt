@@ -1,0 +1,105 @@
+// This is an example authorization system that uses SteamIDs and supports
+//   just a list of admins that get all abilities recommended for power users
+//   and higher.
+
+// Hello, admin!
+// YOU CAN EDIT this block and add your own admin STEAM_IDs to the list.
+block my_permissions
+{
+  es_set BASIC_AUTH_ADMIN_LIST "STEAM_ID_LAN;"
+
+  // For example, the above line could be:
+  // es_set BASIC_AUTH_ADMIN_LIST "STEAM_ID_LAN;STEAM_0:0:571273;"
+}
+
+
+// -- DO NOT EDIT BELOW THIS LINE --
+// (unless you understand how to fix anything you break)
+block load
+{
+  interface instance basic_auth is "An example authorization system that supports a single list of STEAMIDs."
+  interface instance basic_auth provides registerCapability
+  interface instance basic_auth provides isUseridAuthorized
+  interface instance basic_auth provides getOfflineIdentifier
+  interface instance basic_auth provides isIdAuthorized
+  interface instance basic_auth implements AuthorizationService version 1
+  interface instance basic_auth invokes examples/auth/basic_auth/command_block
+  services register auth basic_auth
+  
+  es_xset basicauth_temp 0
+    
+  es_keygroupcreate basic_auth
+  es_keycreate basic_auth capabilities
+  es_doblock examples/auth/basic_auth/my_permissions
+}
+
+
+block command_block
+{
+  es_xformatv basicauth_temp "examples/auth/basic_auth/%1" auth_commandname
+  es_doblock server_var(basicauth_temp)
+}
+
+block registerCapability
+{
+  // we trust all scripts recommendation for what should be admin and not admin
+  es_keysetvalue basic_auth capabilities server_var(auth_capability) server_var(auth_recommendedlevel)
+}
+
+
+block isUseridAuthorized
+{
+  // default to forbidden
+  es_set basicid_tempid 0
+  es :auth getOfflineIdentifier basicid_tempid server_var(auth_userid)
+  es :auth isIdAuthorized server_var(auth_responsevarname) server_var(basicid_tempid) server_var(auth_capability)
+}
+
+block getOfflineIdentifier
+{
+  // get their STEAMID
+  es_getplayersteamid server_var(auth_outputvarname) server_var(auth_userid)
+}
+
+block isIdAuthorized
+{
+  es_set server_var(auth_responsevarname) 0
+  if (server_var(auth_identifier) in server_var(BASIC_AUTH_ADMIN_LIST)) do
+  {
+    // admins can do everything in basic_auth.
+    es_set server_var(auth_responsevarname) 1
+  }
+  else do
+  {
+    // now let's see if the capability is actually allowed for general users.
+    es_xset basicauth_cap 0
+    es_keygetvalue basicauth_cap basic_auth capabilities server_var(auth_capability)
+    // unrestricted-- everyone gets to play!
+    if (server_var(basicauth_cap) >= server_var(AUTHSERVICE_UNRESTRICTED)) do
+    {
+      es_set server_var(auth_responsevarname) 1
+    }
+    else do
+    {
+      // if they have to be identified, require that their steamid is done.
+      if (server_var(basicauth_cap) >= server_var(AUTHSERVICE_IDENTIFIED)) do
+      {
+        if (server_var(auth_identifier) != "STEAM_ID_PENDING") do
+        {
+          es_set server_var(auth_responsevarname) 1
+        }
+      }
+    }
+  }
+}
+
+// Authorized to spawn?
+//event player_spawn
+//{
+//  es_set myvar 0
+//  es :auth isUseridAuthorized myvar event_var(userid) "can_spawn"
+//  ifx false(myvar) do
+//  {
+//    es_sexec event_var(userid) kill
+//  }
+//}

@@ -1,0 +1,115 @@
+"_foreach_weaponlist_dods"
+{
+	"weapon_30cal"
+	{
+		"tags"		"#all#mg#machinegun#primary"
+	}
+	"weapon_amerhand"
+	{
+		"tags"		"#all#hand"
+	}
+	"weapon_bar"
+	{
+		"tags"		"#all#mg#machinegun#primary"
+	}
+	"weapon_bazooka"
+	{
+		"tags"		"#all#bazooka#primary"
+	}
+	"weapon_basebomb"
+	{
+		"tags"		"#all#objective"
+	}
+	"weapon_c96"
+	{
+		"tags"		"#all#smg#primary"
+	}
+	"weapon_colt"
+	{
+		"tags"		"#all#pistol#secondary"
+	}
+	"weapon_frag_us"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_frag_ger"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_garand"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_k98"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_k98s"
+	{
+		"tags"		"#all#rifle#sniper#primary"
+	}
+	"weapon_m1carb"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_mg42"
+	{
+		"tags"		"#all#mg#machinegun#primary"
+	}
+	"weapon_mp40"
+	{
+		"tags"		"#all#smg#primary"
+	}
+	"weapon_mp44"
+	{
+		"tags"		"#all#smg#primary"
+	}
+	"weapon_p38"
+	{
+		"tags"		"#all#pistol#secondary"
+	}
+	"weapon_punch_ger"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_punch_us"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_pschreck"
+	{
+		"tags"		"#all#bazooka#primary"
+	}
+	"weapon_riflegren_ger"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_riflegren_us"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_smoke_ger"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_smoke_us"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_spade"
+	{
+		"tags"		"#all#hand"
+	}
+	"weapon_spring"
+	{
+		"tags"		"#all#rifle#sniper#primary"
+	}
+	"weapon_stick"
+	{
+		"tags"		"#all#nade#"
+	}
+	"weapon_thompson"
+	{
+		"tags"		"#all#smg#primary"
+	}
+}

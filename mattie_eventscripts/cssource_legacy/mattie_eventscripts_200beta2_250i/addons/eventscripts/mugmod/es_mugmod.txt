@@ -1,0 +1,152 @@
+// ******************************
+// Mattie's MugMod v0.72
+//      for Counter-Strike: Source
+//
+// * Description:
+//      Any knife kill will steal all of the victim's money.
+//
+//
+// * Install instructions:
+//       1. Install Mattie's EventScripts plugins:
+//            http://mattie.info/cs
+//
+//       2. Add the following line somewhere in autoexec.cfg:
+//           es_load mugmod
+//
+//       3. (Optional) Review the config settings below and tweak
+//
+// ******************************
+
+
+block config
+{
+
+// ******************************
+//   MUGMOD SETTINGS
+// ******************************
+   // enable
+   mattie_mugmod 1
+
+   // enables round-start announcement
+   mugmod_announce 1
+
+   // enables kill sound
+   mugmod_sounds 1
+   mugmod_soundfile "bot/owned.wav"
+
+   // what percentage of money?
+   mugmod_percentage 100
+
+// ******************************
+//   MUGMOD SAYINGS
+// ******************************
+   // Feel free to change the sayings but be sure
+   //    to increase the number_of_sayings if you add or remove
+   es_keysetvalue mugmod sayings number_of_sayings 5
+
+   es_keysetvalue mugmod sayings 1 "[MUGGING] Your money or your life. Well, I guess I'll take both."
+   es_keysetvalue mugmod sayings 2 "[MUGGING] So I guess he's not going to be needing this wallet."
+   es_keysetvalue mugmod sayings 3 "[MUGGING] They say you can't take it with you."
+   es_keysetvalue mugmod sayings 4 "[MUGGING] Next time cough up the lunch money, loser."
+   es_keysetvalue mugmod sayings 5 "[MUGGING] CHA-CHING!"
+
+     // used when a victim is poor
+   es_keysetvalue mugmod sayings nomoney "[MUGGING] JUST GREAT. All that work and nothing to show for it."
+
+     // used for a knife teamkill
+   es_keysetvalue mugmod sayings teamknifer "[MUG ATTEMPT] *** I'm a team back-stabber! ***"
+}
+
+
+//
+//
+// ONLY ADVANCED USERS BELOW THIS LINE
+// ***********************************
+
+
+event load
+{
+   es_log Loading MugMod...
+
+   // called whenever the plugin is loaded
+   es_setinfo mattie_mugmod 0
+   es_makepublic mattie_mugmod
+   es_setinfo mugmod_sounds 0
+   es_setinfo mugmod_announce 0
+   es_setinfo mugmod_soundfile 0
+   es_setinfo mugmod_percentage 0.0
+
+   es_keygroupdelete mugmod
+   es_keygroupcreate mugmod
+   es_keycreate mugmod sayings
+   // import the user's configs
+   es_doblock mugmod/config   
+
+}
+
+event round_start
+{
+   if (server_var(mattie_mugmod) > 0) do
+   {
+      // do the announcement
+      if (server_var(mugmod_announce) > 0) then es_xmsg #multi #green[MugMod]#default Mugging is in effect. Take a player's money by killing them with a knife.
+   }
+}
+
+event player_death
+{
+   if (server_var(mattie_mugmod) > 0) do
+   {
+      if (event_var(weapon) equalto knife) do
+      {
+         es_xsetinfo randsay 0
+         // don't mug if they're on the same team.
+         if (event_var(es_attackerteam) notequalto event_var(es_userteam)) do
+         {
+            // take money
+            es_xsetinfo killercash 0
+            es_xsetinfo victimcash 0
+            es_getplayerprop killercash event_var(attacker) "CCSPlayer.m_iAccount"
+            es_getplayerprop victimcash event_var(userid) "CCSPlayer.m_iAccount"
+            es_setinfo muggedamount server_var(victimcash)
+            // calculate percentage
+            es_math muggedamount * server_var(mugmod_percentage)
+            es_math muggedamount / 100
+            es_math victimcash - server_var(muggedamount)
+            es_math killercash + server_var(muggedamount)
+            // complete the transaction
+            es_setplayerprop event_var(attacker) "CCSPlayer.m_iAccount" server_var(killercash)
+            es_setplayerprop event_var(userid) "CCSPlayer.m_iAccount" server_var(victimcash)
+            
+            // play sound
+            if (server_var(mugmod_sounds) > 0) then es_xemitsound player event_var(attacker) server_var(mugmod_soundfile) 1 0.6
+            
+            // say message
+            if (server_var(muggedamount) <= 200) do
+            {
+               // poor victim
+               es_xkeygetvalue randsay mugmod sayings nomoney
+               es_sexec event_var(attacker) say server_var(randsay)
+            }
+            else
+            {
+               // rich victim
+               es_xkeygetvalue randsay mugmod sayings number_of_sayings
+               es_rand randsay 1 server_var(randsay)
+               es_keygetvalue randsay mugmod sayings server_var(randsay)
+               es_sexec event_var(attacker) say server_var(randsay)
+            }
+         }
+         else
+         {
+            es_xkeygetvalue randsay mugmod sayings teamknifer
+            es_sexec event_var(attacker) say server_var(randsay)
+         }
+      }
+   }
+}
+
+
+// ******************************
+//   END MUGMOD SCRIPT
+// ****************************** 

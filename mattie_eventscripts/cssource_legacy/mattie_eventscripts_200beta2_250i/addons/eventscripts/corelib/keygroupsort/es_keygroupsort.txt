@@ -1,0 +1,230 @@
+//---------------------------------------------------------------------------------
+// keygroupsort v3.0
+// by Don and XE_ManUp
+// 4/14/2007
+//
+// Description:
+// This script creates a new command called "keygroupsort". 
+//  This will sort your keygroup on <field to sort>. Optional parameter des/asc
+//    determines if the keygroup is sorted Descending or Ascending. Optional
+//    parameter #numeric/#alpha is used if the field-to-sort is alpha(strings) or
+//    numbers. If you leave the optional parameters off it defaluts to des #numeric
+//    but you must use either both or neither. 
+//
+// Installation:
+// This script is installed and loaded with corelib.
+// 
+// Use:
+// keygroupsort <keygroupname> <field to sort> [<des/asc #numeric/#alpha>]
+//
+// Notes:
+// * The last 2 args are optional but if used, then BOTH must be used
+// * If you want to sort using the key, just use the name of the keygroup as <field to sort>
+//---------------------------------------------------------------------------------
+
+block load
+{
+   es_xsql open _keygroupsort_database ":memory:"
+   es_xset _keygroupsort_temp 0
+   es_xset _keygroupsort_key 0
+   es_xset _keygroupsort_keyvalue 0
+   es_xset _keygroupsort_query 0
+   es_xset _keygroupsort_format 0
+   es_xset _keygroupsort_exists 0
+   es_xset _keygroupsort_argc 0
+   es_xset _keygroupsort_keygroup 0
+   es_xset _keygroupsort_keyname 0
+   es_xset _keygroupsort_keyvalname 0
+   es_xset _keygroupsort_val 0
+   es_xset _keygroupsort_field 0
+   es_xset _keygroupsort_sortdirection 0
+   es_xset _keygroupsort_sortdirection_check "asc,desc"
+   es_xset _keygroupsort_datatype 0
+   es_xset _keygroupsort_datatype_check "#alpha,#numeric"
+   es_xexists _keygroupsort_exists command keygroupsort
+   ifx false(_keygroupsort_exists) do
+   {
+      es_xregcmd keygroupsort corelib/keygroupsort/keygroupsort "Sorts a keygroup by field-to-sort (corelib command)"
+   }
+}
+
+block unload
+{
+   es_xsql close _keygroupsort_database
+}
+
+block keygroupsort
+{
+   es_xgetargc _keygroupsort_argc
+   if (server_var(_keygroupsort_argc) >= 3) do
+   {
+      if (server_var(_keygroupsort_argc) < 6) do
+      {
+         es_xgetargv _keygroupsort_keygroup 1
+         es_xgetargv _keygroupsort_field 2
+         es_exists _keygroupsort_exists keygroup server_var(_keygroupsort_keygroup)
+         ifx true(_keygroupsort_exists) do
+         {
+            if (server_var(_keygroupsort_argc) = 3) do
+            {
+               if (server_var(_keygroupsort_field) = server_var(_keygroupsort_keygroup)) do
+               {
+                  // Do basic keys
+                  es_xformatqv _keygroupsort_query "CREATE TABLE %1 (key int(30))" _keygroupsort_keygroup
+                  es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+                  es_foreachkey _keygroupsort_key in server_var(_keygroupsort_keygroup) "es_xdoblock corelib/keygroupsort/merge_keys"
+                  es_xformatqv _keygroupsort_query "SELECT * FROM %1 ORDER BY key DESC" _keygroupsort_keygroup
+                  es_sql query _keygroupsort_database _keygroupsort_temp server_var(_keygroupsort_query)
+                  es_xdoblock corelib/keygroupsort/_keygroupsort_createnewkeygroup
+                  es_xkeygroupdelete _keygroupsort_temp
+                  es_xformatqv _keygroupsort_query "DROP TABLE %1" _keygroupsort_keygroup
+                  es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+               }
+               else do
+               {
+                  // Do basic keyval
+                  es_xformatqv _keygroupsort_query "CREATE TABLE %1 (key varchar(30), keyvalue int(30))" _keygroupsort_keygroup
+                  es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+                  es_foreachkey _keygroupsort_key in server_var(_keygroupsort_keygroup) "es_xdoblock corelib/keygroupsort/merge_keyvalues"
+                  es_xformatqv _keygroupsort_query "SELECT * FROM %1 ORDER BY keyvalue DESC" _keygroupsort_keygroup
+                  es_sql query _keygroupsort_database _keygroupsort_temp server_var(_keygroupsort_query)
+                  es_xdoblock corelib/keygroupsort/_keygroupsort_createnewkeygroup
+                  es_xkeygroupdelete _keygroupsort_temp
+                  es_xformatqv _keygroupsort_query "DROP TABLE %1" _keygroupsort_keygroup
+                  es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+               }
+            }
+            else do
+            {
+               if (server_var(_keygroupsort_argc) = 5) do
+               {
+                  es_xgetargv _keygroupsort_sortdirection 3
+                  if (server_var(_keygroupsort_sortdirection) in server_var(_keygroupsort_sortdirection_check)) do
+                  {
+                     es_xgetargv _keygroupsort_datatype 4
+                     if (server_var(_keygroupsort_datatype) in server_var(_keygroupsort_datatype_check)) do
+                     {
+      
+	                if (server_var(_keygroupsort_field) = server_var(_keygroupsort_keygroup)) do
+	                {
+	                   // Do keys with all params
+                           if (server_var(_keygroupsort_datatype) == "#numeric") do
+                           {
+                              es_xformatqv _keygroupsort_query "CREATE TABLE %1 (key int(30))" _keygroupsort_keygroup
+                           }
+	                   else do
+	                   {
+	                      es_xformatqv _keygroupsort_query "CREATE TABLE %1 (key varchar(50))" _keygroupsort_keygroup
+	                   }
+	                   es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+                           es_foreachkey _keygroupsort_key in server_var(_keygroupsort_keygroup) "es_xdoblock corelib/keygroupsort/merge_keys"
+	                   if (server_var(_keygroupsort_sortdirection) == "des") do
+	                   {
+	                      es_xformatqv _keygroupsort_query "SELECT * FROM %1 ORDER BY key DESC" _keygroupsort_keygroup
+	                   }
+                           else do
+	                   {
+                              es_xformatqv _keygroupsort_query "SELECT * FROM %1 ORDER BY key ASC" _keygroupsort_keygroup
+                           }
+	                   es_sql query _keygroupsort_database _keygroupsort_temp server_var(_keygroupsort_query)
+	                   es_xdoblock corelib/keygroupsort/_keygroupsort_createnewkeygroup
+	                   es_xkeygroupdelete _keygroupsort_temp
+	                   es_xformatqv _keygroupsort_query "DROP TABLE %1" _keygroupsort_keygroup
+	                   es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+	                }
+	                else do
+	                {
+	                   // Do keyval with all params
+                           if (server_var(_keygroupsort_datatype) == "#numeric") do
+                           {
+                              es_xformatqv _keygroupsort_query "CREATE TABLE %1 (key varchar(30), keyvalue int(30))" _keygroupsort_keygroup
+                           }
+                           else do
+                           {
+                              es_xformatqv _keygroupsort_query "CREATE TABLE %1 (key varchar(30), keyvalue varchar(255))" _keygroupsort_keygroup
+                           }
+                           es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+                           es_foreachkey _keygroupsort_key in server_var(_keygroupsort_keygroup) "es_xdoblock corelib/keygroupsort/merge_keyvalues"
+                           if (server_var(_keygroupsort_sortdirection) == "des") do
+                           {
+                              es_xformatqv _keygroupsort_query "SELECT * FROM %1 ORDER BY keyvalue DESC" _keygroupsort_keygroup
+                           }
+                           else do
+                           {
+                              es_xformatqv _keygroupsort_query "SELECT * FROM %1 ORDER BY keyvalue ASC" _keygroupsort_keygroup
+                           }
+                           es_sql query _keygroupsort_database _keygroupsort_temp server_var(_keygroupsort_query)
+                           es_xdoblock corelib/keygroupsort/_keygroupsort_createnewkeygroup
+                           es_xkeygroupdelete _keygroupsort_temp
+                           es_xformatqv _keygroupsort_query "DROP TABLE %1" _keygroupsort_keygroup
+                           es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+                        }
+                     }
+                     else do
+                     {
+                        es_xformatv _keygroupsort_format "[KeyGroupSort]: Incorrect Parameter for data type - '#numeric' or '#alpha' only. You typed: '%1'" _keygroupsort_datatype
+                        esnq es_xdbgmsg 0 server_var(_keygroupsort_format)
+                     }
+                  }
+                  else do
+                  {
+                     es_xformatv _keygroupsort_format "[KeyGroupSort]: Incorrect Parameter for sort direction - 'asc' or 'des' only. You typed: '%1'" _keygroupsort_sortdirection
+                     esnq es_xdbgmsg 0 server_var(_keygroupsort_format)
+                  }
+               }
+               else do
+               {
+                  es_xdbgmsg 0 [KeyGroupSort]: (Wrong # of arguments) - keygroupsort <keygroupname> <field to sort> [<des/asc #numeric/#alpha>] - Sorts a keygroup by field to sort
+               }
+            }
+         }
+         else do
+         {
+            es_xformatv _keygroupsort_format "[KeyGroupSort]: The keygroup '%1' does not exist." _keygroupsort_keygroup
+            esnq es_xdbgmsg 0 server_var(_keygroupsort_format)
+         }
+      }
+      else do
+      {
+         es_xdbgmsg 0 [KeyGroupSort]: (Wrong # of arguments) keygroupsort <keygroupname> <field to sort> [<des/asc #numeric/#alpha>] - Sorts a keygroup by field to sort
+      }
+   }
+   else do
+   {
+      es_xdbgmsg 0 [KeyGroupSort]: keygroupsort <keygroupname> <field to sort> [<des/asc #numeric/#alpha>] - Sorts a keygroup by field to sort
+   }
+}
+
+block merge_keys
+{
+   es_xformatqv _keygroupsort_query "INSERT INTO %1 (key) VALUES('%2')" _keygroupsort_keygroup _keygroupsort_key
+   es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+}
+
+block merge_keyvalues
+{
+   es_keygetvalue _keygroupsort_keyvalue server_var(_keygroupsort_keygroup) server_var(_keygroupsort_key) server_var(_keygroupsort_field)
+   es_xformatqv _keygroupsort_query "INSERT INTO %1 (key,keyvalue) VALUES('%2','%3')" _keygroupsort_keygroup _keygroupsort_key _keygroupsort_keyvalue
+   es_sql query _keygroupsort_database server_var(_keygroupsort_query)
+}
+
+block _keygroupsort_createnewkeygroup
+{
+   es_keygroupcreate _keygroupsort_temp2
+   es_foreachkey _keygroupsort_key in _keygroupsort_temp "es_xdoblock corelib/keygroupsort/_keygroupsort_newkey"
+   es_keygroupdelete server_var(_keygroupsort_keygroup)
+   es_keygrouprename _keygroupsort_temp2 server_var(_keygroupsort_keygroup)
+}
+
+block _keygroupsort_newkey
+{
+   es_keygetvalue _keygroupsort_keyname _keygroupsort_temp server_var(_keygroupsort_key) key
+   es_keycreate _keygroupsort_temp2 server_var(_keygroupsort_keyname)
+   es_foreachval _keygroupsort_keyvalname in server_var(_keygroupsort_keygroup) server_var(_keygroupsort_keyname) "es_xdoblock corelib/keygroupsort/_keygroupsort_copy"
+}
+
+block _keygroupsort_copy
+{
+   es_keygetvalue _keygroupsort_val server_var(_keygroupsort_keygroup) server_var(_keygroupsort_keyname) server_var(_keygroupsort_keyvalname)
+   es_keysetvalue _keygroupsort_temp2 server_var(_keygroupsort_keyname) server_var(_keygroupsort_keyvalname) server_var(_keygroupsort_val)
+}

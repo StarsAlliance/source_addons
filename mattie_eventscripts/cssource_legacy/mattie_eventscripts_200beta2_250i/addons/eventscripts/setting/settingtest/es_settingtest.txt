@@ -1,0 +1,15 @@
+// Event based test stuff
+event player_say
+{
+  if ("!setting" in event_var(text)) do
+  {
+    if ("listtest" in event_var(text)) do
+    {
+      es setting send listtest event_var(userid)
+    }
+    if ("toggletest" in event_var(text)) do
+    {
+      es setting send toggletest event_var(userid)
+    }
+  }
+}

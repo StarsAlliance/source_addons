@@ -1,0 +1,87 @@
+// ******************************
+// Mattie's KnifeSyphon v0.3
+//      for Counter-Strike: Source
+//
+// * Description:
+//      A knife kill gives you life.
+//
+// * Install instructions:
+//       1. Install Mattie's EventScripts v1.0
+//            http://www.mattie.info/cs/forums/viewtopic.php?t=4844
+//
+//       2. Copy all of this script code into a new textfile:
+//           cstrike/addons/eventscripts/syphon/es_syphon.txt
+//
+//       3. Add the following line somewhere in autoexec.cfg:
+//           es_load syphon
+//
+// ******************************
+
+block config
+{
+
+// ******************************
+//   KNIFESYPHON SETTINGS
+// ******************************
+	// enable
+	mattie_syphon 1
+
+	// enables round-start announcement
+	syphon_announce 1
+
+	// enables kill sound
+	syphon_health 40
+}
+
+//
+//
+// ONLY ADVANCED USERS BELOW THIS LINE
+// ***********************************
+
+// this is called when you "es_load napalm"
+block load
+{
+	es_log Loading KnifeSyphon...
+
+	// called whenever the plugin is loaded
+	es_setinfo mattie_syphon 0
+	es_makepublic mattie_syphon
+	es_setinfo syphon_announce 0
+	es_setinfo syphon_health 0
+
+	// import the user's configs
+	es_doblock syphon/config
+}
+
+event round_start
+{
+	if (server_var(mattie_syphon) > 0) do
+	{
+		// do the announcement
+		if (server_var(syphon_announce) > 0) then es_xmsg #multi #green[KnifeSyphon]#default Any player can gain a health boost by killing someone with a knife.
+	}
+}
+
+event player_death
+{
+	if (server_var(mattie_syphon) > 0) do
+	{
+		if (event_var(weapon) equalto knife) do
+		{
+  		// don't boost if they're on the same team.
+  		if (event_var(es_attackerteam) notequalto event_var(es_userteam)) do
+  		{
+  			//
+  			es_xsetinfo killerhealth 0
+  			es_getplayerprop killerhealth event_var(attacker) "CBasePlayer.m_iHealth"
+  			es_math killerhealth + server_var(syphon_health)
+  			es_setplayerprop event_var(attacker) "CBasePlayer.m_iHealth" server_var(killerhealth)
+      }
+	 }
+  }
+}
+
+
+// ******************************
+//   END KNIFESYPHON SCRIPT
+// ******************************

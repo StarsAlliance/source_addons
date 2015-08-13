@@ -1,0 +1,79 @@
+"_foreach_weaponlist_hl2dm"
+{
+	"weapon_357"
+	{
+		"tags"		"#all#pistol"
+	}
+	"weapon_alyxgun"
+	{
+		"tags"		"#all#pistol"
+	}
+	"weapon_annabelle"
+	{
+		"tags"		"#all#shotgun"
+	}
+	"weapon_ar2"
+	{
+		"tags"		"#all#smg"
+	}
+	"weapon_brickbat"
+	{
+		"tags"		"#all#tool"
+	}
+	"weapon_bugbait"
+	{
+		"tags"		"#all#tool"
+	}
+	"weapon_citizenpackage"
+	{
+		"tags"		"#all#tool"
+	}
+	"weapon_citizensuitcase"
+	{
+		"tags"		"#all#tool"
+	}
+	"weapon_crossbow"
+	{
+		"tags"		"#all#sniper"
+	}
+	"weapon_crowbar"
+	{
+		"tags"		"#all#hand"
+	}
+	"weapon_extinguisher"
+	{
+		"tags"		"#all#tool"
+	}
+	"weapon_frag"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_physcannon"
+	{
+		"tags"		"#all#tool"
+	}
+	"weapon_physgun"
+	{
+		"tags"		"#all#tool"
+	}
+	"weapon_pistol"
+	{
+		"tags"		"#all#pistol"
+	}
+	"weapon_rpg"
+	{
+		"tags"		"#all#rocket"
+	}
+	"weapon_shotgun"
+	{
+		"tags"		"#all#shotgun"
+	}
+	"weapon_smg1"
+	{
+		"tags"		"#all#smg"
+	}
+	"weapon_stunstick"
+	{
+		"tags"		"#all#hand"
+	}
+}

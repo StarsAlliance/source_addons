@@ -1,0 +1,184 @@
+// keygrouprand command v0.2
+// Submitted by [NATO]Hunter
+//
+//  keygrouprand <keygroup> [#key/#keyvalue/#all] [keylimit]
+//
+// Originally submitted by [NATO]Hunter
+//   Idea using SQLite for this by Don and XE_ManUp (keygroupsort)
+
+block load
+{
+  es_xsql open _keygrouprand_database ":memory:"
+  es_xset _keygrouprand_exists 0
+  es_xset _keygrouprand_temp 0
+  es_xset _keygrouprand_query 0
+  es_xset _keygrouprand_keygroup 0
+  es_xset _keygrouprand_randomize 0
+  es_xset _keygrouprand_keylimit 0
+  es_xset _keygrouprand_argc 0
+  es_xset _keygrouprand_key 0
+  es_xset _keygrouprand_field 0
+  es_xset _keygrouprand_keyvalue 0
+  es_xset _keygrouprand_count_key 0
+  es_xset _keygrouprand_count_field 0
+  es_xset _keygrouprand_rand_max 0
+  es_xset _keygrouprand_keyname 0
+  es_xset _keygrouprand_keyvalname 0
+  es_xset _keygrouprand_val 0
+  es_xset _keygrouprand_value 0
+  es_xset _keygrouprand_format 0
+  es_xexists _keygrouprand_exists command keygrouprand
+  ifx false(_keygrouprand_exists) do
+  {
+    es_xregcmd keygrouprand corelib/keygrouprand/keygrouprand "Sorts a keygroup randomized (corelib command)"
+  }
+}
+
+block unload
+{
+  es_xsql close _keygrouprand_database
+}
+
+block keygrouprand
+{
+  es_xgetargc _keygrouprand_argc
+  if (server_var(_keygrouprand_argc) >= 2) do
+  {
+    if (server_var(_keygrouprand_argc) < 5) do
+    {
+      es_xgetargv _keygrouprand_keygroup 1
+      es_exists _keygrouprand_exists keygroup server_var(_keygrouprand_keygroup)
+      ifx true(_keygrouprand_exists) do
+      {
+        es_xset _keygrouprand_randomize 0
+        es_xset _keygrouprand_keylimit 0
+        es_xgetargv _keygrouprand_randomize 2
+        es_xgetargv _keygrouprand_keylimit 3
+        es_xformatqv _keygrouprand_query "CREATE TABLE %1_keylist (key varchar(50), keyindex integer);CREATE TABLE %1_varlist (key varchar(50), keyvar varchar(50), keyvalue varchar(50), varindex integer)" _keygrouprand_keygroup
+        es_sql query _keygrouprand_database server_var(_keygrouprand_query)
+        ifx false(_keygrouprand_randomize) do
+        {
+          es_xset _keygrouprand_randomize "#all"
+        }
+        if (server_var(_keygrouprand_randomize) in "#key;#all") do
+        {
+          es_xgettimestamp _keygrouprand_rand_max
+          es_foreachkey _keygrouprand_key in server_var(_keygrouprand_keygroup) "es_xdoblock corelib/keygrouprand/rand_keys"
+        }
+        else do
+        {
+          es_xset _keygrouprand_count_key 0
+          es_foreachkey _keygrouprand_key in server_var(_keygrouprand_keygroup) "es_xdoblock corelib/keygrouprand/merge_keys"
+        }
+        ifx true(_keygrouprand_keylimit) do
+        {
+          es isnumerical _keygrouprand_exists server_var(_keygrouprand_keylimit)
+          ifx true(_keygrouprand_exists) do
+          {
+            es_xformatqv _keygrouprand_query "SELECT key FROM %1_keylist ORDER BY keyindex ASC LIMIT %2" _keygrouprand_keygroup _keygrouprand_keylimit
+          }
+          else do
+          {
+            es_xdbgmsg 0 keygrouprand: (Keylimit has to be numeric) keygrouprand <keygroup> [#key/#keyvalue/#all] [keylimit]
+          }
+        }
+        else do
+        {
+          es_xformatqv _keygrouprand_query "SELECT key FROM %1_keylist ORDER BY keyindex ASC" _keygrouprand_keygroup
+        }
+        es_sql query _keygrouprand_database _keygrouprand_temp server_var(_keygrouprand_query)
+        es_xdoblock corelib/keygrouprand/_keygrouprand_createnewkeygroup
+        es_xkeygroupdelete _keygrouprand_temp
+        es_xformatqv _keygrouprand_query "DELETE FROM %1_keylist;DELETE FROM %1_varlist;DROP TABLE %1_keylist;DROP TABLE %1_varlist" _keygrouprand_keygroup
+        es_sql query _keygrouprand_database server_var(_keygrouprand_query)
+      }
+      else do
+      {
+        es_xformatv _keygrouprand_format "keygrouprand: The keygroup '%1' does not exist." _keygrouprand_keygroup
+        es_xdbgmsgv 0 _keygrouprand_format
+      }
+    }
+    else do
+    {
+      es_xdbgmsg 0 keygrouprand: (Wrong # of arguments) keygrouprand <keygroup> [#key/#keyvalue/#all] [keylimit]
+    }
+  }
+  else do
+  {
+    es_xdbgmsg 0 keygrouprand: Syntax: keygrouprand <keygroup> [#key/#keyvalue/#all] [keylimit]
+  }
+}
+
+block merge_keys
+{
+  es_xformatqv _keygrouprand_query "INSERT INTO %1_keylist (key,keyindex) VALUES('%2','%3')" _keygrouprand_keygroup _keygrouprand_key _keygrouprand_count_key
+  es_sql query _keygrouprand_database server_var(_keygrouprand_query)
+  if (server_var(_keygrouprand_randomize) in "#keyvalue;#all") do
+  {
+    es_foreachval _keygrouprand_field in server_var(_keygrouprand_keygroup) server_var(_keygrouprand_key) "es_xdoblock corelib/keygrouprand/rand_keyvalues"
+  }
+  else do
+  {
+    es_xset _keygrouprand_count_field 0
+    es_foreachval _keygrouprand_field in server_var(_keygrouprand_keygroup) server_var(_keygrouprand_key) "es_xdoblock corelib/keygrouprand/merge_keyvalues"
+  }
+  es_xmath _keygrouprand_count_key + 1
+}
+
+block merge_keyvalues
+{
+  es_keygetvalue _keygrouprand_keyvalue server_var(_keygrouprand_keygroup) server_var(_keygrouprand_key) server_var(_keygrouprand_field)
+  es_xformatqv _keygrouprand_query "INSERT INTO %1_varlist (key,keyvar,keyvalue,varindex) VALUES('%2','%3','%4','%5')" _keygrouprand_keygroup _keygrouprand_key _keygrouprand_field _keygrouprand_keyvalue _keygrouprand_count_field
+  es_sql query _keygrouprand_database server_var(_keygrouprand_query)
+  es_xmath _keygrouprand_count_field + 1
+}
+
+block rand_keys
+{
+  es_rand _keygrouprand_count_key 1 server_var(_keygrouprand_rand_max)
+  es_xformatqv _keygrouprand_query "INSERT INTO %1_keylist (key,keyindex) VALUES('%2','%3')" _keygrouprand_keygroup _keygrouprand_key _keygrouprand_count_key
+  es_sql query _keygrouprand_database server_var(_keygrouprand_query)
+  if (server_var(_keygrouprand_randomize) in "#keyvalue;#all") do
+  {
+    es_foreachval _keygrouprand_field in server_var(_keygrouprand_keygroup) server_var(_keygrouprand_key) "es_xdoblock corelib/keygrouprand/rand_keyvalues"
+  }
+  else do
+  {
+    es_xset _keygrouprand_count_field 0
+    es_foreachval _keygrouprand_field in server_var(_keygrouprand_keygroup) server_var(_keygrouprand_key) "es_xdoblock corelib/keygrouprand/merge_keyvalues"
+  }
+}
+
+block rand_keyvalues
+{
+  es_rand _keygrouprand_count_field 1 server_var(_keygrouprand_rand_max)
+  es_keygetvalue _keygrouprand_keyvalue server_var(_keygrouprand_keygroup) server_var(_keygrouprand_key) server_var(_keygrouprand_field)
+  es_xformatqv _keygrouprand_query "INSERT INTO %1_varlist (key,keyvar,keyvalue,varindex) VALUES('%2','%3','%4','%5')" _keygrouprand_keygroup _keygrouprand_key _keygrouprand_field _keygrouprand_keyvalue _keygrouprand_count_field
+  es_sql query _keygrouprand_database server_var(_keygrouprand_query)
+}
+
+block _keygrouprand_createnewkeygroup
+{
+  es_keygroupcreate _keygrouprand_final
+  es_xforeachkey _keygrouprand_key in _keygrouprand_temp "es_xdoblock corelib/keygrouprand/_keygrouprand_newkey"
+  es_keygroupdelete server_var(_keygrouprand_keygroup)
+  es_keygrouprename _keygrouprand_final server_var(_keygrouprand_keygroup)
+  keygroupremove _keygrouprand_final
+}
+
+block _keygrouprand_newkey
+{
+  es_keygetvalue _keygrouprand_keyname _keygrouprand_temp server_var(_keygrouprand_key) key
+  es_keycreate _keygrouprand_final server_var(_keygrouprand_keyname)
+  es_xformatqv _keygrouprand_query "SELECT keyvar, keyvalue FROM %1_varlist WHERE key='%2' ORDER BY varindex ASC" _keygrouprand_keygroup _keygrouprand_keyname
+  es_sql query _keygrouprand_database _keygrouprand_temp2 server_var(_keygrouprand_query)
+  es_xforeachkey _keygrouprand_value in _keygrouprand_temp2 "es_xdoblock corelib/keygrouprand/_keygrouprand_newvalue"
+  es_xkeygroupdelete _keygrouprand_temp2
+}
+
+block _keygrouprand_newvalue
+{
+  es_keygetvalue _keygrouprand_keyvalname _keygrouprand_temp2 server_var(_keygrouprand_value) keyvar
+  es_keygetvalue _keygrouprand_val _keygrouprand_temp2 server_var(_keygrouprand_value) keyvalue
+  es_keysetvalue _keygrouprand_final server_var(_keygrouprand_keyname) server_var(_keygrouprand_keyvalname) server_var(_keygrouprand_val)
+}

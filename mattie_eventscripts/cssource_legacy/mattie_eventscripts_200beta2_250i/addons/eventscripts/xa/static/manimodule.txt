@@ -1,0 +1,15 @@
+*|xapunishments|*|0
+*|xaplayers|*|0
+*|xasettings|*|0
+*|xatimeleft|*|0
+*|xathetime|*|0
+mani_say_command_prefix|xasay|*|0
+mani_chat_flood_time|xafloodcontrol|*|0
+mani_skins_admin|xaskins|1|0
+mani_skins_public|xaskins|1|0
+mani_skins_reserved|xaskins|1|0
+mani_high_ping_kick|xahighpingkick|1|0
+mani_stats_most_destructive|xamostdestructive|1|0
+mani_voting|xavote|1|0
+mani_voting|xarockthevote|1|0
+mani_adverts|xaadvert|1|0

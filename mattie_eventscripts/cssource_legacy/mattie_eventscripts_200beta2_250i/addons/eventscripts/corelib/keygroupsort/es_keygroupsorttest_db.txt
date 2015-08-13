@@ -1,0 +1,64 @@
+"keygroupsorttest"
+{
+	"STEAM_0:1:1111111"
+	{
+		"testfield"		"2463"
+		"registered"		"1"
+		"userid"		"21"
+	}
+	"STEAM_0:1:2222222"
+	{
+		"testfield"		"781"
+		"registered"		"1"
+		"userid"		"8"
+	}
+	"STEAM_0:1:4444444"
+	{
+		"testfield"		"246"
+		"registered"		"1"
+		"userid"		"12"
+	}
+	"STEAM_0:1:3333333"
+	{
+		"testfield"		"2463"
+		"registered"		"0"
+		"userid"		"15"
+	}
+	"STEAM_0:1:6666666"
+	{
+		"testfield"		"-63"
+		"registered"		"1"
+		"userid"		"25"
+	}
+	"STEAM_0:1:77777777"
+	{
+		"testfield"		"342"
+		"registered"		"0"
+		"userid"		"5"
+	}
+	"STEAM_0:1:555555"
+	{
+		"testfield"		"-1865"
+		"registered"		"1"
+		"userid"		"14"
+	}
+	"STEAM_0:1:8888888"
+	{
+		"testfield"		"102"
+		"registered"		"1"
+		"userid"		"22"
+	}
+	"STEAM_0:1:9999999"
+	{
+		"testfield"		"2781"
+		"registered"		"1"
+		"userid"		"25"
+	}
+	"STEAM_0:1:0000000"
+	{
+		"testfield"		"0"
+		"registered"		"0"
+		"userid"		"5"
+	}
+}
+

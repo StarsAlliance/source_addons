@@ -1,0 +1,119 @@
+"_foreach_weaponlist_cstrike"
+{
+	"weapon_glock"
+	{
+		"tags"		"#all#pistol#secondary"
+	}
+	"weapon_usp"
+	{
+		"tags"		"#all#pistol#secondary"
+	}
+	"weapon_deagle"
+	{
+		"tags"		"#all#pistol#secondary"
+	}
+	"weapon_elite"
+	{
+		"tags"		"#all#pistol#secondary"
+	}
+	"weapon_fiveseven"
+	{
+		"tags"		"#all#pistol#secondary"
+	}
+	"weapon_p228"
+	{
+		"tags"		"#all#pistol#secondary"
+	}
+	"weapon_m3"
+	{
+		"tags"		"#all#shotgun#primary"
+	}
+	"weapon_xm1014"
+	{
+		"tags"		"#all#shotgun#primary"
+	}
+	"weapon_mac10"
+	{
+		"tags"		"#all#smg#primary"
+	}
+	"weapon_tmp"
+	{
+		"tags"		"#all#smg#primary"
+	}
+	"weapon_mp5navy"
+	{
+		"tags"		"#all#smg#primary"
+	}
+	"weapon_ump45"
+	{
+		"tags"		"#all#smg#primary"
+	}
+	"weapon_p90"
+	{
+		"tags"		"#all#smg#primary"
+	}
+	"weapon_aug"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_sg552"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_galil"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_famas"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_ak47"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_m4a1"
+	{
+		"tags"		"#all#rifle#primary"
+	}
+	"weapon_awp"
+	{
+		"tags"		"#all#sniper#rifle#primary"
+	}
+	"weapon_scout"
+	{
+		"tags"		"#all#sniper#rifle#primary"
+	}
+	"weapon_sg550"
+	{
+		"tags"		"#all#sniper#rifle#primary"
+	}
+	"weapon_g3sg1"
+	{
+		"tags"		"#all#sniper#rifle#primary"
+	}
+	"weapon_m249"
+	{
+		"tags"		"#all#mg#machinegun#primary"
+	}
+	"weapon_hegrenade"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_flashbang"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_smokegrenade"
+	{
+		"tags"		"#all#nade"
+	}
+	"weapon_knife"
+	{
+		"tags"		"#all#hand"
+	}
+	"weapon_c4"
+	{
+		"tags"		"#all#objective"
+	}
+}

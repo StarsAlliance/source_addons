@@ -1,0 +1,295 @@
+block test
+{
+  es_xsetinfo _test_var 0
+  es_xsetinfo _test_var2 0
+  es_xsetinfo _test_all 0
+  es_xsetinfo _test_spec 0
+  es_xsetinfo _test_ct 0
+  es_xsetinfo _test_t 0
+  es_xsetinfo _test_dead 0
+  es_xsetinfo _test_alive 0
+  es_xsetinfo _test_logfile 0
+  es_xsetinfo _test_var_2a 0
+  es_xsetinfo _test_var_2b 0
+  es_xsetinfo _test_var_2c 0
+  es_xsetinfo _test_var_2d 0
+  es_xsetinfo _test_var_3a 0
+  es_xsetinfo _test_var_3b 0
+  es_xsetinfo _test_var_3c 0
+  es_xsetinfo _test_var_3d 0
+  es_xsetinfo _test_var_4a 0
+  es_xsetinfo _test_var_4b 0
+  es_xsetinfo _test_var_4c 0
+  es_xsetinfo _test_var_4d 0
+  
+  profile begin test
+  es_xdoblock corelib/foreach/foreachtest/test1
+  es_xdoblock corelib/foreach/foreachtest/test2
+  es_xdoblock corelib/foreach/foreachtest/test3
+  es_xdoblock corelib/foreach/foreachtest/test4
+  es_xdoblock corelib/foreach/foreachtest/test5
+  profile end test
+  
+  if (server_var(test1a) == 0) then es_xset test1a "N/A"
+  if (server_var(test1b) == 0) then es_xset test1b "N/A"
+  if (server_var(test1c) == 0) then es_xset test1c "N/A"
+  if (server_var(test1d) == 0) then es_xset test1d "N/A"
+  
+  es_xcopy _test_logfile sv_logfile
+  sv_logfile 1
+  
+  es_log ==================================================
+  es_log FOREACH TEST RESULTS - ES server_var(eventscripts_ver)
+  es_log ==================================================
+  es_log -- PLEASE CHECK THE FOLLOWING RESULTS
+  es_log -- +++PLAYERS+++
+  es_log -- ALL  = server_var(_test_all)
+  es_log -- SPEC = server_var(_test_spec)
+  es_log -- CT   = server_var(_test_ct)
+  es_log -- T    = server_var(_test_t)
+  es_log -- +++NUMBERS+++
+  es_log -- 28   = server_var(_test_var_2a)
+  es_log -- 13   = server_var(_test_var_2b)
+  es_log -- 4    = server_var(_test_var_2c)
+  es_log -- 0    = server_var(_test_var_2d)
+  es_log -- 17   = server_var(_test_var_3a)
+  es_log -- 6    = server_var(_test_var_3b)
+  es_log -- 10   = server_var(_test_var_3c)
+  es_log -- 6    = server_var(_test_var_3d)
+  es_log -- 49   = server_var(_test_var_4a)
+  es_log -- 25   = server_var(_test_var_4b)
+  es_log -- 17   = server_var(_test_var_4c)
+  es_log -- 13   = server_var(_test_var_4d)
+  es_log ==================================================
+  es_log FOREACH TIME RESULTS - ES server_var(eventscripts_ver)
+  es_log ==================================================
+  es_log       TEST1          = server_var(test1)
+  es_log       - TEST1a       = server_var(test1a)
+  es_log       - TEST1b       = server_var(test1b)
+  es_log       - TEST1c       = server_var(test1c)
+  es_log       - TEST1d       = server_var(test1d)
+  es_log       TEST2          = server_var(test2)
+  es_log       - TEST2a       = server_var(test2a)
+  es_log       - TEST2b       = server_var(test2b)
+  es_log       - TEST2c       = server_var(test2c)
+  es_log       - TEST2d       = server_var(test2d)
+  es_log       TEST3          = server_var(test3)
+  es_log       - TEST3a       = server_var(test3a)
+  es_log       - TEST3b       = server_var(test3b)
+  es_log       - TEST3c       = server_var(test3c)
+  es_log       - TEST3d       = server_var(test3d)
+  es_log       TEST4          = server_var(test4)
+  es_log       - TEST4a       = server_var(test4a)
+  es_log       - TEST4b       = server_var(test4b)
+  es_log       - TEST4c       = server_var(test4c)
+  es_log       - TEST4d       = server_var(test4d)
+  es_log       TEST5          = server_var(test5)
+  es_log       - TEST5a       = server_var(test5a)
+  es_log       - TEST5b       = server_var(test5b)
+  es_log       - TEST5c       = server_var(test5c)
+  es_log       - TEST5d       = server_var(test5d)
+  es_log --------------------------------------------------
+  es_log COMPLETE TEST TIME   = server_var(test)
+  es_log ==================================================
+  es_log END OF RESULTS       - ES server_var(eventscripts_ver)
+  es_log ==================================================
+  
+  log off
+  es_xcopy sv_logfile _test_logfile
+}
+
+block test1
+{
+  profile begin test1
+  foreach player _test_var #all "es_xmath _test_all + 1;es_xdoblock corelib/foreach/foreachtest/test1a"
+  foreach player _test_var #spec "es_xmath _test_spec + 1;es_xdoblock corelib/foreach/foreachtest/test1b"
+  foreach player _test_var #ct "es_xmath _test_ct + 1;es_xdoblock corelib/foreach/foreachtest/test1c"
+  foreach player _test_var #t "es_xmath _test_t + 1;es_xdoblock corelib/foreach/foreachtest/test1d"
+  profile end test1
+}
+
+block test1a
+{
+  profile begin test1a
+  foreach player _test_var #dead "es_xmath _test_dead + 1"
+  foreach player _test_var #alive "es_xmath _test_alive + 1"
+  profile end test1a
+}
+
+block test1b
+{
+  profile begin test1b
+  foreach player _test_var #dead "es_xmath _test_dead + 1"
+  foreach player _test_var #alive "es_xmath _test_alive + 1"
+  profile end test1b
+}
+
+block test1c
+{
+  profile begin test1c
+  foreach player _test_var #dead "es_xmath _test_dead + 1"
+  foreach player _test_var #alive "es_xmath _test_alive + 1"
+  profile end test1c
+}
+
+block test1d
+{
+  profile begin test1d
+  foreach player _test_var #dead "es_xmath _test_dead + 1"
+  foreach player _test_var #alive "es_xmath _test_alive + 1"
+  profile end test1d
+}
+
+block test2
+{
+  profile begin test2
+  es_xdoblock corelib/foreach/foreachtest/test2a
+  es_xdoblock corelib/foreach/foreachtest/test2b
+  es_xdoblock corelib/foreach/foreachtest/test2c
+  es_xdoblock corelib/foreach/foreachtest/test2d
+  profile end test2
+}
+
+block test2a
+{
+  profile begin test2a
+  foreach weapon _test_var #all "es_log -- server_var(_test_var);es_xmath _test_var_2a + 1"
+  profile end test2a
+}
+
+block test2b
+{
+  profile begin test2b
+  foreach weapon _test_var #pistol#smg#shotgun "es_log -- server_var(_test_var);es_xmath _test_var_2b + 1"
+  profile end test2b
+}
+
+block test2c
+{
+  profile begin test2c
+  foreach weapon _test_var #nade#objective "es_log -- server_var(_test_var);es_xmath _test_var_2c + 1"
+  profile end test2c
+}
+
+block test2d
+{
+  es_log -- There should not be any message
+  profile begin test2d
+  foreach weapon _test_var #sadgfdh#asfihujwef "es_log -- server_var(_test_var);es_xmath _test_var_2d + 1"
+  profile end test2d
+  es_log -- End of possible message
+}
+
+block test3
+{
+  profile begin test3
+  es_xdoblock corelib/foreach/foreachtest/test3a
+  es_xdoblock corelib/foreach/foreachtest/test3b
+  es_xdoblock corelib/foreach/foreachtest/test3c
+  es_xdoblock corelib/foreach/foreachtest/test3d
+  profile end test3
+}
+
+block test3a
+{
+  profile begin test3a
+  foreach token _test_var "a-s-d-f-g-h-j-k-l-k-j-h-g-f-d-s-a" "-" "es_log -- server_var(_test_var);es_xmath _test_var_3a + 1"
+  profile end test3a
+}
+
+block test3b
+{
+  profile begin test3b
+  foreach token _test_var "agfh#fsdf#hjlasd#jhlzuisd#sdarwat#hgkzti" "#" "es_log -- server_var(_test_var);es_xmath _test_var_3b + 1"
+  profile end test3b
+}
+
+block test3c
+{
+  profile begin test3c
+  foreach token _test_var "1-2-3-4-5-6-7-8-9-10" "-" "es_log -- server_var(_test_var);es_xmath _test_var_3c + 1"
+  profile end test3c
+}
+
+block test3d
+{
+  profile begin test3d
+  foreach token _test_var "1-2#3-4#5-6#7-8#9-10" "-" "es_log -- server_var(_test_var);es_xmath _test_var_3d + 1"
+  profile end test3d
+}
+
+block test4
+{
+  profile begin test4
+  es_xdoblock corelib/foreach/foreachtest/test4a
+  es_xdoblock corelib/foreach/foreachtest/test4b
+  es_xdoblock corelib/foreach/foreachtest/test4c
+  es_xdoblock corelib/foreach/foreachtest/test4d
+  profile end test4
+}
+
+block test4a
+{
+  profile begin test4a
+  foreach part _test_var "a-b-c-d-e-f-g-h-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z" "1" "es_log -- server_var(_test_var);es_xmath _test_var_4a + 1"
+  profile end test4a
+}
+
+block test4b
+{
+  profile begin test4b
+  foreach part _test_var "a-b-c-d-e-f-g-h-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z" "2" "es_log -- server_var(_test_var);es_xmath _test_var_4b + 1"
+  profile end test4b
+}
+
+block test4c
+{
+  profile begin test4c
+  foreach part _test_var "a-b-c-d-e-f-g-h-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z" "3" "es_log -- server_var(_test_var);es_xmath _test_var_4c + 1"
+  profile end test4c
+}
+
+block test4d
+{
+  profile begin test4d
+  foreach part _test_var "a-b-c-d-e-f-g-h-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z" "4" "es_log -- server_var(_test_var);es_xmath _test_var_4d + 1"
+  profile end test4d
+}
+
+block test5
+{
+  profile begin test5
+  es_xdoblock corelib/foreach/foreachtest/test5a
+  es_xdoblock corelib/foreach/foreachtest/test5b
+  es_xdoblock corelib/foreach/foreachtest/test5c
+  es_xdoblock corelib/foreach/foreachtest/test5d
+  profile end test5
+}
+
+block test5a
+{
+  profile begin test5a
+  foreach entity _test_var _test_var2 "spotlight_end" "es_log -- server_var(_test_var) - server_var(_test_var2)"
+  profile end test5a
+}
+
+block test5b
+{
+  profile begin test5b
+  foreach entity _test_var _test_var2 "env_sprite" "es_log -- server_var(_test_var) - server_var(_test_var2)"
+  profile end test5b
+}
+
+block test5c
+{
+  profile begin test5c
+  foreach entity _test_var _test_var2 "player" "es_log -- server_var(_test_var) - server_var(_test_var2)"
+  profile end test5c
+}
+
+block test5d
+{
+  profile begin test5d
+  foreach entity _test_var _test_var2 "env_fire" "es_log -- server_var(_test_var) - server_var(_test_var2)"
+  profile end test5d
+}
