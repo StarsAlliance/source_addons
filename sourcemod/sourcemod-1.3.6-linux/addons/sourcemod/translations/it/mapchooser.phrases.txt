@@ -1,0 +1,43 @@
+"Phrases"
+{
+	"Vote Nextmap"
+	{
+		"it"		"Vota per la prossima mappa!"
+	}
+
+	"Nextmap Voting Started"
+	{
+		"it"		"Voto per la prossima mappa avviato."
+	}
+
+	"Nextmap Voting Finished"
+	{
+		"it"		"Voto mappa terminato. La prossima mappa sarà {1}. (Ricevuti {2}%% su {3} voti)  "
+	}
+
+	"Current Map Extended"
+	{
+		"it"		"La mappa attuale è stata estesa. (Ricevuti l' {1}%% su {2} voti)  "
+	}
+
+	"Extend Map"
+	{
+		"it"		"Estendi Mappa Attuale"
+	}
+
+	"Dont Change"
+	{
+		"it"		"Non Cambiare"
+	}
+
+	"Current Map Stays"
+	{
+		"it"		"La mappa attuale continua! il volto è stato scelto! (Ricevuti l' {1}%% su {2} voti)  "
+	}
+
+	"Changed Next Map"
+	{
+		"it"		"Cambiata la prossima mappa con \"{1}\".  "
+	}
+
+}

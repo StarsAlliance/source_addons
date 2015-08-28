@@ -1,0 +1,48 @@
+"Phrases"
+{
+	"Ban player"
+	{
+		"zho"		"封禁玩家"
+	}
+
+	"Ban reason"
+	{
+		"zho"		"封禁原因"
+	}
+
+	"Permabanned player"
+	{
+		"zho"		"玩家 \"{1}\" 已被永久封禁."
+	}
+
+	"Permabanned player reason"
+	{
+		"zho"		"玩家 \"{1}\" 已被永久封禁 (原因: {2})."
+	}
+
+	"Banned player"
+	{
+		"zho"		"封禁玩家 \"{1}\" {2} 分鍾. "
+	}
+
+	"Banned player reason"
+	{
+		"zho"		"封禁玩家 \"{1}\" {2} 分钟 (原因: {3})."
+	}
+
+	"Removed bans matching"
+	{
+		"zho"		"移除符合條件: {1} 的封禁"
+	}
+
+	"Ban added"
+	{
+		"zho"		"封禁已添加."
+	}
+
+	"Cannot ban that IP"
+	{
+		"zho"		"你無法封禁該IP地址."
+	}
+
+}

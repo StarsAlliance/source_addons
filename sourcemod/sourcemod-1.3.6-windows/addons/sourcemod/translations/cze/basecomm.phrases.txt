@@ -1,0 +1,43 @@
+"Phrases"
+{
+	"Gag/Mute player"
+	{
+		"cze"		"Umlčet hráče"
+	}
+
+	"Choose Type"
+	{
+		"cze"		"Vyberte typ"
+	}
+
+	"Gagged target"
+	{
+		"cze"		"Hráč {1} byl odstřihnut od chatu."
+	}
+
+	"Ungagged target"
+	{
+		"cze"		"Hráč {1} může znovu psát."
+	}
+
+	"Muted target"
+	{
+		"cze"		"Hráč {1} byl utišen."
+	}
+
+	"Unmuted target"
+	{
+		"cze"		"Hráč {1} může znovu mluvit."
+	}
+
+	"Silenced target"
+	{
+		"cze"		"Hráč {1} byl úplně umlčen."
+	}
+
+	"Unsilenced target"
+	{
+		"cze"		"Hráč {1} se může znovu projevovat."
+	}
+
+}

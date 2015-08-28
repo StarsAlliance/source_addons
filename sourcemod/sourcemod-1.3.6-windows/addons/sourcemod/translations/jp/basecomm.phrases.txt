@@ -1,0 +1,43 @@
+"Phrases"
+{
+	"Gag/Mute player"
+	{
+		"jp"		"ギャグ/ミュート プレイヤー"
+	}
+
+	"Choose Type"
+	{
+		"jp"		"タイプを選択"
+	}
+
+	"Gagged target"
+	{
+		"jp"		"{1}にギャグを付けました。"
+	}
+
+	"Ungagged target"
+	{
+		"jp"		"{1}のギャグを外しました。"
+	}
+
+	"Muted target"
+	{
+		"jp"		"{1}をミュートしました。"
+	}
+
+	"Unmuted target"
+	{
+		"jp"		"{1}のミュートを解除させました。"
+	}
+
+	"Silenced target"
+	{
+		"jp"		"{1}を沈黙させました。"
+	}
+
+	"Unsilenced target"
+	{
+		"jp"		"{1}の沈黙を解除しました。"
+	}
+
+}

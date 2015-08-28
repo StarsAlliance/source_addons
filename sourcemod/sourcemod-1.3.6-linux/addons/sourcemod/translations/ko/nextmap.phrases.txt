@@ -1,0 +1,43 @@
+"Phrases"
+{
+	"Next Map"
+	{
+		"ko"		"다음 맵은 {1} 입니다"
+	}
+
+	"Map History"
+	{
+		"ko"		"지난 맵"
+	}
+
+	"Map"
+	{
+		"ko"		"맵"
+	}
+
+	"Started"
+	{
+		"ko"		"시작되었습니다"
+	}
+
+	"Played Time"
+	{
+		"ko"		"플레이한 시간"
+	}
+
+	"Reason"
+	{
+		"ko"		"끝난 이유"
+	}
+
+	"Current Map"
+	{
+		"ko"		"현재 맵"
+	}
+
+	"ago"
+	{
+		"ko"		"지났습니다"
+	}
+
+}

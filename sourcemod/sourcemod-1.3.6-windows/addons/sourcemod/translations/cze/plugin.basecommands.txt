@@ -1,0 +1,128 @@
+"Phrases"
+{
+	"Unable to find cvar"
+	{
+		"cze"		"Nelze nalézt cvar: {1}"
+	}
+
+	"No access to cvar"
+	{
+		"cze"		"Nemáte přístup k tomuto cvaru."
+	}
+
+	"Value of cvar"
+	{
+		"cze"		"Hodnota cvaru \"{1}\" je: \"{2}\""
+	}
+
+	"Cvar changed"
+	{
+		"cze"		"Změněn cvar \"{1}\" na \"{2}\". "
+	}
+
+	"Config not found"
+	{
+		"cze"		"Konfigurační soubor \"{1}\" nebyl nalezen. "
+	}
+
+	"Executed config"
+	{
+		"cze"		"Spustil konfigurační soubor \"{1}\". "
+	}
+
+	"Permabanned player"
+	{
+		"cze"		"Permanentně zabanoval hráče \"{1}\"."
+	}
+
+	"Permabanned player reason"
+	{
+		"cze"		"Permanentně zabanoval hráče \"{1}\" (důvod: {2})."
+	}
+
+	"Banned player"
+	{
+		"cze"		"Zabanoval hráče \"{1}\" na {2} minut."
+	}
+
+	"Banned player reason"
+	{
+		"cze"		"Zabanoval hráče \"{1}\" na {2} minut (důvod: {3})."
+	}
+
+	"Removed bans matching"
+	{
+		"cze"		"Byly odstraněny bany splňující filtr: {1}"
+	}
+
+	"Ban added"
+	{
+		"cze"		"Ban byl přidán."
+	}
+
+	"Admin cache refreshed"
+	{
+		"cze"		"Cache adminů byla obnovena."
+	}
+
+	"Identify player"
+	{
+		"cze"		"Identifikovat hráče"
+	}
+
+	"Choose Map"
+	{
+		"cze"		"Vyberte mapu"
+	}
+
+	"Exec CFG"
+	{
+		"cze"		"Spustit CFG"
+	}
+
+	"Admin logged in as"
+	{
+		"cze"		"\"{1}\" je přihlášen jako \"{2}\" s přístupem: {3}"
+	}
+
+	"Admin logged in anon"
+	{
+		"cze"		"\"{1}\" má přístup: {2}"
+	}
+
+	"Player is not an admin"
+	{
+		"cze"		"Hráč \"{1}\" není admin."
+	}
+
+	"Player is an admin"
+	{
+		"cze"		"Hráč \"{1}\" je admin."
+	}
+
+	"Username"
+	{
+		"cze"		"Uživatelské jméno"
+	}
+
+	"Kicked target"
+	{
+		"cze"		"Vyhodil hráče {1}."
+	}
+
+	"Admin access"
+	{
+		"cze"		"Administrátorský přístup"
+	}
+
+	"Cvar is now protected"
+	{
+		"cze"		"Cvar {1} je nyní chráněn."
+	}
+
+	"Kicked target reason"
+	{
+		"cze"		"Vyhodil hráče {1} (důvod: {2})"
+	}
+
+}

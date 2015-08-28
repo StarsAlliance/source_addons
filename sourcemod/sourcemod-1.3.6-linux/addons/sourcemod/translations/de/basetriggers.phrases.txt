@@ -1,0 +1,108 @@
+"Phrases"
+{
+	"Timeleft"
+	{
+		"de"		"Verbleibende Zeit für diese Karte: "
+	}
+
+	"Thetime"
+	{
+		"de"		"Die aktuelle Serverzeit ist {1}"
+	}
+
+	"Friendly Fire On"
+	{
+		"de"		"Teambeschuss ist aktiviert."
+	}
+
+	"Friendly Fire Off"
+	{
+		"de"		"Teambeschuss ist deaktiviert."
+	}
+
+	"Current Map"
+	{
+		"de"		"Die aktuelle Karte ist {1}."
+	}
+
+	"LastRound"
+	{
+		"de"		"Dies ist die letzte Runde!!"
+	}
+
+	"NoTimelimit"
+	{
+		"de"		"Kein Zeitlimit für diese Karte"
+	}
+
+	"Next Map"
+	{
+		"de"		"Nächste Karte: {1}"
+	}
+
+	"Pending Vote"
+	{
+		"de"		"Ausstehende Abstimmung"
+	}
+
+	"WinLimitAppend"
+	{
+		"de"		",  oder Karte wechseln nachdem ein Team eine Runde gewinnt "
+	}
+
+	"WinLimit"
+	{
+		"de"		" Karte wechselt nachdem ein Team eine Runde gewinnt "
+	}
+
+	"MaxRoundsAppend"
+	{
+		"de"		", oder Karte nach einer weiteren Runde wechseln "
+	}
+
+	"MaxRounds"
+	{
+		"de"		"Karte wechselt nach einer weiteren Runde"
+	}
+
+	"FragLimitAppend"
+	{
+		"de"		", oder Karte wechseln nachdem ein Spieler einen Abschuss erlangt "
+	}
+
+	"FragLimit"
+	{
+		"de"		"Karte wechselt, nachdem ein Spieler einen Abschuss erlangt hat "
+	}
+
+	"WinLimitAppendPlural"
+	{
+		"de"		",  oder Karte wechseln nachdem ein Team {1} Runden gewinnt "
+	}
+
+	"WinLimitPlural"
+	{
+		"de"		"Karte wechselt nachdem ein Team {1} Runden gewinnt "
+	}
+
+	"MaxRoundsAppendPlural"
+	{
+		"de"		",  oder Kartenwechsel nach {1} weiteren Runden "
+	}
+
+	"MaxRoundsPlural"
+	{
+		"de"		"Karte wechselt nach {1} weiteren Runden"
+	}
+
+	"FragLimitAppendPlural"
+	{
+		"de"		", oder Karte wechseln nachdem ein Spieler {1} Abschüsse erlangt "
+	}
+
+	"FragLimitPlural"
+	{
+		"de"		"Karte wechselt nachdem ein Spieler {1} Abschüsse erlangt "
+	}
+
+}

@@ -1,0 +1,78 @@
+"Phrases"
+{
+	"Invalid authtype"
+	{
+		"cze"		"Typ autorizace musí být buď 'steam', 'name', nebo 'ip'."
+	}
+
+	"Invalid immunity"
+	{
+		"cze"		"Hodnota imunity musí být kladné celé číslo."
+	}
+
+	"SQL Admin already exists"
+	{
+		"cze"		"Administrátor se zadanými hodnotami již existuje."
+	}
+
+	"SQL Admin added"
+	{
+		"cze"		"Administrátor byl úspěšně přidán do databáze."
+	}
+
+	"SQL Admin deleted"
+	{
+		"cze"		"Administrátor byl úspěšně smazán z databáze."
+	}
+
+	"SQL Admin not found"
+	{
+		"cze"		"Žádný administrátor se zadanými hodnotami nebyl nalezen."
+	}
+
+	"SQL Group already exists"
+	{
+		"cze"		"Skupina s tímto názvem již existuje."
+	}
+
+	"SQL Group added"
+	{
+		"cze"		"Skupina byla úspěšně přidána do databáze."
+	}
+
+	"SQL Group deleted"
+	{
+		"cze"		"Skupina byla úspěšně smazána z databáze."
+	}
+
+	"SQL Group not found"
+	{
+		"cze"		"Žádná skupina se zadaným názvem nebyla nalezena."
+	}
+
+	"SQL Admin groups reset"
+	{
+		"cze"		"Administrátorské skupiny byly úspěšně resetovány."
+	}
+
+	"SQL Group X not found"
+	{
+		"cze"		"Nelze nalézt skupinu: \"{1}\""
+	}
+
+	"SQL Group X failed to bind"
+	{
+		"cze"		"Nelze přiřadit skupinu: \"{1}\""
+	}
+
+	"Added group to user"
+	{
+		"cze"		"Skupina byla úspěšně přidána zvolenému administrátorovi."
+	}
+
+	"Added groups to user"
+	{
+		"cze"		"{1} skupin bylo úspěšně přidáno zvolenému administrátorovi."
+	}
+
+}

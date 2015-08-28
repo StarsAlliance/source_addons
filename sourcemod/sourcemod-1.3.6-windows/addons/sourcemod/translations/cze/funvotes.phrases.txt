@@ -1,0 +1,98 @@
+"Phrases"
+{
+	"Initiated Vote Gravity"
+	{
+		"cze"		"Zahájil hlasování o gravitaci."
+	}
+
+	"Initiated Vote Burn"
+	{
+		"cze"		"Zahájil hlasování o zapálení proti hráči {1}."
+	}
+
+	"Initiated Vote Slay"
+	{
+		"cze"		"Zahájil hlasování o zabití proti hráči {1}."
+	}
+
+	"Initiated Vote Alltalk"
+	{
+		"cze"		"Zahájil hlasování o alltalku,"
+	}
+
+	"Initiated Vote FF"
+	{
+		"cze"		"Zahájil hlasování o Friendly Fire."
+	}
+
+	"Gravity Vote"
+	{
+		"cze"		"Hlasování o gravitaci: {1}"
+	}
+
+	"Change Gravity To"
+	{
+		"cze"		"Změnit gravitaci na {1}?"
+	}
+
+	"Voteburn player"
+	{
+		"cze"		"Zapálit hráče {1}?"
+	}
+
+	"Voteslay Player"
+	{
+		"cze"		"Zabít hráče {1}?"
+	}
+
+	"Votealltalk Off"
+	{
+		"cze"		"Vypnout alltalk? {1}"
+	}
+
+	"Votealltalk On"
+	{
+		"cze"		"Zapnout alltalk? {1}"
+	}
+
+	"Voteff Off"
+	{
+		"cze"		"Vypnout FriendlyFire? {1}"
+	}
+
+	"Voteff On"
+	{
+		"cze"		"Zapnout friendly fire? {1}"
+	}
+
+	"Gravity vote"
+	{
+		"cze"		"Hlasování o gravitaci"
+	}
+
+	"Vote FF"
+	{
+		"cze"		"Hlasování o FriendlyFire"
+	}
+
+	"Burn vote"
+	{
+		"cze"		"Hlasování o zapálení"
+	}
+
+	"Alltalk vote"
+	{
+		"cze"		"Hlasování o Alltalk"
+	}
+
+	"Slay vote"
+	{
+		"cze"		"Hlasování o zabití"
+	}
+
+	"Slayed player"
+	{
+		"cze"		"Zabil hráče '{1}'"
+	}
+
+}

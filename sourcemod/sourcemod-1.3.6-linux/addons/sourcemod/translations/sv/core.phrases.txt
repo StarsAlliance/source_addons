@@ -1,0 +1,78 @@
+"Phrases"
+{
+	"No Access"
+	{
+		"sv"		"Du har inte tillgång till detta kommando"
+	}
+
+	"Back"
+	{
+		"sv"		"Tillbaka"
+	}
+
+	"Next"
+	{
+		"sv"		"Nästa"
+	}
+
+	"Exit"
+	{
+		"sv"		"Avsluta"
+	}
+
+	"Previous"
+	{
+		"sv"		"Föregående"
+	}
+
+	"all players"
+	{
+		"sv"		"alla spelare"
+	}
+
+	"all humans"
+	{
+		"sv"		"alla människor"
+	}
+
+	"all bots"
+	{
+		"sv"		"alla botar"
+	}
+
+	"all dead players"
+	{
+		"sv"		"alla döda spelare"
+	}
+
+	"all alive players"
+	{
+		"sv"		"alla levande spelare"
+	}
+
+	"_s"
+	{
+		"sv"		"{1}"
+	}
+
+	"all spectators"
+	{
+		"sv"		"alla åskådare"
+	}
+
+	"Vote Count"
+	{
+		"sv"		"{1}/{2}, {3}s left"
+	}
+
+	"Voted For"
+	{
+		"sv"		"{1} röstade för {2}"
+	}
+
+	"Changed Vote"
+	{
+		"sv"		"{1} ändrade deras röst till {2}"
+	}
+
+}

@@ -1,0 +1,43 @@
+"Phrases"
+{
+	"Next Map"
+	{
+		"no"		"Neste kart: {1}"
+	}
+
+	"Map History"
+	{
+		"no"		"Kart-historikk"
+	}
+
+	"Map"
+	{
+		"no"		"[Kart]"
+	}
+
+	"Started"
+	{
+		"no"		"[Startet]"
+	}
+
+	"Played Time"
+	{
+		"no"		"[Spilt tid]"
+	}
+
+	"Reason"
+	{
+		"no"		"[Grunn for slutt]"
+	}
+
+	"Current Map"
+	{
+		"no"		"Gjeldende kart"
+	}
+
+	"ago"
+	{
+		"no"		"siden"
+	}
+
+}

@@ -1,0 +1,83 @@
+"Phrases"
+{
+	"Initiate Vote"
+	{
+		"cze"		"Zahájil hlasování: {1}"
+	}
+
+	"Initiated Vote Map"
+	{
+		"cze"		"Zahájil hlasování o mapě."
+	}
+
+	"Initiated Vote Kick"
+	{
+		"cze"		"Zahájil hlasování o vyhození proti hráči {1}."
+	}
+
+	"Initiated Vote Ban"
+	{
+		"cze"		"Zahájil hlasování o banu proti hráči {1}."
+	}
+
+	"Map Vote"
+	{
+		"cze"		"Hlasování o mapě: {1}"
+	}
+
+	"Change Map To"
+	{
+		"cze"		"Změnit mapu na {1}?"
+	}
+
+	"Votekick Player"
+	{
+		"cze"		"Vyhodit {1}?"
+	}
+
+	"Voteban Player"
+	{
+		"cze"		"Zabanovat {1}?"
+	}
+
+	"Vote Successful"
+	{
+		"cze"		"Hlasování přijato. (Obdrženo {1}%% z {2} hlasů)"
+	}
+
+	"Vote Failed"
+	{
+		"cze"		"Hlasování selhalo. Bylo potřeba {1}%% hlasů. (Obdrženo {2}%% z {3} hlasů)"
+	}
+
+	"Vote End"
+	{
+		"cze"		"Odpověd na otázku {1} je: {2}."
+	}
+
+	"Kick vote"
+	{
+		"cze"		"Hlasování o vyhození"
+	}
+
+	"Ban vote"
+	{
+		"cze"		"Hlasování o banu"
+	}
+
+	"Map vote"
+	{
+		"cze"		"Hlasování o mapě"
+	}
+
+	"Confirm Vote"
+	{
+		"cze"		"Potvrdit hlasování"
+	}
+
+	"Map Vote In Use"
+	{
+		"cze"		"Jiný admin právě používá hlasovací menu."
+	}
+
+}

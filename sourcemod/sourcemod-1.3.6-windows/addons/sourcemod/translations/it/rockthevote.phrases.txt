@@ -1,0 +1,103 @@
+"Phrases"
+{
+	"Rock The Vote"
+	{
+		"it"		"Rock The Vote:"
+	}
+
+	"RTV Not Allowed"
+	{
+		"it"		"Rock the Vote non è permesso ora."
+	}
+
+	"RTV Started"
+	{
+		"it"		"Rock  the Vote è gia stato avviato."
+	}
+
+	"RTV Ended"
+	{
+		"it"		"RTV è gia stato terminato, non puoi avviarlo di nuovo o nominare altre mappe."
+	}
+
+	"Already Voted"
+	{
+		"it"		"Hai gia effettuato un voto forzato"
+	}
+
+	"Minimal Players Not Met"
+	{
+		"it"		"Il numero nimimo di persone richieste non  è stato raggiunto."
+	}
+
+	"Map Already In Vote"
+	{
+		"it"		"La Mappa '{1}' è gia nella lista del Rock the Vote"
+	}
+
+	"Map Inserted"
+	{
+		"it"		"la Mappa '{1}'  è stata aggiunta al  Rock the Vote.  "
+	}
+
+	"RTV Requested"
+	{
+		"it"		"{1} Vuole avviare il rock the vote, ({2} voti su, {3} richiesti)  "
+	}
+
+	"RTV Vote Ready"
+	{
+		"it"		"Rocking the Vote!"
+	}
+
+	"Don't Change"
+	{
+		"it"		"Mantieni Mappa Attuale"
+	}
+
+	"Already Nominated"
+	{
+		"it"		"Hai gia nominato una mappa"
+	}
+
+	"Max Nominations"
+	{
+		"it"		"Il numero massimo di nominazioni è stato raggiunto."
+	}
+
+	"Selected Map"
+	{
+		"it"		"{1} ha scelto {2}  "
+	}
+
+	"No Votes"
+	{
+		"it"		"Nessun voto ricevuto per il Rock the Vote, verra mantenute l'attuale mappa."
+	}
+
+	"Current Map Stays"
+	{
+		"it"		"La Mappa attuale continua! Rock the Vote ha deciso!"
+	}
+
+	"Changing Maps"
+	{
+		"it"		"Cambia la mappa con {1}! Rock the Vote ha deciso!"
+	}
+
+	"Map Already Nominated"
+	{
+		"it"		"La mappa che hai scelto è gia stata nominata"
+	}
+
+	"Map Nominated"
+	{
+		"it"		"{1} ha nominato {2} per il Rock the Vote.  "
+	}
+
+	"Nominate Title"
+	{
+		"it"		"Nomina Mappa:"
+	}
+
+}

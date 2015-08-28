@@ -1,0 +1,8 @@
+"Phrases"
+{
+	"Slot reserved"
+	{
+		"ko"		"예약된 슬롯을 위해 드롭되었습니다"
+	}
+
+}

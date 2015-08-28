@@ -1,0 +1,158 @@
+"Phrases"
+{
+	"Burn player"
+	{
+		"zho"		"燃燒玩家"
+	}
+
+	"FireBomb player"
+	{
+		"zho"		"將玩家變成燃燒彈"
+	}
+
+	"Freeze player"
+	{
+		"zho"		"凍結玩家"
+	}
+
+	"FreezeBomb player"
+	{
+		"zho"		"把玩家变成冰冻弹"
+	}
+
+	"TimeBomb player"
+	{
+		"zho"		"將玩家變為定時炸彈"
+	}
+
+	"Beacon player"
+	{
+		"zho"		"點玩家燈"
+	}
+
+	"NoClip player"
+	{
+		"zho"		"設置玩家為穿牆模式"
+	}
+
+	"Blind player"
+	{
+		"zho"		"將玩家變成瞎子"
+	}
+
+	"Drug player"
+	{
+		"zho"		"給玩家下藥"
+	}
+
+	"Gravity player"
+	{
+		"zho"		"改变玩家重力指标"
+	}
+
+	"Blind amount"
+	{
+		"zho"		"致盲程度？"
+	}
+
+	"Fully blind"
+	{
+		"zho"		"全盲"
+	}
+
+	"Half blind"
+	{
+		"zho"		"半盲"
+	}
+
+	"No blind"
+	{
+		"zho"		"不盲"
+	}
+
+	"Gravity amount"
+	{
+		"zho"		"更改重力為?"
+	}
+
+	"Gravity Very High"
+	{
+		"zho"		"超高重力"
+	}
+
+	"Gravity High"
+	{
+		"zho"		"高重力"
+	}
+
+	"Gravity Normal"
+	{
+		"zho"		"正常重力"
+	}
+
+	"Gravity Low"
+	{
+		"zho"		"低重力"
+	}
+
+	"Gravity Very Low"
+	{
+		"zho"		"超低重力"
+	}
+
+	"Set target on fire"
+	{
+		"zho"		"已使 {1} 燃燒"
+	}
+
+	"Toggled FireBomb on target"
+	{
+		"zho"		"已使 {1} 變為燃燒彈"
+	}
+
+	"Froze target"
+	{
+		"zho"		"己凍結 {1}"
+	}
+
+	"Toggled FreezeBomb on target"
+	{
+		"zho"		"已使 {1} 變為凍結彈"
+	}
+
+	"Toggled beacon on target"
+	{
+		"zho"		"已點 {1} 燈"
+	}
+
+	"Toggled TimeBomb on target"
+	{
+		"zho"		"已使 {1} 變為定時炸彈"
+	}
+
+	"Toggled noclip on target"
+	{
+		"zho"		"設置{1}為穿牆模式"
+	}
+
+	"Toggled drug on target"
+	{
+		"zho"		"已將 {1} 下藥"
+	}
+
+	"Set blind on target"
+	{
+		"zho"		"{1} 已致盲"
+	}
+
+	"Set gravity on target"
+	{
+		"zho"		"已更改 {1} 的重力指數"
+	}
+
+	"Till Explodes"
+	{
+		"zho"		"還有 {2} 秒 {1} 就要爆炸"
+	}
+
+}

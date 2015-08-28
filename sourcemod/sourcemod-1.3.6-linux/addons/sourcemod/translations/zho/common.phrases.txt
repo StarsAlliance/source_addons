@@ -1,0 +1,253 @@
+"Phrases"
+{
+	"Yes"
+	{
+		"zho"		"是"
+	}
+
+	"No"
+	{
+		"zho"		"否"
+	}
+
+	"No matching client"
+	{
+		"zho"		"未发现匹配的客户端."
+	}
+
+	"No matching clients"
+	{
+		"zho"		"未发现匹配的客户端."
+	}
+
+	"More than one client matches"
+	{
+		"zho"		"多於一個客戶端符合條件 \"{1}\""
+	}
+
+	"More than one client matched"
+	{
+		"zho"		"多於一個客戶端符合提供條件"
+	}
+
+	"Player no longer available"
+	{
+		"zho"		"您选定的玩家已不再适用."
+	}
+
+	"Kick player"
+	{
+		"zho"		"踢出玩家"
+	}
+
+	"Kicked by admin"
+	{
+		"zho"		"被管理员踢出"
+	}
+
+	"Changing map"
+	{
+		"zho"		"正更換地圖為 {1} ..."
+	}
+
+	"Map was not found"
+	{
+		"zho"		"未發現地圖 {1}"
+	}
+
+	"Unable to target"
+	{
+		"zho"		"您无法操作该玩家."
+	}
+
+	"Name"
+	{
+		"zho"		"名称"
+	}
+
+	"Access"
+	{
+		"zho"		"使用權限"
+	}
+
+	"See console for output"
+	{
+		"zho"		"请看控制台输出."
+	}
+
+	"Cannot target bot"
+	{
+		"zho"		"無法對機器人 (Bot) 發出該指令 "
+	}
+
+	"Unable to find cvar"
+	{
+		"zho"		"无法找到 cvar: {1}"
+	}
+
+	"No access to cvar"
+	{
+		"zho"		"您无权设置该 cvar."
+	}
+
+	"Value of cvar"
+	{
+		"zho"		"cvar \"{1}\" 值: \"{2}\""
+	}
+
+	"Cvar changed"
+	{
+		"zho"		"cvar \"{1}\" 已更改為 \"{2}\""
+	}
+
+	"Config not found"
+	{
+		"zho"		"未發現設定文件 \"{1}\" "
+	}
+
+	"Executed config"
+	{
+		"zho"		"設定 \"{1}\" 己執行"
+	}
+
+	"Admin cache refreshed"
+	{
+		"zho"		"管理員緩衝資料已刷新"
+	}
+
+	"Invalid Amount"
+	{
+		"zho"		"指定數量無效"
+	}
+
+	"Cannot be performed on dead"
+	{
+		"zho"		"該動作無法在死亡的客戶端 \"{1}\" 上進行"
+	}
+
+	"Player has since died"
+	{
+		"zho"		"操作无法执行, 玩家已死亡."
+	}
+
+	"Vote in Progress"
+	{
+		"zho"		"已有投票在进行中."
+	}
+
+	"Vote Not In Progress"
+	{
+		"zho"		"当前无投票进行."
+	}
+
+	"Cancelled Vote"
+	{
+		"zho"		"投票已取消."
+	}
+
+	"Cancel vote"
+	{
+		"zho"		"取消投票"
+	}
+
+	"Vote Select"
+	{
+		"zho"		"{1} 选了 {2}."
+	}
+
+	"No Votes Cast"
+	{
+		"zho"		"无投票发起."
+	}
+
+	"Vote Delay Minutes"
+	{
+		"zho"		"您必须再等 {1} 分钟后才能发起新一轮投票."
+	}
+
+	"Vote Delay Seconds"
+	{
+		"zho"		"您必须再等 {1} 秒钟后才能发起新一轮投票."
+	}
+
+	"Could not connect to database"
+	{
+		"zho"		"無法連接至數據庫"
+	}
+
+	"Failed to query database"
+	{
+		"zho"		"查詢數據庫失敗"
+	}
+
+	"Invalid SteamID specified"
+	{
+		"zho"		"你指定的 Steam ID 無效 (必須以 'STEAM_:' 開始) "
+	}
+
+	"Reload admins"
+	{
+		"zho"		"重载管理员"
+	}
+
+	"Command is in-game only"
+	{
+		"zho"		"該指令只能在遊戲界中使用"
+	}
+
+	"Target must be dead"
+	{
+		"zho"		"该指令只能用于已死玩家."
+	}
+
+	"Target must be alive"
+	{
+		"zho"		"该指令只能用于活人玩家."
+	}
+
+	"Target is not in game"
+	{
+		"zho"		"指定玩家尚未完全进入游戏."
+	}
+
+	"Played Sound"
+	{
+		"zho"		"已播放声音给玩家 '{1}'"
+	}
+
+	"Slapped player"
+	{
+		"zho"		"已拍打玩家 '{1}'"
+	}
+
+	"Slayed player"
+	{
+		"zho"		"已处死玩家 '{1}'"
+	}
+
+	"Kicked player"
+	{
+		"zho"		"已踢出玩家 '{1}'"
+	}
+
+	"Cannot participate in vote"
+	{
+		"zho"		"你不能參與此次投票"
+	}
+
+	"Cannot change vote"
+	{
+		"zho"		"你不能更改此次投票的選擇"
+	}
+
+	"On"
+	{
+		"zho"		"開啟"
+	}
+
+	"Off"
+	{
+		"zho"		"關閉"
+	}
+
+}

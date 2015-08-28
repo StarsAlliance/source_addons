@@ -1,0 +1,158 @@
+"Phrases"
+{
+	"Burn player"
+	{
+		"pt"		"Queimar jogador"
+	}
+
+	"FireBomb player"
+	{
+		"pt"		"Bomba de fogo no jogador"
+	}
+
+	"Freeze player"
+	{
+		"pt"		"Congelar jogador"
+	}
+
+	"FreezeBomb player"
+	{
+		"pt"		"Bomba de gelo no jogador"
+	}
+
+	"TimeBomb player"
+	{
+		"pt"		"Bomba Relógio no jogador"
+	}
+
+	"Beacon player"
+	{
+		"pt"		"Sinalizar jogador"
+	}
+
+	"NoClip player"
+	{
+		"pt"		"NoClip do jogador"
+	}
+
+	"Blind player"
+	{
+		"pt"		"Cegar jogador"
+	}
+
+	"Drug player"
+	{
+		"pt"		"Drogar jogador"
+	}
+
+	"Gravity player"
+	{
+		"pt"		"Gravidade do jogador"
+	}
+
+	"Blind amount"
+	{
+		"pt"		"Quanto?"
+	}
+
+	"Fully blind"
+	{
+		"pt"		"Completamente cego"
+	}
+
+	"Half blind"
+	{
+		"pt"		"Parcialmente Cego"
+	}
+
+	"No blind"
+	{
+		"pt"		"Visão normal"
+	}
+
+	"Gravity amount"
+	{
+		"pt"		"Gravidade?"
+	}
+
+	"Gravity Very High"
+	{
+		"pt"		"Gravidade Muito Alta"
+	}
+
+	"Gravity High"
+	{
+		"pt"		"Gravidade Alta "
+	}
+
+	"Gravity Normal"
+	{
+		"pt"		"Gravidade Normal"
+	}
+
+	"Gravity Low"
+	{
+		"pt"		"Gravidade Baixa"
+	}
+
+	"Gravity Very Low"
+	{
+		"pt"		"Gravidade Muito Baixa"
+	}
+
+	"Set target on fire"
+	{
+		"pt"		"Colocou fogo em {1}."
+	}
+
+	"Toggled FireBomb on target"
+	{
+		"pt"		"alterou bomba de fogo em {1}."
+	}
+
+	"Froze target"
+	{
+		"pt"		"{1} congelado."
+	}
+
+	"Toggled FreezeBomb on target"
+	{
+		"pt"		"alterou bomba de gelo em {1}."
+	}
+
+	"Toggled beacon on target"
+	{
+		"pt"		"alterou sinalizador em {1}."
+	}
+
+	"Toggled TimeBomb on target"
+	{
+		"pt"		"alterou bomba relógio em {1}."
+	}
+
+	"Toggled noclip on target"
+	{
+		"pt"		"alterou noclip em {1}."
+	}
+
+	"Toggled drug on target"
+	{
+		"pt"		"alterou drogas em {1}."
+	}
+
+	"Set blind on target"
+	{
+		"pt"		"cegou {1}."
+	}
+
+	"Set gravity on target"
+	{
+		"pt"		" mudou a gravidade de {1}. "
+	}
+
+	"Till Explodes"
+	{
+		"pt"		"{2} segundos até que {1} exploda."
+	}
+
+}

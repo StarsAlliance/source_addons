@@ -1,0 +1,33 @@
+"Phrases"
+{
+	"SM help commands"
+	{
+		"cze"		"SourceMod Help: Informace o příkazech"
+	}
+
+	"No description available"
+	{
+		"cze"		"Žádný dostupný popis"
+	}
+
+	"No commands available"
+	{
+		"cze"		"Žádné dostupné příkazy"
+	}
+
+	"Type sm_help to see more"
+	{
+		"cze"		"Napište sm_help {1} pro více příkazů"
+	}
+
+	"Entries n - m in page k"
+	{
+		"cze"		"Položky {1} - {2} na stránce {3}"
+	}
+
+	"No matching results found"
+	{
+		"cze"		"Nebyly nalezeny žádné vhodné výsledky"
+	}
+
+}

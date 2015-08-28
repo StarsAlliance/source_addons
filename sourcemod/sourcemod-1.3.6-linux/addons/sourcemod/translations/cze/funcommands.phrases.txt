@@ -1,0 +1,158 @@
+"Phrases"
+{
+	"Burn player"
+	{
+		"cze"		"Zapálit hráče"
+	}
+
+	"FireBomb player"
+	{
+		"cze"		"Udělat z hráče ohnivou bombu"
+	}
+
+	"Freeze player"
+	{
+		"cze"		"Zmrazit hráče"
+	}
+
+	"FreezeBomb player"
+	{
+		"cze"		"Udělat z hráče mrazící bombu"
+	}
+
+	"TimeBomb player"
+	{
+		"cze"		"Udělat z hráče časovanou bombu"
+	}
+
+	"Beacon player"
+	{
+		"cze"		"Označit hráče"
+	}
+
+	"NoClip player"
+	{
+		"cze"		"Dát hráči NoClip"
+	}
+
+	"Blind player"
+	{
+		"cze"		"Oslepit hráče"
+	}
+
+	"Drug player"
+	{
+		"cze"		"Zfetovat hráče"
+	}
+
+	"Gravity player"
+	{
+		"cze"		"Nastavit hráči gravitaci"
+	}
+
+	"Blind amount"
+	{
+		"cze"		"Síla oslepení?"
+	}
+
+	"Fully blind"
+	{
+		"cze"		"Úplné oslepení"
+	}
+
+	"Half blind"
+	{
+		"cze"		"Poloviční oslepení"
+	}
+
+	"No blind"
+	{
+		"cze"		"Žádné oslepení"
+	}
+
+	"Gravity amount"
+	{
+		"cze"		"Gravitace?"
+	}
+
+	"Gravity Very High"
+	{
+		"cze"		"Velmi vysoká gravitace"
+	}
+
+	"Gravity High"
+	{
+		"cze"		"Vysoká gravitace"
+	}
+
+	"Gravity Normal"
+	{
+		"cze"		"Normální gravitace"
+	}
+
+	"Gravity Low"
+	{
+		"cze"		"Nízká gravitace"
+	}
+
+	"Gravity Very Low"
+	{
+		"cze"		"Velmi nízká gravitace"
+	}
+
+	"Set target on fire"
+	{
+		"cze"		"zapálil hráče {1}."
+	}
+
+	"Toggled FireBomb on target"
+	{
+		"cze"		"změnil hráče {1} v ohnivou bombu."
+	}
+
+	"Froze target"
+	{
+		"cze"		"zmrazil hráče {1}."
+	}
+
+	"Toggled FreezeBomb on target"
+	{
+		"cze"		"změnil hráče {1} v mrazící bombu."
+	}
+
+	"Toggled beacon on target"
+	{
+		"cze"		"označil hráče {1}."
+	}
+
+	"Toggled TimeBomb on target"
+	{
+		"cze"		"změnil hráče {1} v časovanou bombu."
+	}
+
+	"Toggled noclip on target"
+	{
+		"cze"		"dal hráči {1} NoClip."
+	}
+
+	"Toggled drug on target"
+	{
+		"cze"		"zfetoval hráče {1}."
+	}
+
+	"Set blind on target"
+	{
+		"cze"		"oslepil hráče {1}."
+	}
+
+	"Set gravity on target"
+	{
+		"cze"		"nastavil gravitaci hráči {1}."
+	}
+
+	"Till Explodes"
+	{
+		"cze"		"{2} sekund než {1} vybuchne."
+	}
+
+}

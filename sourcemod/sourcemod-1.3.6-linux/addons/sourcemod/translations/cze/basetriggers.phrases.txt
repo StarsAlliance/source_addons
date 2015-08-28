@@ -1,0 +1,108 @@
+"Phrases"
+{
+	"Timeleft"
+	{
+		"cze"		"Zbývající čas:"
+	}
+
+	"Thetime"
+	{
+		"cze"		"Současný čas je {1}"
+	}
+
+	"Friendly Fire On"
+	{
+		"cze"		"Friendly Fire je zapnut."
+	}
+
+	"Friendly Fire Off"
+	{
+		"cze"		"Friendly Fire je vypnut."
+	}
+
+	"Current Map"
+	{
+		"cze"		"Aktuální mapa je {1}."
+	}
+
+	"LastRound"
+	{
+		"cze"		"Toto je poslední kolo!!"
+	}
+
+	"NoTimelimit"
+	{
+		"cze"		"Tato mapa není časově omezena"
+	}
+
+	"Next Map"
+	{
+		"cze"		"Příští mapa: {1}"
+	}
+
+	"Pending Vote"
+	{
+		"cze"		"Neproběhlo hlasování"
+	}
+
+	"WinLimitAppend"
+	{
+		"cze"		", nebo se mapa změní poté, co nějaký tým vyhraje jedno kolo"
+	}
+
+	"WinLimit"
+	{
+		"cze"		"Mapa se změní poté, co nějaký tým vyhraje jedno kolo"
+	}
+
+	"MaxRoundsAppend"
+	{
+		"cze"		", nebo se mapa změní po příštím kole"
+	}
+
+	"MaxRounds"
+	{
+		"cze"		"Mapa se změní po příštím kole"
+	}
+
+	"FragLimitAppend"
+	{
+		"cze"		", nebo se mapa změní poté, co hráč dosáhne jednoho zabití"
+	}
+
+	"FragLimit"
+	{
+		"cze"		"Mapa se změní poté, co hráč dosáhne jednoho fragu"
+	}
+
+	"WinLimitAppendPlural"
+	{
+		"cze"		", nebo se mapa změní poté, co nějaký tým vyhraje {1} kol"
+	}
+
+	"WinLimitPlural"
+	{
+		"cze"		"Mapa se změní poté, co nějaký tým vyhraje {1} kol"
+	}
+
+	"MaxRoundsAppendPlural"
+	{
+		"cze"		", nebo se mapa změní po {1} kolech"
+	}
+
+	"MaxRoundsPlural"
+	{
+		"cze"		"Mapa se změní po {1} kolech"
+	}
+
+	"FragLimitAppendPlural"
+	{
+		"cze"		", nebo se mapa změní poté, co hráč dosáhne {1} zabití"
+	}
+
+	"FragLimitPlural"
+	{
+		"cze"		"Mapa se změní poté, co hráč dosáhne {1} zabití"
+	}
+
+}

@@ -1,0 +1,158 @@
+"Phrases"
+{
+	"Burn player"
+	{
+		"it"		"Brucia Giocatore"
+	}
+
+	"FireBomb player"
+	{
+		"it"		"Giocatore Bomba molotov"
+	}
+
+	"Freeze player"
+	{
+		"it"		"Congela giocatore"
+	}
+
+	"FreezeBomb player"
+	{
+		"it"		"Bomba Congelate Giocatore"
+	}
+
+	"TimeBomb player"
+	{
+		"it"		"Giocatore Bomba a Tempo"
+	}
+
+	"Beacon player"
+	{
+		"it"		"Segnalazione Giocatore"
+	}
+
+	"NoClip player"
+	{
+		"it"		"NoClip Giocatore"
+	}
+
+	"Blind player"
+	{
+		"it"		"Oscura Giocatore"
+	}
+
+	"Drug player"
+	{
+		"it"		"Droga Giocatore"
+	}
+
+	"Gravity player"
+	{
+		"it"		"Gravità Giocatore"
+	}
+
+	"Blind amount"
+	{
+		"it"		"Quanto Oscurare?"
+	}
+
+	"Fully blind"
+	{
+		"it"		"Totale Oscurazione"
+	}
+
+	"Half blind"
+	{
+		"it"		"Metà oscurazione"
+	}
+
+	"No blind"
+	{
+		"it"		"Nessuna oscurazione"
+	}
+
+	"Gravity amount"
+	{
+		"it"		"Gravità?"
+	}
+
+	"Gravity Very High"
+	{
+		"it"		"Gravità Veramente Alta"
+	}
+
+	"Gravity High"
+	{
+		"it"		"Gravità Alta"
+	}
+
+	"Gravity Normal"
+	{
+		"it"		"Gravità Normale"
+	}
+
+	"Gravity Low"
+	{
+		"it"		"Gravità Bassa"
+	}
+
+	"Gravity Very Low"
+	{
+		"it"		"Gravità Veramente Bassa"
+	}
+
+	"Set target on fire"
+	{
+		"it"		"Settato {1} in versione infuocata"
+	}
+
+	"Toggled FireBomb on target"
+	{
+		"it"		"Abilitata/disabilitata la bomba molotov  a {1}.  "
+	}
+
+	"Froze target"
+	{
+		"it"		"Ghiacciato {1}.  "
+	}
+
+	"Toggled FreezeBomb on target"
+	{
+		"it"		"Abilitata/disabilitata la bomba congelante a {1}.  "
+	}
+
+	"Toggled beacon on target"
+	{
+		"it"		"Abilitata/disabilitata la segnalazione a {1}.  "
+	}
+
+	"Toggled TimeBomb on target"
+	{
+		"it"		"Abilitata/disabilitata la bomba a tempo a {1}.  "
+	}
+
+	"Toggled noclip on target"
+	{
+		"it"		"Abilitato/disabilitato il noclip a {1}.  "
+	}
+
+	"Toggled drug on target"
+	{
+		"it"		"Abilitata/disabilitata la droga a {1}.  "
+	}
+
+	"Set blind on target"
+	{
+		"it"		"oscurata la visuale a {1}.  "
+	}
+
+	"Set gravity on target"
+	{
+		"it"		"settata la gravità a {1}"
+	}
+
+	"Till Explodes"
+	{
+		"it"		"{2} secondi prima che {1} esploda.  "
+	}
+
+}

@@ -1,0 +1,43 @@
+"Phrases"
+{
+	"Gag/Mute player"
+	{
+		"nl"		"Chat/Demp speler"
+	}
+
+	"Choose Type"
+	{
+		"nl"		"Kies Soort"
+	}
+
+	"Gagged target"
+	{
+		"nl"		"{1} kan niet meer chatten."
+	}
+
+	"Ungagged target"
+	{
+		"nl"		"{1} kan nu weer chatten."
+	}
+
+	"Muted target"
+	{
+		"nl"		"{1} gedempt."
+	}
+
+	"Unmuted target"
+	{
+		"nl"		"{1} kan weer spreken."
+	}
+
+	"Silenced target"
+	{
+		"nl"		"{1} is het zwijgen opgelegd."
+	}
+
+	"Unsilenced target"
+	{
+		"nl"		"{1} kan weer praten."
+	}
+
+}

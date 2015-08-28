@@ -1,0 +1,43 @@
+"Phrases"
+{
+	"Gag/Mute player"
+	{
+		"tr"		"Oyuncunun Ağzını Tıka/Sustur"
+	}
+
+	"Choose Type"
+	{
+		"tr"		"Tür Seç"
+	}
+
+	"Gagged target"
+	{
+		"tr"		"{1}'in ağzı tıkandı"
+	}
+
+	"Ungagged target"
+	{
+		"tr"		"Artık {1}'in ağzı tıkalı değil."
+	}
+
+	"Muted target"
+	{
+		"tr"		"{1} Susturuldu."
+	}
+
+	"Unmuted target"
+	{
+		"tr"		"Artık {1} susturulmuş değil."
+	}
+
+	"Silenced target"
+	{
+		"tr"		"{1} sessizleştirildi."
+	}
+
+	"Unsilenced target"
+	{
+		"tr"		"Artık {1} sessiz değil."
+	}
+
+}

@@ -1,0 +1,78 @@
+"Phrases"
+{
+	"No Access"
+	{
+		"da"		"Du har ikke adgang til denne kommando"
+	}
+
+	"Back"
+	{
+		"da"		"Tilbage"
+	}
+
+	"Next"
+	{
+		"da"		"Næste"
+	}
+
+	"Exit"
+	{
+		"da"		"Afslut"
+	}
+
+	"Previous"
+	{
+		"da"		"Tilbage"
+	}
+
+	"all players"
+	{
+		"da"		"alle spillere"
+	}
+
+	"all humans"
+	{
+		"da"		"alle mennesker"
+	}
+
+	"all bots"
+	{
+		"da"		"alle robotter"
+	}
+
+	"all dead players"
+	{
+		"da"		"alle døde spillere"
+	}
+
+	"all alive players"
+	{
+		"da"		"alle levne spillere"
+	}
+
+	"_s"
+	{
+		"da"		"{1}"
+	}
+
+	"all spectators"
+	{
+		"da"		"All tilskuere "
+	}
+
+	"Vote Count"
+	{
+		"da"		"Stemnings tal"
+	}
+
+	"Voted For"
+	{
+		"da"		"Stemte for"
+	}
+
+	"Changed Vote"
+	{
+		"da"		"{1} skiftede deres stemme til {2}"
+	}
+
+}

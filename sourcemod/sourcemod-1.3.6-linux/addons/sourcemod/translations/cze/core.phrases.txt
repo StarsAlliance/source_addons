@@ -1,0 +1,78 @@
+"Phrases"
+{
+	"No Access"
+	{
+		"cze"		"Nemáte přístup k tomuto příkazu"
+	}
+
+	"Back"
+	{
+		"cze"		"Zpět"
+	}
+
+	"Next"
+	{
+		"cze"		"Další"
+	}
+
+	"Exit"
+	{
+		"cze"		"Exit"
+	}
+
+	"Previous"
+	{
+		"cze"		"Předchozí"
+	}
+
+	"all players"
+	{
+		"cze"		"všichni hráči"
+	}
+
+	"all humans"
+	{
+		"cze"		"všichni lidé"
+	}
+
+	"all bots"
+	{
+		"cze"		"všichni boti"
+	}
+
+	"all dead players"
+	{
+		"cze"		"všichni mrtví hráči"
+	}
+
+	"all alive players"
+	{
+		"cze"		"všichni živí hráči"
+	}
+
+	"_s"
+	{
+		"cze"		"{1}"
+	}
+
+	"all spectators"
+	{
+		"cze"		"všichni pozorovatelé"
+	}
+
+	"Vote Count"
+	{
+		"cze"		"Hlasy: {1}/{2}, zbývá {3}s"
+	}
+
+	"Voted For"
+	{
+		"cze"		"{1} hlasoval pro {2}"
+	}
+
+	"Changed Vote"
+	{
+		"cze"		"{1} změnil svou volbu na {2}"
+	}
+
+}

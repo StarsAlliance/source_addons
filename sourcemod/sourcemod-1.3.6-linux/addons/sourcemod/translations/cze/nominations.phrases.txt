@@ -1,0 +1,68 @@
+"Phrases"
+{
+	"Already Nominated"
+	{
+		"cze"		"Už jsi nominoval mapu."
+	}
+
+	"Max Nominations"
+	{
+		"cze"		"Maximální počet nominací byl dosáhnut."
+	}
+
+	"Map Already In Vote"
+	{
+		"cze"		"Mapa '{1}' byla již nominována."
+	}
+
+	"Map Inserted"
+	{
+		"cze"		"Mapa '{1}' byla přidána do nominací."
+	}
+
+	"Map Already Nominated"
+	{
+		"cze"		"Mapa, kterou jsi zvolil, byla již nominována."
+	}
+
+	"Map Nominated"
+	{
+		"cze"		"{1} nominoval {2}."
+	}
+
+	"Map Nomination Changed"
+	{
+		"cze"		"{1} změnil svou nominaci na {2}."
+	}
+
+	"Nominate Title"
+	{
+		"cze"		"Nominovat mapu:"
+	}
+
+	"Current Map"
+	{
+		"cze"		"Současná mapa"
+	}
+
+	"Map in Exclude List"
+	{
+		"cze"		"Mapa, kterou jsi zvolil, se nedávno hrála a nemůže být nominována."
+	}
+
+	"Can't Nominate Current Map"
+	{
+		"cze"		"Mapa, kterou jsi zvolil, je současná mapa a nemůže být nominována."
+	}
+
+	"Recently Played"
+	{
+		"cze"		"Nedávno hraná"
+	}
+
+	"Nominated"
+	{
+		"cze"		"Nominována"
+	}
+
+}
