@@ -1,0 +1,283 @@
+####################################################################################################################################################
+#################################################### eSTEAMATiON 2.X Installation Manual ###########################################################
+####################################################          Author: ViTYAN             ###########################################################
+####################################################        Language: English            ###########################################################
+####################################################################################################################################################
+
+
+This small guide includes all needed information to get your Valve server up and running with eSTEAMATiON Steam ParaEmulation System.
+
+Follow the following steps to get it all up and running:
+
+
+  ##################################################################################################################################################
+  ############################################                         PREWORD                       ###############################################
+  ############################################                                                       ###############################################
+  ############################################                       TERMINOLOGY                     ###############################################
+  ##################################################################################################################################################
+
+A)
+  [Server Root]
+  Valve's server installation folder and not Operating System's root drive/path.
+  You'll probably find one of those files in this folder:
+  1)Source 2007 and Newer:
+    Windows: srcds.exe
+    Linux: srcds_i486,srcds_linux,srcds_run
+
+  2)Source Classic:
+    Windows: srcds.exe
+    Linux: srcds_i486,srcds_i686,srcds_amd,srcds_run
+
+  3)GoldSource:
+    Windows: hlds.exe
+    Linux: hlds_i486,hlds_i686,hlds_amd,hlds_run and sometimes even hlds_amd64.
+
+  4)UT2.5(KF/RO):
+    No files but "maps","sounds","reslists","textures" and most important a "system" subfolders.
+
+B)
+  [Release Archive]
+  Root the distribution's .7z/.rar archive.
+
+C)
+  %YOUR_OPERATING_SYSTEM_TYPE%
+  Means exactly that it tells:
+  If you run "Microsoft Windows" it will be "WIN32".
+  If you run "Linux" or other *NiX-like OS wchis is able to execute Linux ELF binaries(Like The BSD's) it will be "LINUX".
+
+D)
+  Valve's engine terminology:
+  GoldSource - HL1 engine codename. Used by HL1,HL1 DM,CS 1.6,TFC,OPF.
+  Source Classic - The classic first Source engine.No more games known to me still utilize it.
+  Source 2007 - New generation Source engine. Used by TF2,DOD:S,GMOD,Synergy,ZPS,HL2:DM,CS:S and Insurgency
+  Source 2007 U1 - Source 2007 update with extensions(Lobby/SteamCloud, etc). Used in L4D1.
+  Source 2007 U2 - Second update for Source 2007 engine. Used by L4D2.
+
+  3-rd party engine terminology:
+  UT2.5 - Unreal Engine v2.5 made by Epic Games for Unreal Tournament 2004. Used by Killing Floor(KF) and Red Orchestra(RO) by Tripwire Tech.
+
+  ##################################################################################################################################################
+  ############################################                         STAGE 1                       ###############################################
+  ############################################                                                       ###############################################
+  ############################################                  INSTALLING INIT SUBSYSTEM            ###############################################
+  ##################################################################################################################################################
+  
+  
+  1) 
+     STEAM3(SOURCE 2007 AND ABOVE)/STEAM2(SOURCE CLASSIC):
+       Find a STEAM_API module in [Server Root]\bin  | [Server Root]/bin  subfolder. It will be called steam_api.dll[Windows] or
+       steam_api_i486.so/libsteam_api_i486.so/libsteam_api_linux.so/libsteam_api.so[Linux].
+     GOLDSOURCE:
+       Find a STEAM_API_C module in [Server Root]  | [Server Root] folder. It will be called steam_api_c.dll[Windows] or
+       libsteam_api_c.so[Linux].
+       NOTE: There is also libsteam_api_c_linux.so but its NOT USED by server. Don't make a mistake and use the one i specified above!
+     UT2.5:
+       Find a STEAM_API module in [Server Root]\system  | [Server Root]/system  subfolder. It will be called steam_api.dll[Windows] or
+       libsteam_api_linux.so[Linux].
+  2) STEAM3(SOURCE 2007 AND ABOVE):
+       Remember the name of the file you've found during performing [STEP (1)] (I'll call it %STEAM_API_MODULE_ORG_NAME% later to reference it) and
+       rename it to valve_api.dll[Windows] or valve_api.so[Linux]
+     STEAM2(SOURCE CLASSIC AND ZPS)/UT2.5:
+       Rename this file[STEP (1)] into valve_api.dll[Windows] or valve_api.so[Linux]
+     GOLDSOURCE:
+       Rename this file[STEP (1)] into valve_api_c.dll[Windows] or valve_api_c.so[Linux]
+  3) 
+     STEAM3(SOURCE 2007 AND ABOVE) WINDOWS:
+       Copy the file [Release Archive]\WIN32\INIT\STEAM3(Source 2007 And Above)\steam_api.dll into [Server Root]\bin.
+     STEAM3(SOURCE 2007 AND 2007 U2) LINUX:
+       Copy the file [Release Archive]/LINUX/INIT/STEAM3(Source 2007 And 2007 U2)/steam_api.so into [Server Root]/bin.
+     STEAM3(SOURCE 2007 U1 L4D1) LINUX:
+       Copy the file [Release Archive]/LINUX/INIT/STEAM3(Source 2007 U1)/steam_api.so into [Server Root]/bin.
+     STEAM2(SOURCE CLASSIC):
+       Copy the file [Release Archive]\%YOUR_OPERATING_SYSTEM_TYPE%\INIT\STEAM2(Source Classic)\[steam_api.dll[Windows]/steam_api.so[Linux]] into
+       [Server Root]\bin  | [Server Root]/bin.
+     GOLDSOURCE:
+       Copy the file [Release Archive]\%YOUR_OPERATING_SYSTEM_TYPE%\INIT\STEAM3(GoldSource)\[steam_api_c.dll[Windows]/libsteam_api_c.so[Linux]] into
+       [Server Root]  | [Server Root].
+     UT2.5(KF):
+       Copy the file [Release Archive]\%YOUR_OPERATING_SYSTEM_TYPE%\INIT\STEAM3(UT2.5)\[steam_api.dll[Windows]/libsteam_api_linux.so[Linux]] into
+       [Server Root]\system  | [Server Root]/system.
+  4) STEAM3(SOURCE 2007 AND ABOVE):
+      Rename the library you've extracted in {3} to %STEAM_API_MODULE_ORG_NAME%
+     OTHERS:
+      I've already specified specified proper names and gave matching names to files in release. No need to rename.
+  
+  
+  
+  ##################################################################################################################################################
+  ############################################                       STAGE 2                        ################################################
+  ############################################                                                      ################################################
+  ############################################               INSTALLING eSTEAMATiON SCI             ################################################
+  ##################################################################################################################################################
+  
+  1) STEAM3(SOURCE 2007 AND ABOVE)/STEAM2(SOURCE CLASSIC):
+      Copy the file  [Release Archive]\%YOUR_OPERATING_SYSTEM_TYPE%\SCI\[eST-SCI.dll/libeST_SCI.so] into your
+      [Server Root]\bin  | [Server Root]/bin.
+     GOLDSOURCE:
+      Copy the file  [Release Archive]\%YOUR_OPERATING_SYSTEM_TYPE%\SCI\[eST-SCI.dll/libeST_SCI.so] into your [Server Root].
+     UT2.5:
+      Copy the file  [Release Archive]\%YOUR_OPERATING_SYSTEM_TYPE%\SCI\[eST-SCI.dll/libeST_SCI.so] into your
+      [Server Root]\system  | [Server Root]/system.
+  
+  
+  ##################################################################################################################################################
+  ############################################                      STAGE 3                         ################################################
+  ############################################                                                      ################################################
+  ############################################               DISABLING VAC CALLBACKS                ################################################
+  ##################################################################################################################################################
+  
+
+  ==================================================================================================================================================
+  ATTENSION!!!! READ FIRST:
+  IF YOUR SERVER IS SUPPORTED BY "CALLBACK CONTROL" OR "ENGINE CALLBACK BYPASS" EXTENSIONS(SEE CONFIG FILE FOR DETAILS) THEN YOU CAN SAFELY SKIP THIS
+  STEP.
+  Game servers known to be supported by Callback Control: L4D1,L4D2,TF2,CSS,GMOD,Synergy,Insurgency,KF.
+  Game servers supported by Engine Callback Bypass: All Source 2007, Source 2007 Ux, Source 2009 engine based servers.
+  ==================================================================================================================================================
+
+  STEAM3(SOURCE 2007 AND ABOVE):
+    -------------------------------------------------------------------------
+    ATTENSION: THOSE ENGINES ARE NOT SUPPORTED BY PUBLIC VERSIONS OF UGSP!!!
+    -------------------------------------------------------------------------
+    1) Download OpenUGSP/VUP from the respective thread on cs.rin.ru/csmania.ru forums.
+       *NOTE: For Lastest L4D2 For Linux update you must get the new OpenUGSP/VUP 2.5 or later otherwise your server will drop all Non-Steam
+              clients with "No Steam Logon" message.
+    2) Copy ugsp86.exe/ugsp_i686(Or ugsp64.exe/ugsp_amd64 if your Operating System is 64 bit OS) to your [Server Root]\bin  | [Server Root]/bin.
+    3) Apply OpenUGSP/VUP like this(You'll need to open a "cmd" console in Windows):
+         ugsp86.exe -esteamation-prep engine.dll
+         ./ugsp_i686 -esteamation-prep engine_i486.so
+       NOTE: Under Linux engine module is called engine_linux.so on some gameservers so substitute engine_i486.so with the real engine name
+             to patch it.
+       TIP: use "ls -l | grep engine" command to list engine files in the current folder.
+
+  STEAM2(SOURCE CLASSIC):
+    1) Download OpenUGSP from the respective thread on cs.rin.ru/csmania.ru forums.
+    2) Copy ugsp86.exe/ugsp_i686(Or ugsp64.exe/ugsp_amd64 if your Operating System is 64 bit OS) to your [Server Root]\bin  | [Server Root]/bin.
+    3) Apply OpenUGSP/VUP like this(You'll need to open a "cmd" console in Windows):
+         ugsp86.exe -esteamation-prep engine.dll
+         ./ugsp_i686 -esteamation-prep engine_i486.so engine_i686.so engine_amd.so
+
+  GOLDSOURCE:
+    1) Download OpenUGSP from the respective thread on cs.rin.ru/csmania.ru forums.       
+    2) Copy ugsp86.exe/ugsp_i686(Or ugsp64.exe/ugsp_amd64 if your Operating System is 64 bit OS) to your  [Server Root]\bin  | [Server Root]/bin.
+    3) Apply OpenUGSP/VUP like this(You'll need to open a "cmd" console in Windows):
+         ugsp86.exe -esteamation-prep swds.dll
+         ./ugsp_i686 -esteamation-prep engine_i486.so engine_i686.so engine_amd.so
+ 
+  UT2.5:
+    1) Download OpenUGSP from the respective thread on cs.rin.ru/csmania.ru forums.
+       *NOTE: For UT2.5 engine's you MUST use AT LEAST OpenUGSP/VUP 2.71. VUP 2.7 and below will NOT work.        
+    2) Copy ugsp86.exe/ugsp_i686(Or ugsp64.exe/ugsp_amd64 if your Operating System is 64 bit OS) to your  [Server Root]\bin  | [Server Root]/bin.
+    3) Apply OpenUGSP/VUP like this(You'll need to open a "cmd" console in Windows):
+         ugsp86.exe -esteamation-prep engine.dll
+         ./ugsp_i686 -esteamation-prep ucc-bin-real
+ 
+  ##################################################################################################################################################
+  ############################################                      STAGE 4                         ################################################
+  ############################################                                                      ################################################
+  ############################################            CREATE CONFIG AND CACHE FOLDER            ################################################
+  ##################################################################################################################################################
+ 1) Create a  [Server Root]\cfg folder on your server.
+     NOTE: This folder will be used for your eSTEAMATiON configuration files and for eST-SCI BINCACHE small automatic cache file used for startup
+           optimisation of eST-SCI engine. So create this folder if you dont wanna wait for about 30 secs for game-server to start-up after each
+           restart..
+ 
+ 
+  ##################################################################################################################################################
+  ############################################                      STAGE 5                         ################################################
+  ############################################                                                      ################################################
+  ############################################            APPLYING CONFIGURATION FILES              ################################################
+  ##################################################################################################################################################
+  
+  1) Copy 2 .cfg[Windows]/.conf[Linux] files from  [Release Archive]\%YOUR_OPERATING_SYSTEM_TYPE%\CFG\ into  [Server Root]\cfg and Edit them
+     accordingly.
+      NOTE: Copy the rej-msgs.cfg | rej-msgs.conf only if you want to use Custom reject messages and built-in informative messages are
+            not enougth for you.
+      
+  2) During editing of esteamation.cfg[Windows]/esteamation.conf[Linux] read very carefully each section and set the options accordingly to your
+     needs.
+     Each configuration option is explained quite well in both English and Russian languages.
+       
+ 
+  ##################################################################################################################################################
+  ############################################                     STAGE 6                          ################################################
+  ############################################        STEAM2 ONLY SERVERS SUPPLEMENT                ################################################
+  ############################################         INSTALLING STEAM2 SUBSYSTEM                  ################################################
+  ##################################################################################################################################################
+ 
+ 1) Grab OpenUGSP/VUP 2.71 or ABOVE and "PREPARE" your steamclient like this:
+    Windows:
+      ugsp86 -esteamation-prep steamclient.dll
+    Linux:
+      ./ugsp_i686 -esteamation-prep steamclient_i486.so
+ 
+ 2) Copy eSTEAMATiON STEAM2-AUTH module(eSTS2.dll/libeST_STEAM2.so) from [Release Archive]\%YOUR_OPERATING_SYSTEM_TYPE%\STEAM2-AUTH\
+    to [Server Root]\bin  | [Server Root]/bin 
+  
+    
+  ##################################################################################################################################################
+  ############################################                    STAGE 7                          #################################################
+  ############################################        STEAM2 ONLY SERVERS SUPPLEMENT               #################################################
+  ############################################       GETTING eST-SCI READY FOR STEAM2              #################################################
+  ##################################################################################################################################################
+ 
+ 1) Open your esteamation.cfg[Windows]/esteamation.conf[Linux] configuration FILE
+ 2) Ensure that ServerNeedsSTEAM2AuthenticationSubsystem option is set to True(Otherwise you didn't followed STAGE 5 -> {2} ;) ).
+ 3) If you are old eSTEAMATiON user and plan to upgrade from famous 1.8 version and youve used EnforceSteamEmuCompatIDMode for a long time
+    consider enabling SteamEmuCompatIDModeBackward18EmuVersionCompatability so you'r stored bans/stats/admin-ID's will not need to be deleted
+    because native eSTEAMATiON 2.X assigned other ID's to clients then EnforceSteamEmuCompatIDMode and doesn't affects RevEmu 1St Gen clients
+    by EnforceSteamEmuCompatIDMode(If you enable SteamEmuCompatIDModeBackward18EmuVersionCompatability then RevEmu 1St Gen will be affected again
+    according to eSTEAMATiON 1.8 AUTH principles).
+    Read about this parameter in the extensive eSTEAMATiON 2.X series configuration file.
+
+
+
+  ##################################################################################################################################################
+  ############################################                    STAGE 8                          #################################################
+  ############################################            TF2 EXTENSION SUPPLEMENT                 #################################################
+  ############################################             GET YOUR ITEMS CHARGED                  #################################################
+  ##################################################################################################################################################
+ 
+ 1) Open your esteamation.cfg[Windows]/esteamation.conf[Linux] configuration FILE
+ 2) Ensure that EnableLoadOutItemsSupportExtension option is set to True.
+    Note: if you don't want NonSteam clients to have LoadOut items leave the option above disable and skip to next step right now.
+ 3) If you want to use new-generation NonSteam Networking(NSNet) enable it in configuration file as well.
+    NOTE: You'll need to open port 6569/UDP on your firewall/router.
+ 4) If you want all items to be known to eSTEAMATiON then SKIP this step.
+    Otherwise(If you want for exmaple to limit items accesible to pirate clients):
+    Grab items_440.bin file from latest RevCrew's steamclient 2009 release(managed by bir3yk RevCrew's member) and put it in cfg(the one which
+    contains eSTEAMATiON's configuration file) or platform folder using the same name(items_440.bin) or named as items.bin or items.dat.
+
+
+  ##################################################################################################################################################
+  ############################################                    STAGE 9                          #################################################
+  ############################################        VALVE AUTHENTICATION CORRECTION              #################################################
+  ############################################             MAKE YOUR AUTH PRECISE                  #################################################
+  ##################################################################################################################################################
+
+ PREWORD: Since v 2.0 RC8 eSTEAMATiON comes with new Authentication Time Correction feature which allows it to differetiate btw some Steam clients
+          better(Legit vs Cracked check). The classic method will compare with local time and thus can make mistake by a few hours.
+          Correction converts ticket time(Valve time: PST/PDT) and you local time to GMT and compares them with a very little chance for mistake.
+          However to succeded in this task eST needs your help ...
+ 1) Go to http://code.google.com/p/tzdata/ in your Web browser and grab latest available tzdata_%VER%.zip
+ 2) Open the archive in your favourite archiver.
+ 3) In Archive's tree navigate to tzdata/xml folder tree.
+ 4) Locate the file PST8PDT.xml and extract it to cfg folder(The folder there eST's config is located).
+ 5) Congrats - eST will now be able to perform precise validations :) Don't forget to update the file as TZ Database updates several times per year.
+
+
+  ##################################################################################################################################################
+  ############################################                    STAGE 10                         #################################################
+  ############################################           LAST NOTES BEFORE FIRST RUN               #################################################
+  ##################################################################################################################################################
+ 1) Those are needed for eSTEAMATiON Logging to work and it's config print-up be seen/"logged to server log" during game server startup:
+    STEAM3(SOURCE 2007 AND ABOVE)/STEAM2(SOURCE CLASSIC):
+      Consider adding "+log on" to your srcds.exe/srcds_run launch parameters.
+    GOLDSOURCE:
+      Consider adding "+log on" to your hlds.exe/hlds_run launch parameters.
+
+ 2) If you start your server and see each eST's console output line twice then look at LogUsingMsgInAdditionToLogFn option in eST's configuration
+    file.
+
+ 3) If you want to enable debug file's(Like was with DEBUG releases in previous versions) then enable EnableDebugLoggingExtension and
+    InitSysEnableDebugLoggingExtension options in eST's configuration file.
